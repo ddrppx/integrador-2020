@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Página principal</title>
 </head>
 <body>
     <?php
-        require_once 'vendor/autoload.php';
+        require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
 
-        $user = new \Classes\Produto();
+        $product = new \Classes\Produto(); //Instancia a classe
 
-        $user -> setNome("Pedro");
+        $product -> setNome("Pedro"); //Usando o metodo SET da classe produto
 
-        $nom = $user -> getNome();
+        print($product -> getNome()); //Usa o metodo GET para imprimir o valor inserido no metodo SET "Pedro"
 
-        echo "$nom";
+        //Comando mais usado para imprimir comandos em php = echo
+        //echo "$nome";
     ?>
 </body>
 </html>
