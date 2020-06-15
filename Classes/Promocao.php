@@ -22,8 +22,19 @@
         }
 
             //Método SET
-        public function setDesconto($newD) {
-            $this -> marca = $newM;
+        public function setDesconto($newM) {
+            $this -> desconto = $newM;
+        }
+
+        public function __construct($nome, $desconto) {
+            $this -> nome = $nome;
+            $this -> desconto = $desconto
+        }
+
+        public function __toString() {
+            return "-- Informações da Promoção --<br />
+                    Nome: ". $this -> getNome(). "<br />
+                    Desconto: ". $this -> getDesconto();
         }
     }
 ?>
