@@ -43,6 +43,28 @@
             return  $this -> getValor() - ($this -> getValor() * ($this -> getDesconto()/100));
         }
 
+        public function __Valor() {
+            //Checa se o número é flutuante
+            if (is_float($this -> getValor())){
+                //Realiza a formatação do numero com 2 casa decimais após a virgula
+            return number_format($this -> getValor(), 2);
+        } else {
+                //Se valores não forem flutuantes
+            return "NaN";
+            }
+        }
+
+        public function __ValorTotal() {
+            //Checa se o numero é flutuante
+            if (is_float($this -> getValor())){
+                    //Realiza a formatação do numero com 2 casa decimais após a virgula
+                return number_format($this -> ValorTotal(), 2);
+            } else {
+                //Se valores não forem flutuantes
+                return "NaN";
+            }
+        }
+
             //Método construtor
         public function __construct($nome, $valor, $desconto) {
             $this -> nome = $nome;
@@ -50,24 +72,13 @@
             $this -> desconto = $desconto;
         }
 
+            //Método toString
         public function __toString() {
-                //Checa se o número é flutuante
-            if (is_float($this -> getValor())){
-                    //Realiza a formatação do numero com 2 casa decimais após a virgula
-                $valor_n = number_format($this -> getValor(), 2);
-                $valor_t = number_format($this -> ValorTotal(), 2);
-            } else {
-
-                    //
-                $valor_n = $this -> getValor();
-                $valor_t = $this -> valorTotal();
-            }
-            
             return "-- Informações do Produto --<br />
                     Nome: ". $this -> getNome(). "<br />
-                    Valor: R$". $valor_n. "<br />
+                    Valor: R$". $this -> __Valor(). "<br />
                     Desconto: ". $this -> getDesconto(). "%<br />
-                    Valor Total: R$". $valor_t;
+                    Valor Total: R$". $this -> __ValorTotal();
         }
     }
 ?>

@@ -24,6 +24,7 @@ namespace Classes;
             $this -> modoPreparo = $mp;
         }
         
+            //Traduz o atributo de boolean para String
         public function __ModoPreparo() {
             if ($this -> getModoPreparo() == 0) {
                 return "Comer no estabelecimento";
@@ -34,6 +35,7 @@ namespace Classes;
             }
         }
 
+            //Traduz o atributo de boolean para String
         public function __MetodoPagamento() {
             if ($this -> getMetodoPagamento() == 0) {
                 return "Cartão";
@@ -54,18 +56,19 @@ namespace Classes;
             $this -> metodoPagamento = $mp2;
         }
 
+            //Metodo construtor
         public function __construct($modoP, $metodoP) {
-            $this -> hora = date('m/d/Y h:i:s a', time());
+            $this -> hora = date('m/d/Y h:i:s a', time()); //Receberá a hora atual
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
         }
 
+            //Método toString
         public function __toString() {
-            return "-- Informações do Pedido -- <br />
+            return "-- Informações do Pedido --<br />
             Hora: ". $this -> getHora(). "<br />
             Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
-            Metodo de Pagamento: ". $this -> 
+            Metodo de Pagamento: ". $this -> __MetodoPagamento();
         }
-        
     }
 ?>

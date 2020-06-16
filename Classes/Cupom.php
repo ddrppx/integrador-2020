@@ -12,16 +12,28 @@
             return $this -> codigo;
         }
             //Metodo SET
-        public function setCodigo($newC) {
-            $this -> codigo = $newM;
+        public function setCodigo($cod) {
+            $this -> codigo = $cod;
         }
             //Metodo GET
         public function getDesconto() {
             return $this -> desconto;
         }   
             //Metodo SET
-        public function setDesconto($newD) {
-            $this -> marca = $newM;
+        public function setDesconto($desconto) {
+            $this -> marca = $desconto;
+        }
+
+            //Metodo Construtor
+        public function __construct($codigo, $desconto){
+            $this -> codigo = $codigo;
+            $this -> desconto = $desconto;
+        }
+
+        public function __toString(){
+            return "-- Informações do Cupom --<br />
+                    Código: ". $this -> getCodigo(). "<br />
+                    Desconto: ". $this -> getDesconto(). "%";
         }
     }
 ?>

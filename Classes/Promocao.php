@@ -25,12 +25,13 @@
         public function setDesconto($newM) {
             $this -> desconto = $newM;
         }
-
+            //Método construtor
         public function __construct($nome, $desconto) {
             $this -> nome = $nome;
-            $this -> desconto = $desconto
+            $this -> desconto = $desconto;
         }
 
+            //Metodo toString
         public function __toString() {
             return "-- Informações da Promoção --<br />
                     Nome: ". $this -> getNome(). "<br />

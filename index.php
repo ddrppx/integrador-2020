@@ -15,6 +15,11 @@
         //echo "$nome";
 
         echo $product;
+        echo "<hr>";
+
+        $floats = array(1.23, 2.43, 5.43, 6.21);
+
+        echo "<br />". array_sum(($floats));
     ?>
 
 </body>

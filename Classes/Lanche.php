@@ -43,10 +43,20 @@
                 }
             }
         }
+            //Método construtor
+        public function __construct($nome, $valor, $desconto, $ingredient) {
+            $this -> nome = $nome;
+            $this -> valor = $valor;
+            $this -> desconto = $desconto;
+            $this -> ingredient[] = $ingredient;
+        }
 
         public function __toString() {
-            return "-- To String -- \n".
-            $this -> ingredient;                
+            return "-- Lanche -- <br />
+            Nome: ". $this -> getNome(). "<br />
+            Valor: ". $this -> getValor(). "<br />
+            Desconto: ". $this -> getDesconto(). "<br />
+            Ingredientes: ". $this -> getIngredient();                
         }
     }
 ?>
