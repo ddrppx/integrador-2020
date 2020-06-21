@@ -5,10 +5,10 @@ namespace Classes;
     class Usuario{ 
 
         //Atributo(s) da classe
-        private $customizacao = array();
+        private $customizacao;
     
-        public function __construct($cst) {
-            $this -> customizacao = $cst;
+        public function __construct(){
+            $this -> pedido = new Pedido(null, null);
         }
         
         //Método GET
@@ -19,6 +19,10 @@ namespace Classes;
         //Método SET
         public function setCustom($newCustom) {
             $this -> customizacao = $newCustom;
+        }
+
+        public function customizar(){
+            $customizar = $this -> pedido -> produto -> lanche -> ingredient;
         }
     }
 ?>

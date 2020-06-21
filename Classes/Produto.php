@@ -8,6 +8,7 @@
         private $nome;
         private $valor;
         private $desconto;
+        private $promocao;
 
             //Método GET
         public function getNome() {
@@ -70,6 +71,14 @@
             $this -> nome = $nome;
             $this -> valor = $valor;
             $this -> desconto = $desconto;
+        }
+            //Adiciona uma promocao ao item
+        public function addPromocao($promocao) {
+            $this -> promocao = $promocao;
+        }
+
+        public function remPromocao(){
+            $this -> promocao = null;
         }
 
             //Método toString

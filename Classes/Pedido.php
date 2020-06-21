@@ -9,6 +9,8 @@ namespace Classes;
         private $modoPreparo;
         private $metodoPagamento;
         private $valorT;
+        private $produtos;
+        private $cupom;
         
             //Método GET
         public function getHora() {
@@ -69,6 +71,10 @@ namespace Classes;
             Hora: ". $this -> getHora(). "<br />
             Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
             Metodo de Pagamento: ". $this -> __MetodoPagamento();
+        }
+
+        public function addProduto(Produto $produto){
+            $this -> produto[] = $produto;
         }
     }
 ?>

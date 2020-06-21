@@ -9,17 +9,51 @@
     <?php
         require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
 
-        $product = new \Classes\Produto('Agua', '10.20', 10); //Instancia a classe
+        $user = new \Classes\Usuario(); //Instancia a classe
 
+        $user -> pedido -> setModoPreparo(true);
         //Comando mais usado para imprimir comandos em php = echo
         //echo "$nome";
 
-        echo $product;
-        echo "<hr>";
+        echo $user -> pedido -> __ModoPreparo();
 
-        $floats = array(1.23, 2.43, 5.43, 6.21);
+        echo "<hr />";
 
-        echo "<br />". array_sum(($floats));
+            class Marido {
+                // Propriedade
+                public $nome;
+                public $esposa;
+                
+                // Configura a propriedade
+                function __construct( $nome = null) {
+                    $this->nome   = $nome;
+                    $this->esposa;
+                }
+
+                public function addEsposa($esposa){
+                    $this -> esposa = $esposa;
+                }
+            }
+            
+            // Esposa
+            class Esposa {
+                // Propriedade
+                public $nome;
+                
+                // Configura a propriedade
+                function __construct( $nome = null ) {
+                    $this->nome = $nome;
+                }
+            }
+            
+
+            // Faz as instâncias
+            $esposa = new Esposa('Janaina');
+
+            $marido = new Marido('Leonardo');
+            $marido ->addEsposa($espo = new Esposa('Janai'));
+            // Leonardo e Janaina
+            echo $marido->nome . ' e '. $marido->esposa->nome;
     ?>
 
 </body>
