@@ -63,6 +63,7 @@ namespace Classes;
             $this -> hora = date('m/d/Y h:i:s a', time()); //Receberá a hora atual
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
+            $this -> cupom;
         }
 
             //Método toString
@@ -72,9 +73,11 @@ namespace Classes;
             Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
             Metodo de Pagamento: ". $this -> __MetodoPagamento();
         }
-
+            //Adiciona um item/produto à lista de itens do pedido
         public function addProduto(Produto $produto){
             $this -> produto[] = $produto;
         }
+
+        
     }
 ?>
