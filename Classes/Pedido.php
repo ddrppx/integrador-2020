@@ -78,6 +78,13 @@ namespace Classes;
             $this -> produto[] = $produto;
         }
 
+        public function insCupom($cupom) {
+            $this -> cupom = $cupom;
+        }
+
+        public function remCupom(){
+            $this -> cupom = null;
+        }
         
     }
 ?>
