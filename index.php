@@ -19,41 +19,28 @@
 
         echo "<hr />";
 
-            class Marido {
-                // Propriedade
-                public $nome;
-                public $esposa;
-                
-                // Configura a propriedade
-                function __construct( $nome = null) {
-                    $this->nome   = $nome;
-                    $this->esposa;
-                }
+        class Product{
+            public $nome;
+            public $valor;
 
-                public function addEsposa($esposa){
-                    $this -> esposa = $esposa;
-                }
+            public function __construct($nome, $valor){
+                $this -> nome = $nome;
+                $this -> valor = $valor;
             }
-            
-            // Esposa
-            class Esposa {
-                // Propriedade
-                public $nome;
-                
-                // Configura a propriedade
-                function __construct( $nome = null ) {
-                    $this->nome = $nome;
-                }
-            }
-            
+        }
 
-            // Faz as instâncias
-            $esposa = new Esposa('Janaina');
+        
+        $agua = new Product("Agua", 2.50);
+        $suco = new Product("Suco", 3.50);
 
-            $marido = new Marido('Leonardo');
-            $marido ->addEsposa($espo = new Esposa('Janai'));
-            // Leonardo e Janaina
-            echo $marido->nome . ' e '. $marido->esposa->nome;
+        $products = array($agua, $suco);
+
+        foreach ($products as $array){
+            print $array -> valor. "<br />";
+            $sum += $array -> valor;
+        }
+
+        echo "<br />Soma: ". $sum;
     ?>
 
 </body>

@@ -64,6 +64,7 @@ namespace Classes;
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
             $this -> cupom;
+            $this -> produtos;
         }
 
             //Método toString
@@ -75,7 +76,11 @@ namespace Classes;
         }
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto(Produto $produto){
-            $this -> produto[] = $produto;
+            $this -> produtos[] = $produto;
+        }
+
+        public function valorTotal(){
+            
         }
 
         public function insCupom($cupom) {
