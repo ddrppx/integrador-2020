@@ -5,8 +5,8 @@
     class Bebida extends Produto {
         
             //Atributos da classe
-        private $marca;
-        private $tamanho;
+        public $marca;
+        public $tamanho;
 
             //Metodo GET
         public function getMarca() {
@@ -27,10 +27,9 @@
             $this -> tamanho = $tam;
         }
 
-        public function __construct($nome, $valor, $desconto, $marca, $tamanho) {
+        public function __construct($nome, $valor, $marca, $tamanho) {
             $this -> nome = $nome;
             $this -> valor = $valor;
-            $this -> desconto = $desconto;
             $this -> marca = $marca;
             $this -> tamanho = $tamanho;
         }
@@ -38,8 +37,8 @@
         public function __toString() {
             return "- Informações da Bebida - <br /> 
                     Nome: ". $this -> getNome(). "<br /> 
-                    Valor: R$". $this -> __Valor(). "<br />
-                    Desconto: ". $this -> getDesconto(). "<br />
+                    Valor: R$". $this -> getValor(). "<br />
+                    Desconto: ". $this -> getDesconto(). "%<br />
                     Marca: ". $this -> getMarca(). "<br />
                     Tamanho: ". $this -> tamanho; 
         }

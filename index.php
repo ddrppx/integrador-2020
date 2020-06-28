@@ -9,38 +9,45 @@
     <?php
         require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
 
-        $user = new \Classes\Usuario(); //Instancia a classe
-
-        $user -> pedido -> setModoPreparo(true);
-        //Comando mais usado para imprimir comandos em php = echo
-        //echo "$nome";
-
-        echo $user -> pedido -> __ModoPreparo();
-
-        echo "<hr />";
-
-        class Product{
-            public $nome;
-            public $valor;
-
-            public function __construct($nome, $valor){
-                $this -> nome = $nome;
-                $this -> valor = $valor;
-            }
-        }
-
+        $promo = new \Classes\Promocao("Black-Friday", 15); //Instancia a classe
+        $pedido = new \Classes\Pedido(1, 1); //Instancia a classe
         
-        $agua = new Product("Agua", 2.50);
-        $suco = new Product("Suco", 3.50);
+        $lanche = new \Classes\Lanche("Hamburguer", 13.50, ["Pao","Carne","Alface"]); //Instancia a classe
+        
+        $bebida = new \Classes\Bebida("Cola", 5.40, "Pepsi", "250ml"); //Instancia a classe
 
-        $products = array($agua, $suco);
+        $cupom = new \Classes\Cupom("PW32", 10); //Instancia a classe
+        $acomp = new \Classes\Acompanhamento("Batata Frita", 3.10, "Grande"); //Instancia a classe
 
-        foreach ($products as $array){
-            print $array -> valor. "<br />";
-            $sum += $array -> valor;
-        }
+        echo "<h1>Classe Cupom </h1><br />";
+        echo $cupom;
+        echo "<br />";
 
-        echo "<br />Soma: ". $sum;
+        echo "<h1>Classe Pedido </h1><br />";
+        echo $pedido;
+        echo "<br />";
+
+        echo "<h1>Classe Promocao </h1><br />";
+        echo $promo;
+        echo "<br />";
+
+        echo "<h1>Classe Lanche </h1><br />";
+        //echo $lanche;
+        $lanche -> addPromocao($promo);
+        echo $lanche;
+        echo "<br />";
+
+        echo "<h1>Classe Bebida </h1><br />";
+        $bebida -> addPromocao($promo);
+        echo $bebida;
+        echo "<br />";
+
+        echo "<h1>Classe Acompanhamento</h1><br />";
+        $acomp -> addPromocao($promo);
+        echo $acomp;
+        $acomp -> remPromocao();
+        echo $acomp;
+        echo "<br />";
     ?>
 
 </body>

@@ -5,12 +5,12 @@ namespace Classes;
     class Pedido {
 
             //Atributos da classe
-        private $hora;
-        private $modoPreparo;
-        private $metodoPagamento;
-        private $valorT;
-        private $produtos;
-        private $cupom;
+        public $hora;
+        public $modoPreparo;
+        public $metodoPagamento;
+        public $valorT;
+        public $produtos;
+        public $cupom;
         
             //Método GET
         public function getHora() {
@@ -79,14 +79,34 @@ namespace Classes;
             $this -> produtos[] = $produto;
         }
 
-        public function valorTotal(){
-            
+        public function getProdutos() {
+            foreach ($this -> produto as $prod) {
+                echo $prod;
+            }
         }
 
+        public function valorTotal(){
+                //Products recebe os itens de $produto(Todos itens do pedido)
+            $products = $this -> produtos;
+            $soma = 0; //Inicializa a variavel para somar
+            foreach ($products as $array){
+                $soma += $array -> valor; //Soma na variavel à cada loop
+            }
+
+                //Desconto do cupom(se houver)
+            if (isset($cupom)) {
+                $valor = $soma - ($cupom -> getDesconto() / 100);
+            }
+                //Valor descontado
+            return $valor;
+        }
+
+            //Insere o cupom junto com seu desconto.
         public function insCupom($cupom) {
             $this -> cupom = $cupom;
         }
 
+            //Remove o cupom
         public function remCupom(){
             $this -> cupom = null;
         }

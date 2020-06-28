@@ -3,7 +3,7 @@
         //Especificando a classe
     class Lanche extends Produto { // Extends = Herança
             //Atributo ingrediente é um Array
-        private $ingredient = array();
+        public $ingredient;
 
             //Adiciona um item ao Array
         public function addIngredient($add) {
@@ -23,12 +23,18 @@
 
             //Percorre e exibe o array
         public function getIngredient() {
-            
-            $arrIng = $this -> ingredient;
-            
-            foreach ($arrIng as $value) {
-                echo $value."<br />";
-            }            
+
+            $output = "a";
+            $arrayInput = $this -> ingredient;
+            foreach ($arrayInput as $arrayOutput) {
+                $c = 0;
+                $c > 0 ? $output .= ",": $output .= "";
+                $c = 1;
+                $output .="". $arrayOutput;
+            }
+            $output .= ".";
+            return $output;
+
         }
             //Mudança em um elemento do array
         public function setIngredient($pos, $valor) {
@@ -44,18 +50,17 @@
             }
         }
             //Método construtor
-        public function __construct($nome, $valor, $desconto, $ingredient) {
+        public function __construct($nome, $valor, $ingredient) {
             $this -> nome = $nome;
             $this -> valor = $valor;
-            $this -> desconto = $desconto;
-            $this -> ingredient[] = $ingredient;
+            $this -> ingredient = $ingredient;
         }
 
         public function __toString() {
             return "-- Lanche -- <br />
             Nome: ". $this -> getNome(). "<br />
-            Valor: ". $this -> getValor(). "<br />
-            Desconto: ". $this -> getDesconto(). "<br />
+            Valor: R$". $this -> __ValorTotal(). "<br />
+            Desconto: ". $this -> getDesconto(). "%<br />
             Ingredientes: ". $this -> getIngredient();                
         }
     }

@@ -4,8 +4,8 @@
         //Especificando a classe
     class Promocao { 
             //Atributos da classe
-        private $nome;
-        private $desconto;
+        public $nome;
+        public $desconto;
 
             //Método GET
         public function getNome() {
@@ -35,7 +35,7 @@
         public function __toString() {
             return "-- Informações da Promoção --<br />
                     Nome: ". $this -> getNome(). "<br />
-                    Desconto: ". $this -> getDesconto();
+                    Desconto: ". $this -> getDesconto()."%";
         }
     }
 ?>

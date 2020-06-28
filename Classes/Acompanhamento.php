@@ -4,7 +4,7 @@
         //Especificando a classe
     class Acompanhamento extends Produto {
             //Atributo da classe
-        private $tamanho;
+        public $tamanho;
 
             //Metodo GET
         public function getTamanho() {
@@ -16,18 +16,18 @@
             $this -> tamanho = $tam;
         }
 
-        public function __construct($nome, $valor, $desconto, $tamanho) {
+        public function __construct($nome, $valor, $tamanho) {
             $this -> nome = $nome;
             $this -> valor = $valor;
-            $this -> desconto = $desconto;
             $this -> tamanho = $tamanho;
+            $this -> promocao;
         }
 
         public function __toString() {
             return "- Informações da Bebida - <br /> 
             Nome: ". $this -> getNome(). "<br /> 
-            Valor: R$". $this -> __Valor(). "<br />
-            Desconto: ". $this -> getDesconto(). "<br />
+            Valor: R$". $this -> __ValorTotal(). "<br />
+            Desconto: ". $this -> getDesconto(). "%<br />
             Tamanho: ". $this -> tamanho; 
         }
     }
