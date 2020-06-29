@@ -24,7 +24,7 @@
         }
 
         public function __toString() {
-            return "- Informações da Bebida - <br /> 
+            return "- Acompanhamento -<br /> 
             Nome: ". $this -> getNome(). "<br /> 
             Valor: R$". $this -> __ValorTotal(). "<br />
             Desconto: ". $this -> getDesconto(). "%<br />

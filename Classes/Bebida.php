@@ -35,12 +35,13 @@
         }
 
         public function __toString() {
-            return "- Informações da Bebida - <br /> 
+            return "- Bebida -<br /> 
                     Nome: ". $this -> getNome(). "<br /> 
                     Valor: R$". $this -> getValor(). "<br />
                     Desconto: ". $this -> getDesconto(). "%<br />
                     Marca: ". $this -> getMarca(). "<br />
-                    Tamanho: ". $this -> tamanho; 
+                    Tamanho: ". $this -> getTamanho(). "<br />
+                    Valor Total: R$". $this -> __ValorTotal();
         }
     }
 ?>

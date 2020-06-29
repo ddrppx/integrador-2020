@@ -24,18 +24,17 @@
             //Percorre e exibe o array
         public function getIngredient() {
 
-            $output = "a";
-            $arrayInput = $this -> ingredient;
-            foreach ($arrayInput as $arrayOutput) {
-                $c = 0;
-                $c > 0 ? $output .= ",": $output .= "";
-                $c = 1;
-                $output .="". $arrayOutput;
+            $output = ""; //Inicia a string à ser adicionada valores
+            $arrayInput = $this -> ingredient; //var recebe o array
+
+            for ($i = 0; $i < count($arrayInput); $i++){
+                $i > 0 ? $output .= ", ": $output .= ""; //adiciona pontuação à listagem
+                $output .= $arrayInput[$i];
             }
             $output .= ".";
-            return $output;
-
+            return $output; //Retorna o array formatado
         }
+
             //Mudança em um elemento do array
         public function setIngredient($pos, $valor) {
                 //Percorre o array
@@ -57,7 +56,7 @@
         }
 
         public function __toString() {
-            return "-- Lanche -- <br />
+            return "- Lanche -<br />
             Nome: ". $this -> getNome(). "<br />
             Valor: R$". $this -> __ValorTotal(). "<br />
             Desconto: ". $this -> getDesconto(). "%<br />

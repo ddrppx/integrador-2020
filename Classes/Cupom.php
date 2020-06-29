@@ -31,7 +31,7 @@
         }
 
         public function __toString(){
-            return "-- Informações do Cupom --<br />
+            return "- Cupom -<br />
                     Código: ". $this -> getCodigo(). "<br />
                     Desconto: ". $this -> getDesconto(). "%";
         }

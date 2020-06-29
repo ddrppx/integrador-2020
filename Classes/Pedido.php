@@ -64,7 +64,7 @@ namespace Classes;
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
             $this -> cupom;
-            $this -> produtos;
+            $this -> produtos = array();
         }
 
             //Método toString
@@ -72,30 +72,35 @@ namespace Classes;
             return "-- Informações do Pedido --<br />
             Hora: ". $this -> getHora(). "<br />
             Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
-            Metodo de Pagamento: ". $this -> __MetodoPagamento();
+            Metodo de Pagamento: ". $this -> __MetodoPagamento(). "<br />
+            ". $this -> getProdutos(). "<br />
+            Valor total: R$". $this -> valorTotal();
         }
             //Adiciona um item/produto à lista de itens do pedido
-        public function addProduto(Produto $produto){
-            $this -> produtos[] = $produto;
+        public function addProduto($produto){
+            array_push($this -> produtos,  $produto);
         }
 
         public function getProdutos() {
-            foreach ($this -> produto as $prod) {
-                echo $prod;
+            $prodInput = $this -> produtos;
+
+            foreach ($prodInput as $prodOutput) {
+                print $prodOutput;
             }
         }
 
         public function valorTotal(){
                 //Products recebe os itens de $produto(Todos itens do pedido)
-            $products = $this -> produtos;
+            $valor = 0;
+            $prodInput = $this -> produtos;
             $soma = 0; //Inicializa a variavel para somar
-            foreach ($products as $array){
-                $soma += $array -> valor; //Soma na variavel à cada loop
+            foreach ($prodInput as $prodOutput){
+                $soma += $prodOutput -> valor; //Soma na variavel à cada loop
             }
 
                 //Desconto do cupom(se houver)
             if (isset($cupom)) {
-                $valor = $soma - ($cupom -> getDesconto() / 100);
+                $valor = $soma - ($soma * ($cupom -> getDesconto() / 100));
             }
                 //Valor descontado
             return $valor;

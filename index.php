@@ -12,7 +12,7 @@
         $promo = new \Classes\Promocao("Black-Friday", 15); //Instancia a classe
         $pedido = new \Classes\Pedido(1, 1); //Instancia a classe
         
-        $lanche = new \Classes\Lanche("Hamburguer", 13.50, ["Pao","Carne","Alface"]); //Instancia a classe
+        $lanche = new \Classes\Lanche("Hamburguer", 12.50, ["Pao","Carne","Alface"]); //Instancia a classe
         
         $bebida = new \Classes\Bebida("Cola", 5.40, "Pepsi", "250ml"); //Instancia a classe
 
@@ -21,10 +21,6 @@
 
         echo "<h1>Classe Cupom </h1><br />";
         echo $cupom;
-        echo "<br />";
-
-        echo "<h1>Classe Pedido </h1><br />";
-        echo $pedido;
         echo "<br />";
 
         echo "<h1>Classe Promocao </h1><br />";
@@ -38,7 +34,7 @@
         echo "<br />";
 
         echo "<h1>Classe Bebida </h1><br />";
-        $bebida -> addPromocao($promo);
+        //$bebida -> addPromocao($promo);
         echo $bebida;
         echo "<br />";
 
@@ -47,6 +43,13 @@
         echo $acomp;
         $acomp -> remPromocao();
         echo $acomp;
+        echo "<br />";
+
+        echo "<h1>Classe Pedido </h1><br />";
+        echo $pedido;
+        $pedido -> addProduto($lanche);
+        $pedido -> addProduto($bebida);
+        $pedido -> addProduto($acomp);
         echo "<br />";
     ?>
 

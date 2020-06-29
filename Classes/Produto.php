@@ -32,7 +32,7 @@
 
             //Método GET
         public function getDesconto() {
-            if (!$this -> promocao == null){
+            if ($this -> promocao == !null){
                 return $this -> promocao -> getDesconto();
             } else {
                 return 0;
@@ -46,8 +46,7 @@
 
         public function __ValorTotal() {
                 //Checa se há uma promocao no item 
-             if (!$this -> getDesconto() < 0){
-                echo "<br /> PROMO FLAG -- <br />";
+            //  if ($this -> getDesconto() == false){
 
                     //Armazena o valor do produto
                 $valor = $this -> getValor(); 
@@ -58,12 +57,13 @@
                     //Desconta o valor atual
                 $valorT = $valor - ($valor * ($desc / 100)); 
 
-                    //Retorna o valor formatado em duas casas decimais
                 return number_format($valorT, 2);
-            } else {
+                    //Retorna o valor formatado em duas casas decimais
+            //    $this -> setValor($valorT);
+            // }
                 //Realiza a formatação do numero com 2 casa decimais após a virgula
-                return number_format($this -> getValor(), 2);
-            }
+            // return number_format($this -> getValor(), 2);
+            
         }
 
             //Método construtor
