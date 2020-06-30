@@ -5,10 +5,10 @@
     abstract class Produto { //É uma classe abstrar mais ainda nao foi implementada, ficaria 'abstract class Produto'
         
             //Atributos da classe
-        protected $nome;
-        protected $valor;
-        protected $desconto;
-        protected $promocao;
+        public $nome;
+        public $valor;
+        public $desconto;
+        public $promocao;
 
             //Método GET
         public function getNome() {
@@ -59,10 +59,6 @@
 
                 return number_format($valorT, 2);
                     //Retorna o valor formatado em duas casas decimais
-            //    $this -> setValor($valorT);
-            // }
-                //Realiza a formatação do numero com 2 casa decimais após a virgula
-            // return number_format($this -> getValor(), 2);
             
         }
 

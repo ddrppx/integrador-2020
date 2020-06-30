@@ -78,32 +78,39 @@ namespace Classes;
         }
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto($produto){
-            array_push($this -> produtos,  $produto);
+            array_push($this -> produtos, $produto);
         }
 
         public function getProdutos() {
             $prodInput = $this -> produtos;
-
+            $strOutput= "Items no pedido: <br />";
             foreach ($prodInput as $prodOutput) {
-                print $prodOutput;
+                $strOutput .= $prodOutput. "<br />";
             }
+            return $strOutput;
+        }
+
+        public function Test() {
+           
         }
 
         public function valorTotal(){
                 //Products recebe os itens de $produto(Todos itens do pedido)
-            $valor = 0;
-            $prodInput = $this -> produtos;
-            $soma = 0; //Inicializa a variavel para somar
-            foreach ($prodInput as $prodOutput){
-                $soma += $prodOutput -> valor; //Soma na variavel à cada loop
+            $somaProdutos = 0; //Inicializa a variavel
+            for($i = 0; $i < count($this -> produtos); $i++){
+                $somaProdutos += $this -> produtos[$i] -> __valorTotal() ; //Percorre o array e soma na variavel à cada loop
+                echo $somaProdutos;
             }
 
                 //Desconto do cupom(se houver)
-            if (isset($cupom)) {
-                $valor = $soma - ($soma * ($cupom -> getDesconto() / 100));
+            if (isset($this -> cupom)) {
+                print "Cupom flag.";
+                $cupom = $this -> cupom;
+                $somaProdutos = $somaProdutos - ($somaProdutos * ($cupom -> getDesconto() / 100));
             }
-                //Valor descontado
-            return $valor;
+
+                //Retorna valor descontado
+            return $somaProdutos;
         }
 
             //Insere o cupom junto com seu desconto.

@@ -45,11 +45,18 @@
         echo $acomp;
         echo "<br />";
 
+        echo "<hr />";
+        $pedido -> Test();
+
+        echo "<hr />";
+        echo $pedido -> valorTotal();
+
         echo "<h1>Classe Pedido </h1><br />";
-        echo $pedido;
         $pedido -> addProduto($lanche);
         $pedido -> addProduto($bebida);
         $pedido -> addProduto($acomp);
+        echo $pedido; //Imprime o pedido inteiro com os itens adicionados
+        //Testar inserção de cupom next
         echo "<br />";
     ?>
 

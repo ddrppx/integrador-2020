@@ -33,7 +33,7 @@
 
             //Metodo toString
         public function __toString() {
-            return "-- Informações da Promoção --<br />
+            return "- Promoção -<br />
                     Nome: ". $this -> getNome(). "<br />
                     Desconto: ". $this -> getDesconto()."%";
         }
