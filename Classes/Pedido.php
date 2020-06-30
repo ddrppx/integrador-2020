@@ -69,7 +69,7 @@ namespace Classes;
 
             //Método toString
         public function __toString() {
-            return "-- Informações do Pedido --<br />
+            return "----- Pedido -----<br />
             Hora: ". $this -> getHora(). "<br />
             Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
             Metodo de Pagamento: ". $this -> __MetodoPagamento(). "<br />
@@ -99,7 +99,6 @@ namespace Classes;
             $somaProdutos = 0; //Inicializa a variavel
             for($i = 0; $i < count($this -> produtos); $i++){
                 $somaProdutos += $this -> produtos[$i] -> __valorTotal() ; //Percorre o array e soma na variavel à cada loop
-                echo $somaProdutos;
             }
 
                 //Desconto do cupom(se houver)

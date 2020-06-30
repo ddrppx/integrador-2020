@@ -45,12 +45,6 @@
         echo $acomp;
         echo "<br />";
 
-        echo "<hr />";
-        $pedido -> Test();
-
-        echo "<hr />";
-        echo $pedido -> valorTotal();
-
         echo "<h1>Classe Pedido </h1><br />";
         $pedido -> addProduto($lanche);
         $pedido -> addProduto($bebida);
