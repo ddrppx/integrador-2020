@@ -82,16 +82,12 @@ namespace Classes;
         }
 
         public function getProdutos() {
-            $prodInput = $this -> produtos;
-            $strOutput= "Items no pedido: <br />";
+            $prodInput = $this -> produtos; //Recebe a listagem dos produtos 
+            $strOutput= "Items no pedido: <br />"; //Variavel com formatacao de string
             foreach ($prodInput as $prodOutput) {
                 $strOutput .= $prodOutput. "<br />";
             }
             return $strOutput;
-        }
-
-        public function Test() {
-           
         }
 
         public function valorTotal(){
@@ -112,6 +108,17 @@ namespace Classes;
             return $somaProdutos;
         }
 
+        public function customizar($lanche) {
+            $ingLista = $lanche -> ingredient; //Recebe o array de ingredientes do lanche
+
+            $custLista = array_flip($ingLista);
+            foreach($ingLista as $list){
+                echo $list. "<br />";
+            }
+
+            print_r($custLista);
+        }
+
             //Insere o cupom junto com seu desconto.
         public function insCupom($cupom) {
             $this -> cupom = $cupom;
@@ -121,6 +128,10 @@ namespace Classes;
         public function remCupom(){
             $this -> cupom = null;
         }
-        
+  
+        public function AnyTest() {
+           
+        }
+
     }
 ?>

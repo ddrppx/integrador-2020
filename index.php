@@ -52,6 +52,9 @@
         echo $pedido; //Imprime o pedido inteiro com os itens adicionados
         //Testar inserção de cupom next
         echo "<br />";
+
+        echo "<h1>Customização</h1>";
+        $pedido -> customizar($lanche);
     ?>
 
 </body>
