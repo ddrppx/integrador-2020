@@ -112,12 +112,40 @@ namespace Classes;
             $ingLista = $lanche -> ingredient; //Recebe o array de ingredientes do lanche
 
             $custLista = array_flip($ingLista);
-            foreach($ingLista as $list){
-                echo $list. "<br />";
-            }
 
-            print_r($custLista);
-        }
+            echo "<p>Customize seu pedido!</p>";
+            echo "<form method=\"get\" action=\"index.php\">";
+        
+            for($i = 0; $i < count($ingLista); $i++){
+
+                        //Armazena o nome do ingrediente pra mostra-los adiante
+                    $ingredientLabel = $ingLista[$i];
+                        //Retira acentuações dos ingredientes
+                    $ingredientName = strtolower(
+                        preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $ingLista[$i] ) )
+                    );
+                    
+                    $value = $_GET[$ingredientName];
+                    echo "<div>";
+
+                    echo "<label for=\"". $ingredientName. "\">$ingredientLabel</label><br />";
+    
+                    echo "<button type=\"button\" id=\"menos\" onclick=\"less('$ingredientName')\">&nbsp;-&nbsp;</button>";
+                    
+                    echo "&nbsp;<b id=\"$ingredientName\" name=\"$ingredientName\">". $custLista[$ingLista[$i]]." </b>";
+    
+                    echo "<button type=\"button\" id=\"mais\" onclick=\"more('$ingredientName')\">&nbsp;+&nbsp;</button>";
+
+                    echo "</div>";
+                    $custLista[$ingLista[$i]] = $value;
+                }
+                echo "<br /><input type=\"submit\" value=\"Enviar\"><br />";    
+                echo "<hr />";
+                for($i = 0; $i < count($ingLista); $i++) {
+                    print $ingLista[$i]. ": ". $custLista[$ingLista[$i]]. "<br />";
+                }
+                echo "</form>";
+            }
 
             //Insere o cupom junto com seu desconto.
         public function insCupom($cupom) {
