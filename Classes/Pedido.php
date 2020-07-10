@@ -87,6 +87,7 @@ namespace Classes;
             foreach ($prodInput as $prodOutput) {
                 $strOutput .= $prodOutput. "<br />";
             }
+                //Retorna o texto formatado
             return $strOutput;
         }
 

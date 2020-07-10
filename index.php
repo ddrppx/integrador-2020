@@ -14,7 +14,7 @@
         $promo = new \Classes\Promocao("Black-Friday", 15); //Instancia a classe
         $pedido = new \Classes\Pedido(1, 1); //Instancia a classe
 
-        $lanche = new \Classes\Lanche("Hamburguer", 12.50, ["Pao"]); //Instancia a classe
+        $lanche = new \Classes\Lanche("Hamburguer", 12.50, ["Pao","Carne","Alface","Tomate"],[1,2,2,2]); //Instancia a classe
 
         $bebida = new \Classes\Bebida("Cola", 5.40, "Pepsi", "250ml"); //Instancia a classe
 
