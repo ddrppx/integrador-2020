@@ -52,14 +52,16 @@
         public function addRecipe(){
 
         }
-
+            //Retorna o array de ingrediente completo
         public function getIngredient() {
             return $this -> ingredient;
         }
-
+            //Retorna o array da receita inteira
         public function getRecipe() {
             return $this -> recipe;
         }
+
+            //Retorna a receita com a string formatada
         public function getRecipeString() {
 
             $output = ""; //Inicia a string à ser adicionada valores
@@ -74,7 +76,7 @@
             return $output; //Retorna o array formatado
         }
 
-            //Retorna somente um valor do array receita
+            //Retorna uma posiçao do array receita
         public function getUniqueRecipe($pos) {
             return $this -> recipe[$pos];
         }
@@ -91,7 +93,7 @@
             $this -> ingredient = $ingredient;
             $this -> recipe = $recipe;
         }
-
+            //Método toString
         public function __toString() {
             return "- Lanche -<br />
             Nome: ". $this -> getNome(). "<br />

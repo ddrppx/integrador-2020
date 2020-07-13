@@ -133,7 +133,7 @@ namespace Classes;
     
                     echo "<button type=\"button\" id=\"menos\" onclick=\"less('$ingredientName')\">&nbsp;-&nbsp;</button>";
                     
-                    echo "&nbsp;<b id=\"$ingredientName\" name=\"$ingredientName\">". $custLista[$ingLista[$i]]." </b>";
+                    echo "&nbsp;<input type=\"number\" id=\"$ingredientName\" name=\"$ingredientName\" value=\"". $custLista[$ingLista[$i]]."\">&nbsp;";
     
                     echo "<button type=\"button\" id=\"mais\" onclick=\"more('$ingredientName')\">&nbsp;+&nbsp;</button>";
 

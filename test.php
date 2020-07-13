@@ -6,88 +6,43 @@
 
 
         <script>
-        // num = 1;
-        
-        //     function showNum(num) {
-        //         document.getElementById('h2').value = num;
-        //         setValue(num);
-        //     }
+            //
+        function enviar(newiD, newValue) {
+            document.getElementById(newiD).value = x;
+            submit();
+        }
 
-        //     function aumentarN(num) {
-        //         num++;
-        //         num > 5 ? num = 5:"";
-
-        //         setValue(num);
-        //     }
-
-        //     function diminuirN() {
-        //         num--;
-        //         num < 0 ? num = 0 : "";
-
-        //         setValue(num);
-        //     }
-
-        // setValue(num);
-
-            var numero = 0;
-            var id = "";
-
-            console.log("Global: " + id);
-
-            function less(newiD) {
-                id = newiD;
-                 numero = parseInt(document.getElementById(id).innerHTML);
-                numero--;
-                numero <= -1 ? numero = 0 : "" ;
-                console.log("Local: " + id);
-                // if (numero <= -1){
-                //     numero = 0
-                // }
-
-                setValue(id, numero);
-            }
-
-            function more(newiD) {
-                id = newiD;
-                numero = parseInt(document.getElementById(id).innerHTML);
-                numero++;
-                numero >= 5 ? numero = 5 : "" ;
-                console.log("Local: " + id);
-                setValue(id, numero);
-            }
-
-            function setValue(id, value) {
-                document.getElementById(id).innerHTML = value;
-            }
-
-            setValue(id, numero);
+        function teste() {
+            console.log("Clickity click");
+        }
         </script>
-    </head>
+    </head></submit>
     <body>
-        <!-- <input type="button" id="diminuiAcrescimo" value="-" onclick="diminuirN()">
-        <h2 id="h2"></h2>
-        <input type="button" id="aumentaAcrescimo" value="+" onclick="aumentarN()"> -->
         <?php 
-            $id = "carne";
-            $id2 = "pao";
 
-            echo $id. "<br />";
-        ?>
-
-        <button type="button" id="menos" onclick="less('<?php print $id ?>')">
-            
-        <i class="fa fa-minus-circle"aria-hidden="true">-</i></button> &nbsp; 
+            echo $_GET['metodoPagamento'];
+            echo $_GET['test'];
+            echo "<form action=\"test.php\" method=\"get\">
+                    <tr>
+                        <td> 
+                        <button id=\"metodoPagamento\" onclick=\"enviar('0 breh')\">Comer aqui </button>
+                        </td>
+                        <td>
+                            <button style=\"text-decoration: none;\" href=\"\" id=\"metodoPagamento\" onclick=\"enviar('1 bruh')\">Levar para viagem</button>
+                        </td>
+                    <input type=\"hidden\" id=\"enviarMetodoPagamento\" name=\"metodoPagamento\" value=\"\">
+                    
+                </form>";
+                
+                echo "<form action=\"test.php\" method=\"get\">
+                
+                <input type=\"image\" src=\"./acrylic.png\" onclick=\"enviar('dale porra')\"/>
+                
+                <input type=\"hidden\" id=\"test\" name=\"test\" value=\"\"/>
+                <button id=\"teste\" name=\"teste\" type=\"submit\"/>
+                </form>
+                ";
         
-        <b name="carne" id="<?php print $id ?>">3</b> &nbsp; 
-        
-        <button type="button" id="mais" onclick="more('<?php print $id ?>')">+<i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-
-        <button type="button" id="menos" onclick="less('<?php print $id2 ?>')">
-            
-            <i class="fa fa-minus-circle"aria-hidden="true">-</i></button> &nbsp; <b name="numero" id="<?php print $id2 ?>">2</b> &nbsp;
-            
-            <button type="button" id="mais" onclick="more('<?php print $id2 ?>')">+<i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-
-           
+           ?>
     </body>
 </html>
