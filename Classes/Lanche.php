@@ -95,11 +95,10 @@
         }
             //Método toString
         public function __toString() {
-            return "- Lanche -<br />
-            Nome: ". $this -> getNome(). "<br />
+            return "Nome: ". $this -> getNome(). "<br />
             Valor: R$". $this -> __ValorTotal(). "<br />
             Desconto: ". $this -> getDesconto(). "%<br />
-            Ingredientes: ". $this -> getIngredient();                
+            Ingredientes: ". $this -> getIngredientString();                
         }
     }
 ?>

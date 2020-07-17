@@ -30,7 +30,15 @@
     }
         //Envia o parametro do form pelo javascript(Sem precisar de acionar um botão)
     function send(newiD, newValue) {
-        document.getElementById(newiD).value = x; //Muda o value do input
+        document.getElementById(newiD).value = newValue; //Muda o value do input
         submit(); //Realiza a ação de pressionar o botão Enviar
+    }
+
+    function executar(name) {
+        let div = document.getElementById('lanches');
+    
+        div.innerHTML = `<?php $pedido -> addProduto(${name}); ?>`;
+
+        console.log("Executar, done.");
     }
 

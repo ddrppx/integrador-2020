@@ -79,6 +79,7 @@ namespace Classes;
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto($produto){
             array_push($this -> produtos, $produto);
+            echo "<script> alert('Flag!')</script>";
         }
 
         public function getProdutos() {

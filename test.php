@@ -8,13 +8,20 @@
         <script>
             //
         function enviar(newiD, newValue) {
-            document.getElementById(newiD).value = x;
+            document.getElementById(newiD).value = newValue;
             submit();
         }
 
         function teste() {
             console.log("Clickity click");
         }
+
+        function executar(name) {
+            let div = document.getElementById('lanches');
+        
+            div.innerHTML = "<?php $pedido -> addProduto(`{name}`); ?>";
+        }
+        
         </script>
     </head></submit>
     <body>
@@ -36,13 +43,34 @@
                 
                 echo "<form action=\"test.php\" method=\"get\">
                 
-                <input type=\"image\" src=\"./acrylic.png\" onclick=\"enviar('dale porra')\"/>
+                <input type=\"image\" src=\"./acrylic.png\" onclick=\"enviar('test','dale porra')\"/>
                 
-                <input type=\"hidden\" id=\"test\" name=\"test\" value=\"\"/>
-                <button id=\"teste\" name=\"teste\" type=\"submit\"/>
+                <input type=\"hidden\" id=\"test\" name=\"test\" value=\"2\"/>
+
                 </form>
                 ";
         
            ?>
+
+                <div class="metodoPagamento">
+                <form>
+                    <tr>
+                        <td> 
+                            Pagar em Dinheiro
+                        </td>
+                    </tr>
+                        <td>
+                            Levar para viagem
+                        </td>
+                        <tr>
+                            Casa
+
+                        </tr>
+                        <tr>
+                            Carro
+                        </tr>
+                    
+                </form>
+              </div>
     </body>
 </html>

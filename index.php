@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
-        <!-- Adicionando arquivo javascript -->
-    <script src="index.js"></script>
-</head>
-<body>
-    <?php
+    <?php 
         require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
 
         $promo = new \Classes\Promocao("Black-Friday", 15); //Instancia a classe
@@ -21,74 +11,114 @@
         $cupom = new \Classes\Cupom("PW32", 10); //Instancia a classe
         $acomp = new \Classes\Acompanhamento("Batata Frita", 3.10, "Grande"); //Instancia a classe
 
-        // echo "<h1>Classe Pedido </h1><br />";
-        // $pedido -> addProduto($lanche);
-        // $pedido -> addProduto($bebida);
-        // $pedido -> addProduto($acomp);
-        // echo $pedido; //Imprime o pedido inteiro com os itens adicionados
-        //Testar inserção de cupom next
-        // echo "<br />";
-
-        // echo "<h1>Customização</h1>";
-        // $pedido -> customizar($lanche);
-
-        echo "<div class=\"Pagina de espera\"> 
-                <h1>Exemplo de tela de espera</h1>
-            </div>";
+        ?>
         
-        echo "<hr />";
 
-        echo "<div class=\"metodoPagamento\">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página principal</title>
+        <!-- Adicionando arquivo javascript -->
+    <script src="index.js"></script>
+</head>
+<body>
+        <div class="Pagina de espera"> 
+            <h1>Exemplo de tela de espera</h1>
+        </div>
+        
+        <?php
+        echo "<hr />";
+        ?>
+        
+        <?php 
+        echo "<hr />";
+        ?>
+
+
+        <?php 
+
+            echo "<hr />";
+
+            $out = '$lanches'; 
+
+        ?>
+
+        <div class="lanches" id="lanches"> 
+                <h1>Lanches</h1>
                 <form>
-                    <tr>
+                <table>
+                    <tr style="text-align: center;">
                         <td> 
-                            Pagar em Dinheiro
-                        </td>
-                        <td>
-                            Levar para viagem
+                            $lanche
                         </td>
                     </tr>
+                    <tr>
                         <td>
-                            <input type=\"image\" alt=\"Pagamento em dinheiro\" id=\"dinheiro\" name=\"dinheiro\" src=\"/Static/money2.png\" onclick=\"send('metodoPagamento', 0)\" value=\"\" height=\"250px\" width=\"300px\"/>
-                        </td>
-                        <td>
-                            <input type=\"image\" alt=\"Pagamento no cartão\" id=\"cartao\" name=\"cartao\" src=\"/Static/cartao-credito.png\" onclick=\"send('metodoPagamento', 1)\" value=\"\" height=\"250px\" width=\"300px\"/>
+                        <input type="image" alt="Hamburguer" id="hamburger" name="hamburger" src="/Static/hamburguer.png" onclick="" value="" height="250px" width="300px"/>
+
                         </td>
                     </tr>
-                </form>
-              </div>";
-        
-        echo "<hr />";
-
-    //     echo "<div class=\"Modo de Preparo\">
-    //     <form>
-    //         <tr>
-    //         <td> 
-    //             <a href=\"#\" id=\"metodoPagamento\" name=\"metodoPagamento\" onclick=\"send('metodoPagamento',0)\">Comer no Estabelecimento
-    //         </td>
-    //         <td>
-    //             <a href=\"#\" id=\"metodoPag\" onclick=\"\">Levar para viagem
-    //         </td>
-    //         <input type=\"hidden\" id=\"metodoPagamento\" name=\"metodoPagamento\"
-    //     </form>
-    //   </div>";
-        echo "<hr />";
-
-        echo "<div class=\"Pagina de espera\"> 
-                <h1>Exemplo de tela de espera</h1>
+                </table>
+                <input type="hidden" id="lanche" name="lanche" value=""/>
+            </form>
             </div>";
         
-        echo "<hr />";
-
-        echo "<div class=\"Pagina de espera\"> 
-                <h1>Exemplo de tela de espera</h1>
-            </div>";
+        $out = "'$bebida'";
         
-        echo "<hr />";
+        <div class="bebidas" id="bebidas"> 
+            <h1>Bebidas</h1>
+            <form>
+            <table>
+                <tr style="text-align: center;">
+                    <td> 
+                        <?php $bebida ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <input type="image" alt="Bebida" id="bebida" name="bebida" src="/Static/bebida.png" onclick="" value="" height="400px" width="300px"/>
 
-        echo "<input type=\"image\" alt=\"Pagamento em dinheiro\" id=\"dinheiro\" name=\"dinheiro\" src=\"/Static/money2.png\" onclick=\"send('metodoPagamento', 0)\" value=\"\" height=\"250px\" width=\"300px\"/>";
-
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" id="lanche" name="lanche" value=""/>
+            </form>
+        </div>
         
+        <hr />
+
+        <?php 
+
+        $out = "'$acomp'"; 
+
+        ?>
+
+        <div class="bebidas" id="bebidas"> 
+            <h1>Bebidas</h1>
+            <form>
+            <table>
+                <tr style="text-align: center;">
+                    <td> 
+                        $acomp
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <input type="image" alt="Acompanhamento" id="acompanhamento" name="acompanhamento" src="/Static/batata-frita.jpg" onclick="" value="" height="400px" width="300px"/>
+                    
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" id="acompanhamento" name="acompanhamento" value=""/>
+        </form>
+        </div>";
+
+    <?php 
+
+        $pedido -> setMetodoPagamento($_GET['metodoPagamento']);
+        $pedido -> setModoPreparo($_GET['modoPreparo']);
 
     ?>
 
