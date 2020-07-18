@@ -56,7 +56,7 @@
                     </tr>
                     <tr>
                         <td>
-                        <input type="image" alt="Hamburguer" id="hamburger" name="hamburger" src="/Static/hamburguer.png" onclick="" value="" height="250px" width="300px"/>
+                        <input type="image" alt="Hamburguer" id="hamburger" name="hamburger" src="src/Static/hamburguer.png" onclick="" value="" height="250px" width="300px"/>
 
                         </td>
                     </tr>
@@ -78,7 +78,7 @@
                 </tr>
                 <tr>
                     <td>
-                    <input type="image" alt="Bebida" id="bebida" name="bebida" src="/Static/bebida.png" onclick="" value="" height="400px" width="300px"/>
+                    <input type="image" alt="Bebida" id="bebida" name="bebida" src="src/Static/bebida.png" onclick="" value="" height="400px" width="300px"/>
 
                     </td>
                 </tr>
@@ -106,7 +106,7 @@
                 </tr>
                 <tr>
                     <td>
-                    <input type="image" alt="Acompanhamento" id="acompanhamento" name="acompanhamento" src="/Static/batata-frita.jpg" onclick="" value="" height="400px" width="300px"/>
+                    <input type="image" alt="Acompanhamento" id="acompanhamento" name="acompanhamento" src="src/Static/batata-frita.jpg" onclick="" value="" height="400px" width="300px"/>
                     
                     </td>
                 </tr>
@@ -119,6 +119,10 @@
 
         $pedido -> setMetodoPagamento($_GET['metodoPagamento']);
         $pedido -> setModoPreparo($_GET['modoPreparo']);
+
+        echo $lanche -> getRecipeString();
+        echo "<br />";
+        echo $lanche -> getIngredientString();
 
     ?>
 

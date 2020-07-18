@@ -1,3 +1,4 @@
+
 <html>
     <head>
         
@@ -19,58 +20,54 @@
         function executar(name) {
             let div = document.getElementById('lanches');
         
-            div.innerHTML = "<?php $pedido -> addProduto(`{name}`); ?>";
+            // div.innerHTML = " $pedido -> addProduto(`{name}`); ";
         }
         
         </script>
-    </head></submit>
+    </head>
     <body>
         <?php 
 
-            echo $_GET['metodoPagamento'];
-            echo $_GET['test'];
-            echo "<form action=\"test.php\" method=\"get\">
-                    <tr>
-                        <td> 
-                        <button id=\"metodoPagamento\" onclick=\"enviar('0 breh')\">Comer aqui </button>
-                        </td>
-                        <td>
-                            <button style=\"text-decoration: none;\" href=\"\" id=\"metodoPagamento\" onclick=\"enviar('1 bruh')\">Levar para viagem</button>
-                        </td>
-                    <input type=\"hidden\" id=\"enviarMetodoPagamento\" name=\"metodoPagamento\" value=\"\">
-                    
-                </form>";
-                
-                echo "<form action=\"test.php\" method=\"get\">
-                
-                <input type=\"image\" src=\"./acrylic.png\" onclick=\"enviar('test','dale porra')\"/>
-                
-                <input type=\"hidden\" id=\"test\" name=\"test\" value=\"2\"/>
+        $clausules = [
+            'where' => [
+                'instruction' => 'WHERE',
+                'separator' => ' ',
+            ],
+            'group' => [
+                'instruction' => 'GROUP BY',
+                'separator' => ', ',
+            ],
+            'order' => [
+                'instruction' => 'ORDER BY',
+                'separator' => ', ',
+            ],
+            'having' => [
+                'instruction' => 'HAVING',
+                'separator' => ' AND ',
+            ],
+            'limit' => [
+                'instruction' => 'LIMIT',
+                'separator' => ',',
+            ],
+        ];
 
-                </form>
-                ";
-        
-           ?>
+        print_r($clausules);
 
-                <div class="metodoPagamento">
-                <form>
-                    <tr>
-                        <td> 
-                            Pagar em Dinheiro
-                        </td>
-                    </tr>
-                        <td>
-                            Levar para viagem
-                        </td>
-                        <tr>
-                            Casa
+        echo "<br/>";
 
-                        </tr>
-                        <tr>
-                            Carro
-                        </tr>
-                    
-                </form>
-              </div>
+        foreach($clausules as $key => $clausule) {
+            if (isset($clausules[$key])) {
+                $value = $clausules[$key];
+                print_r($value);
+                if (is_array($value)) {
+                    $value = implode($clausule['separator'], $clausules[$key]);
+                }
+                $command[] = $clausule['instruction'] . ' ' . $value;
+            }
+        }
+
+        echo $value;
+
+        ?>
     </body>
 </html>
