@@ -8,42 +8,15 @@
 		<script src="index.js"></script>
 
 		<link rel="stylesheet" href="src/bootstrap4.5.0/css/bootstrap.min.css" />
-		<style>
-			 * {
-				border: solid 1px black;
-			 } 
-
-			span {
-				padding-left: 0px;
-				padding-right: 0px;
-			}
-
-				/* Alinhando ícone à direita */
-			#wifi-align {
-				border: 0px;
-				padding: 0px;
-			}
-
-				/* Faz com que o cabeçalho não quebra a linha */
-			@media only screen and (max-width:990px){
-				#no-wrap {
-					display: flex;
-					flex-flow: row nowrap;
-					align-items: center;
-				}
-				#slider-pagin{
-				top:0;
-				}
-			}  
-		</style>
+		<link rel="stylesheet" href="src/css/main.css" />
+		
 	</head>
 
 	<body>
 		</nav class="navbar">
 			<div class="container">
 				<div class="row flex-nowrap">
-					<div class="col-sm-4">
-						Vitória, ES
+					<div class="col-sm-4" id="geolocation">
 					</div>
 					<div class="col-sm-4 text-center" id="div-clock">
 						<span class="clock-container col text-center" id="clock"></span>
@@ -81,8 +54,16 @@
 		</div>
 
 
-	<script src="src/javascript/relogio.js"></script>
-	
+	<!-- CDN Ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- CDN Popper.js (Bootstrap) -->
+	<script src="https://unpkg.com/@popperjs/core@2
+	"></script>
+	<!-- Bootstrap js -->
 	<script src="src/bootstrap4.5.0/js/bootstrap.min.js"></script>
+	<!-- Relógio topo -->
+	<script src="src/javascript/relogio.js"></script>
+	<!-- Geolocalização -->
+	<script src="src\javascript\geolocation.js"></script>
 	</body>
 </html>

@@ -1,9 +1,6 @@
     //Variáveis globais
     var numero = 0,
-        id = "";
-
-    console.log("Global: " + id); //Checando valores
-    
+        id = "";    
         //Parametro = ID do elemento html
     function less(newiD) {
         id = newiD; 
@@ -37,8 +34,6 @@
     function executar(name) {
         let div = document.getElementById('lanches');
     
-        div.innerHTML = `<?php $pedido -> addProduto(${name}); ?>`;
-
-        console.log("Executar, done.");
+        // div.innerHTML = `<?php $pedido -> addProduto(${name}); ?>`;
     }
 

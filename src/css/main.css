@@ -1,0 +1,26 @@
+* {
+    border: solid 1px black;
+ } 
+
+span {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+    /* Alinhando ícone à direita */
+#wifi-align {
+    border: 0px;
+    padding: 0px;
+}
+
+    /* Faz com que o cabeçalho não quebra a linha */
+@media only screen and (max-width:990px){
+    #no-wrap {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+    #slider-pagin{
+    top:0;
+    }
+}  
