@@ -4,13 +4,12 @@
     	<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>Página principal</title>
-        <!-- Adicionando arquivo javascript -->
-		<script src="index.js"></script>
 
-		<link rel="stylesheet" href="src/bootstrap4.5.0/bootstrap.min.css" />
-        <link rel="stylesheet" href="/src/css/main.css" />
+        <link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
+        
+        <link rel="stylesheet" href="../css/main.css" />
 
-        <link rel="stylesheet" href="./integrador-2020/src/bootstrap4.5.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
         
         
 		
@@ -19,24 +18,40 @@
 	<body>
         <?php include "header.php"; ?>
 
-        <div class="container pt-5 pb-5">
-			<div class="row pt-5 pb-5">
-				<div class="col-xl text-center">
-					<h1>Bem vindo(a)!</h1>
+        <div class="container pt-5 pb-2">
+			<div class="row pt-5 pb-2">
+				<div class="col-xl text-center pt-5">
+					<h1>Como deseja fazer o pagamento?</h1>
 				</div>
 			</div>
         </div>
-        
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- CDN Popper.js (Bootstrap) -->
-        <script src="https://unpkg.com/@popperjs/core@2
-        "></script>
-        <!-- Bootstrap js -->
-        <script src="src/bootstrap4.5.0/js/bootstrap.min.js"></script>
-        <!-- Relógio topo -->
-        <script src="src/javascript/relogio.js"></script>
-        <!-- Geolocalização -->
-        <script src="src\javascript\geolocation.js"></script>
-    </body>
- </html>
+        <div class="container pt-2 pb-5">
+			<div class="row pt-2 pb-5 text-center">
+                <div class="col-md mx-4">
+                    <h2><img type="image/svg+xml" src="../Static/svg/caixa.svg" alt="Icon by Iconixar on Flaticon" heigth="75px" width="75px"/> Dinheiro</h2>
+                        <!-- Pagamento em Dinheiro -->
+                    <div class="text-center">
+                        <img src="../Static/money.png" class="rounded" alt="Linguagem: PT-BR" alt="Pagamento em dinheiro" title="" width="100%">
+                    </div>
+                </div>
+                <div class="col-md mx-4">
+                    <h2><img type="image/svg+xml" src="../Static/svg/credit-card.svg" alt="Icon by Iconixar on Flaticon" heigth="75px" width="75px"/> Cartão</h2>
+                        <!-- Pagamento no Cartão -->
+                    <div class="text-center">
+                        <img src="../Static/cartao-credito.png" class="rounded" alt="Pagamento no cartão de crédito" width="100%"> 
+                    </div>
+
+                </div>
+	        </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col text-right">
+                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> e <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>.
+                </div>
+            </div>
+        </div>
+
+        <?php include "footer.php"; ?>
