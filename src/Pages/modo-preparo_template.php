@@ -9,9 +9,7 @@
         
         <link rel="stylesheet" href="../css/main.css" />
 
-        <link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
-        
-        
+        <link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />        
 		
 	</head>
 
@@ -29,14 +27,14 @@
         <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">
                 <div class="col-md mx-4">
-                    <h2><img type="image/svg+xml" src="../Static/svg/caixa.svg" alt="Icon by Iconixar on Flaticon" heigth="75px" width="75px"/> Dinheiro</h2>
+                    <h2>Dinheiro</h2>
                         <!-- Pagamento em Dinheiro -->
                     <div class="text-center">
                         <img src="../Static/money.png" class="rounded" alt="Linguagem: PT-BR" alt="Pagamento em dinheiro" title="" width="100%">
                     </div>
                 </div>
                 <div class="col-md mx-4">
-                    <h2><img type="image/svg+xml" src="../Static/svg/credit-card.svg" alt="Icon by Iconixar on Flaticon" heigth="75px" width="75px"/> Cartão</h2>
+                    <h2>Cartão</h2>
                         <!-- Pagamento no Cartão -->
                     <div class="text-center">
                         <img src="../Static/cartao-credito.png" class="rounded" alt="Pagamento no cartão de crédito" width="100%"> 
@@ -48,8 +46,11 @@
 
         <div class="container">
             <div class="row">
-                <div class="col text-right">
-                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> e <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>.
+                <div class="col text-left">
+						<img class="mb-1" src="../Static/autoatendimento.png" height="30px" width="30px" />Autoatendimento
+					</div>
+                <div class="col text-right mt-1">
+                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
                 </div>
             </div>
         </div>
