@@ -1,6 +1,6 @@
 - Iconixar icones,
 
-Já inseridos: ---------------------
+Jï¿½ inseridos: ---------------------
 
 Bandeira brasil: https://www.flaticon.com/free-icon/brazil_3022562
 
@@ -8,11 +8,19 @@ Import: https://www.flaticon.com/free-icon/import_566051
 
 Pagamento em dinheiro: https://www.flaticon.com/free-icon/cash-payment_3081295
 
-Pagamento em cartão: https://www.flaticon.com/free-icon/payment_3081191
+Pagamento em cartï¿½o: https://www.flaticon.com/free-icon/payment_3081191
 
-Maquina de cartão: https://www.flaticon.com/free-icon/swipe-card_3226194
+Maquina de cartï¿½o: https://www.flaticon.com/free-icon/swipe-card_3226194
 
 Caixa: https://www.flaticon.com/free-icon/cashier_3226265
+
+Acompanhamentos: https://www.flaticon.com/free-icon/french-fries_590717?term=French%20Fries&page=1&position=75
+
+Pratos: https://www.flaticon.com/free-icon/eating_3081193
+
+Hamburguer: https://www.flaticon.com/free-icon/hamburger_3075977
+
+
 
 ---------------------------------------
 
@@ -27,4 +35,6 @@ Shopping icons: https://www.flaticon.com/packs/shopping-195
 Food delivery Icon Pack: https://www.flaticon.com/packs/food-delivery-110
 
 Take away: https://www.flaticon.com/free-icon/take-away_3081371
+
+Desconto: https://www.flaticon.com/free-icon/discount_3081204
 
