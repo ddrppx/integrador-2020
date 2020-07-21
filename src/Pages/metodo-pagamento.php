@@ -25,7 +25,7 @@
 			</div>
         </div>
 
-        <div class="container pt-2 pb-5">
+        <div class="container-fluid pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">
                 <div class="col-md mx-4">
                     <h2>Comer aqui</h2>

@@ -1,6 +1,6 @@
-* {
+/* * {
     border: solid 1px black;
-}  
+}   */
 
 span {
     padding-left: 0px;
@@ -24,3 +24,8 @@ span {
     top:0;
     }
 }  
+
+div #lateral-categoria {
+    border: solid 1px lightgray;
+    max-height: "750px";
+}
