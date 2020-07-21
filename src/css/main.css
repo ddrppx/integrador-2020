@@ -20,12 +20,19 @@ span {
         flex-flow: row nowrap;
         align-items: center;
     }
-    #slider-pagin{
-    top:0;
-    }
 }  
 
-div #lateral-categoria {
+div #lateral-categoria, #lateral-produtos {
     border: solid 1px lightgray;
-    max-height: "750px";
+}
+
+div #lateral-categoria {
+    max-height: 706px;
+    overflow: auto; /* Barra de rolagem */
+    overflow-y: hidden;
+}
+    /* Estilização do texto no card na lateral da pagina produto pedido */
+div .card-body {
+    padding: 5px;
+    max-height: 706px;
 }
