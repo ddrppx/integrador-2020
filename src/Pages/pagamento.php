@@ -1,5 +1,14 @@
 <?php
     session_start();
+    
+    if(isset($_POST)){
+        $_SESSION['preparo'] = $_POST['preparo'];
+    } else {
+        $errors[] = "Post preparo não foi recebido";
+    }
+
+    $_SESSION['errors'] = $errors;
+
 ?>
 
 <!DOCTYPE html>
@@ -62,4 +71,6 @@
             </div>
         </div>
 
-        <?php include "footer.php"; ?>
+        <?php 
+            include "footer.php";
+        ?>

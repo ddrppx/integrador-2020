@@ -24,7 +24,7 @@
 			</div>
         </div>
 
-        <form name="form" method="post" action="pedido.php">
+        <form name="form" method="post" action="pagamento.php">
 
         <div class="container pt-2 pb-5 optionHover" >
 			<div class="row pt-2 pb-5 text-center">
@@ -52,9 +52,9 @@
         </form>
 		
 		<div class="container">
-            <div class="row">>
+            <div class="row">
                 <div class="col text-right">
-                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
+                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> e <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
                 </div>
             </div>
         </div>

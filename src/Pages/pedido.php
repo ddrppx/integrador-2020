@@ -1,4 +1,14 @@
 <?php
+    session_start();
+
+    if(isset($_POST)){
+        $pag = $_POST['pagamento'];
+    } else {
+        $errors[] = "Post pagamento não recebido."
+    }
+    echo "Pagamento: $pag <br />";
+    echo "Preparo:". $_SESSION['preparo']. "<br />";
+
 
 ?>
 
@@ -66,11 +76,6 @@
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/pratos.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-
-
-                
-
-                
             </div>
 
             <!-- Container -->
