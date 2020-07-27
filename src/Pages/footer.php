@@ -1,13 +1,12 @@
         <div class="container">
                     <div class="row">
                 <div class="col text-center">
-                  <img class="mb-1" src="../Static/autoatendimento.png" height="30px" width="30px" />&nbsp;Autoatendimento - Todos direitos reservados.
+                  <img class="mb-1" src="../Static/autoatendimento.png" height="30px" width="30px" />&nbsp;Autoatendimento &copy; 2020
                 </div>
               </div>
         </div>
 
      <!-- CDN Ajax/JQuery -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="../javascript/jquery.min.js"></script>
     <!-- CDN Popper.js (Bootstrap) -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>

@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    require_once "../../vendor/autoload.php";
+
     if(isset($_POST)){
         $pag = $_POST['pagamento'];
     } else {
@@ -21,7 +23,7 @@
 </head>
 <body>
 
-    <?php include "header.php"; ?>
+    <?php include_once "header.php"; ?>
 
     <div class="container">
         <div class="row">
@@ -37,35 +39,35 @@
             <!-- Container Lateral -->
             <div class="col-sm-12 col-md-3 borderGray" id="lateral-categoria">
 
-            <div class="card my-2">
+            <div class="card my-2" onclick="selecionarCat('1')">
                 <div class="card-body">
                     <h5 class="card-title">Lanches</h5>
                 </div>
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-            <div class="card my-2">
+            <div class="card my-2" onclick="selecionarCat('2')">
                 <div class="card-body">
                     <h5 class="card-title">Acompanhamentos</h5>
                 </div>
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-            <div class="card my-2">
+            <div class="card my-2" onclick="selecionarCat('3')">
                 <div class="card-body">
                     <h5 class="card-title">Bebidas</h5>
                 </div>
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-            <div class="card my-2">
+            <div class="card my-2" onclick="selecionarCat('4')">
                 <div class="card-body">
                     <h5 class="card-title">Sobremesas</h5>
                 </div>
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-            <div class="card my-2">
+            <div class="card my-2" onclick="selecionarCat('5')">
                 <div class="card-body">
                     <h5 class="card-title">Pratos</h5>
                 </div>
@@ -80,14 +82,21 @@
 
                     <div class="card my-2">
                         <div class="card-body">
-                            <h5 class="card-title">Lanches</h5>
+                            <h5 class="card-title">Lanche 1</h5>
                         </div>
                         <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
                     </div>
 
                     <div class="card my-2">
                         <div class="card-body">
-                            <h5 class="card-title">Lanches</h5>
+                            <h5 class="card-title">Lanche 2</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
+
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanche 3</h5>
                         </div>
                         <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
                     </div>
@@ -105,12 +114,32 @@
 
                     <div class="card mb-0 mt-0">
                         <div class="card-body">
-                            <h5 class="card-title">Lanches</h5>
+                            <h5 class="card-title">Lanche 2</h5>
                         </div>
                         <img class="card-img-bottom" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
                     </div>
 
+                    <div class="card mb-0 mt-0">
+                        <div class="card-body">
+                        <h5 class="card-title">Acompanhamento 1</h5>
+                    </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
 
+                    
+                    <div class="card mb-0 mt-0">
+                        <div class="card-body">
+                            <h5 class="card-title">Bebida 3</h5>
+                        </div>
+                            <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
+
+                    <div class="card mb-0 mt-0">
+                        <div class="card-body">
+                            <h5 class="card-title">Sobremesa 5</h5>
+                        </div>
+                            <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>                    
             </div>
         </div>
     </div>

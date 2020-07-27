@@ -7,8 +7,6 @@
         numero = parseInt(document.getElementById(id).innerHTML); //Irá armazenar o valor atual que está no campo
         numero--; //Decrementa o valor
         numero <= -1 ? numero = 0 : "" ; //Impede que o valor no campo seja menor que 0
-        console.log("Local: " + id);
-        console.log(numero);
         
         setValue(id, numero); //Troca o valor do campo para o novo valor
     }
@@ -18,7 +16,7 @@
         numero = parseInt(document.getElementById(id).innerHTML); //Irá armazenar o valor atual que está no campo
         numero++; //Acrescenta o valor
         numero >= 5 ? numero = 5 : "" ; //Impede que o valor seja maior que 5
-        console.log("Local: " + id);
+
         setValue(id, numero); //Troca o valor do campo para o novo valor
     }
         //Método para trocar o valor do campo (Parametros ID do campo e Novo valor)

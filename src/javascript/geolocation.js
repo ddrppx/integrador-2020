@@ -1,5 +1,5 @@
     //Faz o acesso à API com o método
-$.get("https://api.ipdata.co/?api-key=test", 
+$.get("https://api.ipdata.co/?api-key=c43210af670aaa19d3d9bc713daa4898eb6fb3274665256158efa3e0", 
 function (response) {
         //Retorna a resposta completa no HTML
     // $("#response").html(JSON.stringify(response, null, 4));

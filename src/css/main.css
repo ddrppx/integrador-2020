@@ -32,9 +32,9 @@ div #lateral-categoria {
 }
 
 /* Largura da barra de rolagem */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 1px;
-}
+} */
 
     /* Estilização do texto no card na lateral da pagina produto pedido */
 div .card-body {
@@ -85,7 +85,7 @@ div#opt:hover {
 }
 
 .sliderItens {
-    /* max-height: 200px; */
+     max-height: 200px;
     overflow-x: scroll;
     padding-top: 5px;
     padding-bottom: 5px;
