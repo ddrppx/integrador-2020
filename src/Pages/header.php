@@ -1,12 +1,11 @@
-        </nav class="navbar">
 			<div class="container">
 				<div class="row flex-nowrap">
-					<div class="col-sm-4" id="geolocation">
+					<div class="col-md-4" id="geolocation">
 					</div>
-					<div class="col-sm-4 text-center" id="div-clock">
+					<div class="col-md-4 text-center" id="div-clock">
 						<span class="clock-container col text-center" id="clock"></span>
 					</div>
-					<div class="col-sm-4 text-right">
+					<div class="col-md-4 text-right">
 						<!-- Ícone Linguagem -->
 						<img type="image/svg+xml" src="../Static/svg/brazil.svg" height="30px" width="30px"/>
 						<!-- Ícone Wi-Fi -->
@@ -14,4 +13,3 @@
 					</div>
 				</div>
 			</div>
-		<nav>

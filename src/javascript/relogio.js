@@ -13,9 +13,6 @@ const updateClock = () => {
     clockContainer.innerHTML = clockHTML;
 }
 
-const getClockHTML = (hours, minutes, seconds) => `
-    ${formatTimeUnit}`
-
 updateClock();
 
 setInterval(updateClock, 1000);

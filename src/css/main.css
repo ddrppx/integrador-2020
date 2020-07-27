@@ -1,6 +1,6 @@
-/* * {
+ /* * {
     border: solid 1px black;
-}   */
+}    */
 
 span {
     padding-left: 0px;
@@ -28,11 +28,25 @@ div #lateral-categoria, #lateral-produtos {
 
 div #lateral-categoria {
     max-height: 706px;
-    overflow: auto; /* Barra de rolagem */
-    overflow-y: hidden;
+    overflow-y: scroll; /* Barra de rolagem oculta */
 }
+
+/* Largura da barra de rolagem */
+::-webkit-scrollbar {
+    width: 1px;
+}
+
     /* Estilização do texto no card na lateral da pagina produto pedido */
 div .card-body {
     padding: 5px;
     max-height: 706px;
+}
+
+#ingNum {
+    border: solid 1px black;
+    font-size: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
 }

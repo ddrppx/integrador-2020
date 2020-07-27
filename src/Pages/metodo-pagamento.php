@@ -9,9 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Método de Pagamento</title>
 	
-	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
-	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />  
+	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
 </head>
 <body>
 
@@ -25,7 +24,7 @@
 			</div>
         </div>
 
-        <div class="container-fluid pt-2 pb-5">
+        <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">
                 <div class="col-md mx-4">
                     <h2>Comer aqui</h2>
@@ -45,11 +44,8 @@
 		</div>
 		
 		<div class="container">
-            <div class="row">
-                <div class="col text-left">
-						<img class="mb-1" src="../static/autoatendimento.png" height="30px" width="30px" />Autoatendimento
-				</div>
-                <div class="col text-right mt-1">
+            <div class="row">>
+                <div class="col text-right">
                     Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
                 </div>
             </div>

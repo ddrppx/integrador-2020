@@ -31,9 +31,8 @@
         submit(); //Realiza a ação de pressionar o botão Enviar
     }
 
-    function executar(name) {
-        let div = document.getElementById('lanches');
-    
-        // div.innerHTML = `<?php $pedido -> addProduto(${name}); ?>`;
-    }
-
+        //Rolagem do lista de categorias da pagina produtos
+    $("#lateral-categoria").bind("mousewheel",function(ev, delta) {
+        var scrollTop = $(this).scrollTop();
+        $(this).scrollTop(scrollTop-Math.round(delta));
+    });

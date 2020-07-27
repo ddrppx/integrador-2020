@@ -46,11 +46,8 @@
 
         <div class="container">
             <div class="row">
-                <div class="col text-left">
-						<img class="mb-1" src="../Static/autoatendimento.png" height="30px" width="30px" />Autoatendimento
-					</div>
-                <div class="col text-right mt-1">
-                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
+                <div class="col text-right">
+                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">Iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
                 </div>
             </div>
         </div>
