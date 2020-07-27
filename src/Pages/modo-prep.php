@@ -1,3 +1,7 @@
+<?php
+    $_POST['modopreparo']
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -24,6 +28,8 @@
 			</div>
         </div>
 
+        <form method="post" action="/">
+
         <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">
                 <div class="col-md mx-4">
@@ -43,6 +49,10 @@
                 </div>
 	        </div>
         </div>
+
+        <input type="hidden" id="modopreparo" name="modopreparo" value=""/>
+
+        </form>
 
         <div class="container">
             <div class="row">

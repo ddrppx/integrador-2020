@@ -50,3 +50,13 @@ div .card-body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.btn {
+    border-radius: 4px;
+}
+
+.vertAlign {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}

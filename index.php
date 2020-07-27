@@ -1,130 +1,89 @@
-    <?php 
-        require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
+<?php
+	require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
 
-        $promo = new \Classes\Promocao("Black-Friday", 15); //Instancia a classe
-        $pedido = new \Classes\Pedido(1, 1); //Instancia a classe
-
-        $lanche = new \Classes\Lanche("Hamburguer", 12.50, ["Pao","Carne","Alface","Tomate"],[1,2,2,2]); //Instancia a classe
-
-        $bebida = new \Classes\Bebida("Cola", 5.40, "Pepsi", "250ml"); //Instancia a classe
-
-        $cupom = new \Classes\Cupom("PW32", 10); //Instancia a classe
-        $acomp = new \Classes\Acompanhamento("Batata Frita", 3.10, "Grande"); //Instancia a classe
-
-        ?>
-        
+	session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
-        <!-- Adicionando arquivo javascript -->
-    <script src="index.js"></script>
-</head>
-<body>
-        <div class="Pagina de espera"> 
-            <h1>Exemplo de tela de espera</h1>
-        </div>
-        
-        <?php
-        echo "<hr />";
-        ?>
-        
-        <?php 
-        echo "<hr />";
-        ?>
+	<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Página principal</title>
 
+		<link rel="stylesheet" href="src/bootstrap4.5.0/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="src/css/main.css" />
+		
+	</head>
 
-        <?php 
+	<body onclick="iniciarPedido()">
+		<div class="container" >
+			<div class="row flex-nowrap">
+				<div class="col-sm-4" id="geolocation">
+				</div>
+				<div class="col-sm-4 text-center" id="div-clock">
+					<span class="clock-container col text-center" id="clock"></span>
+				</div>
+				<div class="col-sm-4 text-right">
+					<!-- Ícone Linguagem -->
+					<img type="image/svg+xml" src="src/Static/svg/brazil.svg" height="30px" width="30px"/>
+					<!-- Ícone Wi-Fi -->
+					<img type="image/svg+xml" src="src/Static/svg/import.svg" height="30px" width="30px"/>
+				</div>
+			</div>
+		</div>
 
-            echo "<hr />";
+		<div class="container pt-5 pb-5" onclick="inciarPedido()">
+			<div class="row pt-5 pb-5">
+				<div class="col-xl text-center pt-4 pb-4">
+					<h1>Bem vindo(a)!</h1>
+				</div>
+			</div>
+		</div>
 
-            $out = '$lanches'; 
+		<div class="container">
+			<div class="row pt-5 pb-5">
+				<div class="col-xl-12 text-center pb-5">
+					<h2>
+						Você será atendido aqui.
+					</h2>
+				</div>
+				<div class="col-xl text-center ">
+					<h2>
+						Clique na tela e comece a fazer o seu pedido!
+					</h2>
+					<img class="img-fluid" src="src/Static/interactive.png" heigh="200px" width="250px">
+				</div>
+			</div>
+		</div>
 
-        ?>
+		<div class="container">
+            <div class="row">
+                    <div class="col text-right mt-1">
+                    Ícones por: <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>, <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> e <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>.
+                </div>
+            </div>
+		</div>
+		
+		<div class="container">
+            <div class="row">
+				<div class="col text-center">
+					<img class="mb-1" src="src/Static/autoatendimento.png" height="30px" width="30px" />&nbsp;Autoatendimento - Todos direitos reservados.
+				</div>
+			</div>
+		</div>
 
-        <div class="lanches" id="lanches"> 
-                <h1>Lanches</h1>
-                <form>
-                <table>
-                    <tr style="text-align: center;">
-                        <td> 
-                            $lanche
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <input type="image" alt="Hamburguer" id="hamburger" name="hamburger" src="src/Static/hamburguer.png" onclick="" value="" height="250px" width="300px"/>
-
-                        </td>
-                    </tr>
-                </table>
-                <input type="hidden" id="lanche" name="lanche" value=""/>
-            </form>
-            </div>";
-        
-        $out = "'$bebida'";
-        
-        <div class="bebidas" id="bebidas"> 
-            <h1>Bebidas</h1>
-            <form>
-            <table>
-                <tr style="text-align: center;">
-                    <td> 
-                        <?php $bebida ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <input type="image" alt="Bebida" id="bebida" name="bebida" src="src/Static/bebida.png" onclick="" value="" height="400px" width="300px"/>
-
-                    </td>
-                </tr>
-            </table>
-            <input type="hidden" id="lanche" name="lanche" value=""/>
-            </form>
-        </div>
-        
-        <hr />
-
-        <?php 
-
-        $out = "'$acomp'"; 
-
-        ?>
-
-        <div class="bebidas" id="bebidas"> 
-            <h1>Bebidas</h1>
-            <form>
-            <table>
-                <tr style="text-align: center;">
-                    <td> 
-                        $acomp
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <input type="image" alt="Acompanhamento" id="acompanhamento" name="acompanhamento" src="src/Static/batata-frita.jpg" onclick="" value="" height="400px" width="300px"/>
-                    
-                    </td>
-                </tr>
-            </table>
-            <input type="hidden" id="acompanhamento" name="acompanhamento" value=""/>
-        </form>
-        </div>";
-
-    <?php 
-
-        $pedido -> setMetodoPagamento($_GET['metodoPagamento']);
-        $pedido -> setModoPreparo($_GET['modoPreparo']);
-
-        echo $lanche -> getRecipeString();
-        echo "<br />";
-        echo $lanche -> getIngredientString();
-
-    ?>
-
-</body>
+	<!-- Main JS -->
+	<script src="/src/javascript/main.js"></script>
+	<!-- CDN Ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- CDN Popper.js (Bootstrap) -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<!-- Bootstrap js -->
+	<script src="src/bootstrap4.5.0/js/bootstrap.min.js"></script>
+	<!-- Relógio topo -->
+	<script src="src/javascript/relogio.js"></script>
+	<!-- Geolocalização -->
+	<script src="src/javascript/geolocation.js"></script>
+	</body>
 </html>

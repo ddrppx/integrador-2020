@@ -25,12 +25,6 @@
     function setValue(id, value) { 
         document.getElementById(id).value = value;
     }
-        //Envia o parametro do form pelo javascript(Sem precisar de acionar um botão)
-    function send(newiD, newValue) {
-        document.getElementById(newiD).value = newValue; //Muda o value do input
-        submit(); //Realiza a ação de pressionar o botão Enviar
-    }
-
         //Rolagem do lista de categorias da pagina produtos
     $("#lateral-categoria").bind("mousewheel",function(ev, delta) {
         var scrollTop = $(this).scrollTop();
