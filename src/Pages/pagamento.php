@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    $errors = [];
     
     if(isset($_POST)){
         $_SESSION['preparo'] = $_POST['preparo'];
@@ -37,7 +39,7 @@
 			</div>
         </div>
 
-        <form name="form" method="get" action="preparo.php">
+        <form name="form" method="post" action="pedido.php">
 
         <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">

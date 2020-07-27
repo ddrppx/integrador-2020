@@ -4,12 +4,8 @@
     if(isset($_POST)){
         $pag = $_POST['pagamento'];
     } else {
-        $errors[] = "Post pagamento não recebido."
+        $errors[] = "Post pagamento não recebido.";
     }
-    echo "Pagamento: $pag <br />";
-    echo "Preparo:". $_SESSION['preparo']. "<br />";
-
-
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h2>Text</h2>
+                <h2>Produtos</h2>
             </div>
         </div>
     </div>
@@ -39,7 +35,7 @@
         <div class="row">
 
             <!-- Container Lateral -->
-            <div class="col-sm-12 col-md-3" id="lateral-categoria">
+            <div class="col-sm-12 col-md-3 borderGray" id="lateral-categoria">
 
             <div class="card my-2">
                 <div class="card-body">
@@ -79,45 +75,42 @@
             </div>
 
             <!-- Container -->
-            <div class="col-sm-12 col-md-9" id="lateral-produtos">
-            <div id="cards_container" class="card-columns">
+            <div class="col-sm-12 col-md-9 borderGray" id="lateral-produtos">
+                <div id="cards_container" class="card-columns">
 
-            <div class="card my-2">
-                <div class="card-body">
-                    <h5 class="card-title">Lanches</h5>
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanches</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
+
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanches</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
                 </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
-            <div class="card my-2">
-                <div class="card-body">
-                    <h5 class="card-title">Lanches</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
-            <div class="card my-2">
-                <div class="card-body">
-                    <h5 class="card-title">Lanches</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
-        </div>
-        
-
-
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-            
-                
+                <h2>Itens</h2>
             </div>
-            <div class="col-xl-12">
-                Itens
+            <div class="col card-columns sliderItens borderGray text-left vertAlign">
+
+                    <div class="card mb-0 mt-0">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanches</h5>
+                        </div>
+                        <img class="card-img-bottom" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
+
+
             </div>
         </div>
     </div>

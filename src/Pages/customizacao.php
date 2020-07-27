@@ -30,9 +30,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 text-right vertAlign">
-                <button type="button" class="btn btn-primary p-0 "  id="btnplus">
-
-                    <b>
+                <button type="button" class="btn btn-primary p-0 "  id="btnplus" onclick="more('ingNum')"><b>
                         <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                             <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
@@ -40,7 +38,7 @@
                     </b>
                 </button>
                     <!-- <button class="btn btn-primary" id="btnminus"><b>-</b></button> -->
-                <button type="button" class="btn btn-primary p-0"><b>
+                <button type="button" class="btn btn-primary p-0"onclick="less('ingNum')"><b>
                     <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
                     </svg>
@@ -48,13 +46,12 @@
                 </button>
             </div>
             <div class="col-sm-5 text-center vertAlign">
-                <span id="ingNum">3</span>
+                <span id="ingNum" class="borderGray">3</span>
             </div>
             <div class="col-sm-4 text-center vertAlign">
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
             </div>
         </div>
     </div>
-
-    
+    <script src="../javascript/customizacao.js"></script>
     <?php include "footer.php"; ?>

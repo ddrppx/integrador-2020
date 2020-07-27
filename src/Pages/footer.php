@@ -6,8 +6,9 @@
               </div>
         </div>
 
-     <!-- CDN Ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- CDN Ajax/JQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="../javascript/jquery.min.js"></script>
     <!-- CDN Popper.js (Bootstrap) -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Bootstrap js -->

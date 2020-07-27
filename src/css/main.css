@@ -22,12 +22,12 @@ span {
     }
 }  
 
-div #lateral-categoria, #lateral-produtos {
+div .borderGray {
     border: solid 1px lightgray;
 }
 
 div #lateral-categoria {
-    max-height: 706px;
+    max-height: 600px;
     overflow-y: scroll; /* Barra de rolagem oculta */
 }
 
@@ -43,7 +43,6 @@ div .card-body {
 }
 
 #ingNum {
-    border: solid 1px black;
     font-size: 30px;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -61,7 +60,7 @@ div .card-body {
     width: 50%;
     padding: 10px;
 }
-
+/* 
 div#opt {
     cursor: pointer;
     border-radius: 8px;
@@ -71,16 +70,29 @@ div#opt:hover {
     transition: 0.5s;
     color: white;
     cursor: pointer;
-}
+} */
 
-.itemHover {
+.itemHover, .card {
     cursor: pointer;
     border-radius: 8px;
 }
 
-.itemHover:hover {
+.itemHover:hover, .card:hover {
     background-color: #007bff;
     transition: 0.5s;
     color: white;
     cursor: pointer;
+}
+
+.sliderItens {
+    /* max-height: 200px; */
+    overflow-x: scroll;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: baseline;
+}
+
+.card-title {
+    padding-bottom: 0px;
+    margin-bottom: 2px;
 }
