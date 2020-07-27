@@ -1,6 +1,6 @@
  /* * {
     border: solid 1px black;
-}    */
+}     */
 
 span {
     padding-left: 0px;
@@ -55,8 +55,32 @@ div .card-body {
     border-radius: 4px;
 }
 
+
 .vertAlign {
     margin: auto;
     width: 50%;
     padding: 10px;
+}
+
+div#opt {
+    cursor: pointer;
+    border-radius: 8px;
+}
+div#opt:hover {
+    background-color: #007bff;
+    transition: 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.itemHover {
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.itemHover:hover {
+    background-color: #007bff;
+    transition: 0.5s;
+    color: white;
+    cursor: pointer;
 }

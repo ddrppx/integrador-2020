@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -24,24 +24,32 @@
 			</div>
         </div>
 
-        <div class="container pt-2 pb-5">
+        <form name="form" method="post" action="pedido.php">
+
+        <div class="container pt-2 pb-5 optionHover" >
 			<div class="row pt-2 pb-5 text-center">
-                <div class="col-md mx-4">
+                <div class="col-md mx-4" id="opt">
                     <h2>Comer aqui</h2>
                         <!-- Comer aqui -->
-                    <div class="text-center">
+                    <div class="text-center" onclick="sendSubmit('preparo', 0)">
+                        
                         <img class="img-fluid" src="../Static/comer-aqui.png" class="rounded" alt="Comer no estabelecimento" title="" height="auto" width="100%">
                     </div>
-				</div>
-                <div class="col-md mx-4">
+                    
+				</div> </a>
+                <div class="col-md mx-4" id="opt">
 					<h2>Para viagem</h2>
                         <!-- Levar para viagem -->
-                    <div class="text-center">
-                        <img class="img-fluid"src="../Static/para-viagem.png" class="rounded" alt="Levar para viagem" height="auto" width="100%"> 
+                    <div class="text-center" onclick="sendSubmit('preparo', 1)">
+                        <img id="opt" class="img-fluid" src="../Static/para-viagem.png" class="rounded" alt="Levar para viagem" height="auto" width="100%"> 
                     </div>
                 </div>
 	        </div>
-		</div>
+        </div>
+        
+        <input type="hidden" id="preparo" name="preparo" value="">
+
+        </form>
 		
 		<div class="container">
             <div class="row">>

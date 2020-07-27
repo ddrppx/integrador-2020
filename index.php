@@ -1,8 +1,3 @@
-<?php
-	require_once 'vendor/autoload.php'; //Carrega todas as outras classes neste arquivo pelo 'Autoload'
-
-	session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,7 +28,7 @@
 			</div>
 		</div>
 
-		<div class="container pt-5 pb-5" onclick="inciarPedido()">
+		<div class="container pt-5 pb-5">
 			<div class="row pt-5 pb-5">
 				<div class="col-xl text-center pt-4 pb-4">
 					<h1>Bem vindo(a)!</h1>

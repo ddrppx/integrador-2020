@@ -16,7 +16,7 @@
     <script src="..\javascript\relogio.js"></script>
     <!-- Geolocalização -->
     <script src="..\javascript\geolocation.js"></script>
-    <!-- Adicionando arquivo javascript -->
-		<script src="..\..\index.js"></script>
-    </body>
+    <!-- Arquivo javascript -->
+		<script src="..\javascript\main.js"></script>
+  </body>
  </html>

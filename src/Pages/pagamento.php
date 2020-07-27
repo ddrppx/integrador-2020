@@ -1,5 +1,5 @@
 <?php
-    $_POST['modopreparo']
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -28,29 +28,29 @@
 			</div>
         </div>
 
-        <form method="post" action="/">
+        <form name="form" method="get" action="preparo.php">
 
         <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">
-                <div class="col-md mx-4">
+                <div class="col-md mx-4 itemHover">
                     <h2>Dinheiro</h2>
                         <!-- Pagamento em Dinheiro -->
-                    <div class="text-center">
-                        <img src="../Static/money.png" class="rounded" alt="Linguagem: PT-BR" alt="Pagamento em dinheiro" title="" width="100%">
+                    <div class="text-center" onclick="sendSubmit('pagamento', 0)">
+                        <img id="opt" src="../Static/money.png" class="rounded" alt="Linguagem: PT-BR" alt="Pagamento em dinheiro" title="" width="100%">
                     </div>
                 </div>
-                <div class="col-md mx-4">
+                <div class="col-md mx-4 itemHover">
                     <h2>Cartão</h2>
                         <!-- Pagamento no Cartão -->
-                    <div class="text-center">
-                        <img src="../Static/cartao-credito.png" class="rounded" alt="Pagamento no cartão de crédito" width="100%"> 
+                    <div class="text-center" onclick="sendSubmit('pagamento', 1)">
+                        <img id="opt" src="../Static/cartao-credito.png" class="rounded" alt="Pagamento no cartão de crédito" width="100%"> 
                     </div>
 
                 </div>
 	        </div>
         </div>
 
-        <input type="hidden" id="modopreparo" name="modopreparo" value=""/>
+        <input type="hidden" id="pagamento" name="pagamento" value=""/>
 
         </form>
 

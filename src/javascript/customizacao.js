@@ -25,8 +25,3 @@
     function setValue(id, value) { 
         document.getElementById(id).value = value;
     }
-        //Rolagem do lista de categorias da pagina produtos
-    $("#lateral-categoria").bind("mousewheel",function(ev, delta) {
-        var scrollTop = $(this).scrollTop();
-        $(this).scrollTop(scrollTop-Math.round(delta));
-    });
