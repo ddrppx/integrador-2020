@@ -27,7 +27,7 @@ div .borderGray {
 }
 
 div #lateral-categoria {
-    max-height: 600px;
+    max-height: 540px;
     overflow-y: scroll; /* Barra de rolagem oculta */
 }
 
@@ -42,7 +42,7 @@ div .card-body {
     max-height: 706px;
 }
 
-#ingNum {
+.inputshow {
     font-size: 30px;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -85,9 +85,9 @@ div#opt:hover {
 }
 
 .sliderItens {
-     max-height: 200px;
+    max-height: 200px;
     overflow-x: scroll;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 5px;
     vertical-align: baseline;
 }
@@ -96,3 +96,5 @@ div#opt:hover {
     padding-bottom: 0px;
     margin-bottom: 2px;
 }
+
+

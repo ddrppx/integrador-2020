@@ -65,14 +65,6 @@
 
         </form>
 
-        <div class="container">
-            <div class="row">
-                <div class="col text-right">
-                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">Iconixar</a>, <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>, <a href="https://www.flaticon.com/authors/google" title="Google">Google</a>.
-                </div>
-            </div>
-        </div>
-
         <?php 
             include "footer.php";
         ?>

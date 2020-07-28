@@ -143,13 +143,16 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
-            <div class="row">
-                    <div class="col text-right mt-1">
-                    Ícones por: <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">Iconixar</a>,<a href="https://www.flaticon.com/authors/google" title="Google">Google</a> e <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>.
-                </div>
+    
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-6 text-right px-1">
+                <button type="button" class="btn btn-lg btn-secondary">Cancelar</button>
+            </div>
+            <div class="col-md-6 text-left px-1">
+                <button type="button" class="btn btn-lg btn-success">Confirmar</button>
             </div>
         </div>
+    </div>
 
     <?php include "footer.php"; ?>
