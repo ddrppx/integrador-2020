@@ -158,10 +158,5 @@ namespace Classes;
         public function remCupom(){
             $this -> cupom = null;
         }
-  
-        public function AnyTest() {
-           
-        }
-
     }
 ?>

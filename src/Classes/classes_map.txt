@@ -1,0 +1,113 @@
+class Pedido {
+
+	atributos {
+		hora 
+		modoPreparo
+		metodoPagamento
+		valorT
+		produtos
+		cupom
+	}
+
+	metodos {
+		getHora()
+		getModoPreparo()
+		setModoPreparo(mp)
+		__ModoPreparo()
+		__MetodoPagamento()
+		getMetodoPagamento()
+		setMetodoPagamento(mp2)
+		__construct()
+		__toString()
+		addProduto(Produto produto)
+		getProdutos()
+		valorTotal()
+		customizar(Lanche lanche)
+		insCupom(cupom)
+		remCupom()
+
+	}
+}
+
+class Cupom {
+	atributos {
+		codigo
+		desconto
+	}
+
+	metodos {
+		getCodigo()
+		setCodigo(cod)
+		getDesconto()
+		setDesconto(desconto)
+		__construct(codigo, desconto)
+		__toString()
+	}
+}
+
+abstract class Produto {
+	atributos {
+		nome
+		valor
+		desconto
+		promocao
+	}
+
+	metodos {
+		getNome()
+		setNome(nome)
+		getValor()
+		setValor(valor)
+		getDesconto()
+		setDesconto(desconto)
+		__valorTotal()
+		__construct(nome, valor)
+		addPromocao(Promocao promocao)
+		remPromocao()
+		__toString()
+	}
+}
+
+class Promocao {
+	atributos {
+		nome
+		desconto
+	}
+
+	metodos {
+		getNome()
+		setNome(nome)
+		getDesconto()
+		setDesconto(nome)
+		__construct(nome, desconto)
+		__toString()
+	}
+}
+
+Bebida {
+	atributos {
+		marca
+		tamanho
+	}
+
+	metodos {
+		getMarca()
+		setMarca(marca)
+		getTamanho()
+		setTamanho(tamanho)
+		__construct(nome, valor, marca, tamanho)
+		__toString()
+	}
+}
+
+Acompanhamento {
+	atributos {
+		tamanho
+	}
+
+	metodos {
+		getTamanho()
+		setTamanho(tamanho)
+		__construct(nome, valor, tamanho)
+	}
+}

@@ -1,7 +1,7 @@
 <?php 
-    namespace Classes\Database;
+    namespace Classes;
 
-    class Conect {
+    class Connect {
         private static $instance;
 
         public static function getConn() {
