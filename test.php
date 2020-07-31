@@ -1,5 +1,12 @@
 <?php
-    
+
+require 'vendor/autoload.php';
+use Classes\Acompanhamento;
+use Classes\Promocao;
+
+	$acp = new Acompanhamento("Batata", 4.50, "Grande");
+
+	$promo = new Promocao("Feliz natal", 10);
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +17,11 @@
 	<title>Document</title>
 </head>
 <body>
-	<form method="get" action="index2.php">
-		<button type="submit">AD</button>
-	</form>
+	<p><?= $acp ?></p>
+	<p><?= $promo ?></p>
+
+	<?php $acp -> addPromocao($promo); ?>
+
+	<p><?= $acp ?></p>
 </body>
 </html>

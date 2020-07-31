@@ -22,7 +22,7 @@
 
             //Método GET
         public function getValor() {
-            return number_format($this -> valor,2);
+            return number_format($this -> valor, 2);
         }
 
             //Método SET
