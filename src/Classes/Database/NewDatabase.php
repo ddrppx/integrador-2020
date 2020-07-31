@@ -15,7 +15,7 @@
                 )");
 
         } catch (PDOException $e) {
-                echo $e -> getMessage();
+                echo "<script>alert($e -> getMessage())</script>";
         }
         
 ?>

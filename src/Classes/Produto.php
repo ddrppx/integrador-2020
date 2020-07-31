@@ -78,6 +78,10 @@
             $this -> promocao = null;
         }
 
+        public function getPromocao(){
+            return $this -> promocao;
+        }
+
             //Método toString
         public function __toString() {
             return "-- Informações do Produto --<br />
