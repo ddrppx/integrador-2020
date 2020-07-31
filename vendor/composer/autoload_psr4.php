@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Models\\' => array($baseDir . '/src/Models'),
-    'Connection\\' => array($baseDir . '/src/Database'),
+    'Database\\' => array($baseDir . '/src/Database'),
     'Classes\\' => array($baseDir . '/src/Classes'),
 );

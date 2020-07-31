@@ -2,28 +2,26 @@
     namespace Models;
     use \Classes\Acompanhamento;
     use \Database\Connect;
-
-    use PDOException;
-
 class AcompDAO {
        
-            public function create (Acompanhamento $acmp) {
-            try {
-                $sql = 'INSERT INTO acompanhamento (idPromocao, nome, valor, tamanho) VALUES (?, ?, ?, ?)';
+        public function create(Acompanhamento $acmp) {
+            $sql = 'INSERT INTO acompanhamento (nome, valor, tamanho) VALUES (?, ?, ?)';
 
-                $stmt = Connect::getConn() -> prepare($sql);
+            var_dump($sql);
 
-                $stmt -> bindValue(1, $acmp -> getPromocao());
-                $stmt -> bindValue(2, $acmp -> getNome());
-                $stmt -> bindValue(3, $acmp -> getValor());
-                $stmt -> bindValue(4, $acmp -> getTamanho());
-                
-                $stmt -> exec();
-            } catch (PDOException $e){
-                echo $e -> getMessage();
-            }
-            }
+            $stmt = Connect::getConn()->prepare($sql);
+
+            $stmt -> bindValue(1, $acmp -> getNome());
+
+            $stmt -> bindValue(2, $acmp -> getValor());
+            $stmt -> bindValue(3, $acmp -> getTamanho());
+
+            $stmt -> execute();
+        }
         
+        public function getTest() {
+            echo Connect::getTest();
+        }
 
         public function read() {
             $sql = 'SELECT * FROM acompanhamentos';

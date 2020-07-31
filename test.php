@@ -31,8 +31,7 @@ require 'vendor/autoload.php';
 	<p><?= $acp ?></p>
 
 	<?php
-		echo (__DIR__)."<br />";
-		var_dump($bruh);
+
 		$bruh -> create($acp);
 		echo "<hr />";
 		$bruh -> read();
