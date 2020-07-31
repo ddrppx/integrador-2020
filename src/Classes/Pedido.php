@@ -19,38 +19,24 @@ namespace Classes;
         
             //Método GET
         public function getModoPreparo() {
-            return $this -> modoPreparo;
+            //Traduz o atributo de boolean para String
+            $prep = $this -> modoPreparo;
+            $prep == 0 ? $prep = "Comer no local" : $prep = "Para viagem";
+            
+            return $prep;
         }
             //Método SET
         public function setModoPreparo($mp) {
             $this -> modoPreparo = $mp;
         }
         
-            //Traduz o atributo de boolean para String
-        public function __ModoPreparo() {
-            if ($this -> getModoPreparo() == 0) {
-                return "Comer no estabelecimento";
-            } else if ($this -> getModoPreparo() == 1) {
-                return "Para viagem";
-            } else {
-                return "Opção inválida";
-            }
-        }
-
-            //Traduz o atributo de boolean para String
-        public function __MetodoPagamento() {
-            if ($this -> getMetodoPagamento() == 0) {
-                return "Cartão";
-            } else if ($this -> getMetodoPagamento() == 1) {
-                return "Dinheiro";
-            } else {
-                return "Opção inválida";
-            }
-        }
-
             //Método GET
         public function getMetodoPagamento() {
-            return $this -> metodoPagamento;
+            //Traduz o atributo de boolean para String
+            $pag = $this->metodoPagamento;
+            $pag == 0 ? $pag = "Dinheiro" : $pag = "Cartão";
+            
+            return $pag;
         }
         
             //Método SET
@@ -71,15 +57,14 @@ namespace Classes;
         public function __toString() {
             return "----- Pedido -----<br />
             Hora: ". $this -> getHora(). "<br />
-            Modo de Preparo: ". $this -> __ModoPreparo(). "<br />
-            Metodo de Pagamento: ". $this -> __MetodoPagamento(). "<br />
+            Modo de Preparo: ". $this -> getModoPreparo(). "<br />
+            Metodo de Pagamento: ". $this -> getMetodoPagamento(). "<br />
             ". $this -> getProdutos(). "<br />
             Valor total: R$". $this -> valorTotal();
         }
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto($produto){
             array_push($this -> produtos, $produto);
-            echo "<script> alert('Flag!')</script>";
         }
 
         public function getProdutos() {

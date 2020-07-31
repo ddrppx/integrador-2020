@@ -25,7 +25,6 @@ class Pedido {
 		customizar(Lanche lanche)
 		insCupom(cupom)
 		remCupom()
-
 	}
 }
 

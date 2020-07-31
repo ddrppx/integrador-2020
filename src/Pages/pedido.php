@@ -67,13 +67,6 @@
                 <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
             </div>
 
-            <div class="card my-2" onclick="selecionarCat('5')">
-                <div class="card-body">
-                    <h5 class="card-title">Pratos</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/pratos.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
             </div>
 
             <!-- Container -->
