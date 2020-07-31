@@ -1,7 +1,8 @@
 <?php
-    namespace Classes\Models;
+    namespace Models;
     use \Classes\Acompanhamento;
-    use \Classes\Database\Connect;
+    use \Database\Connect;
+
     use PDOException;
 
 class AcompDAO {

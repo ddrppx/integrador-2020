@@ -1,5 +1,5 @@
 <?php 
-    namespace Classes\Database;
+    namespace Database;
 
     class Connect {
         private static $instance;

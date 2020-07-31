@@ -1,9 +1,9 @@
 <?php
 
 require 'vendor/autoload.php';
-use \Classes\Acompanhamento;
-use \Classes\Promocao;
-use \Classes\Models\AcompDAO;
+	use \Classes\Acompanhamento;
+	use \Classes\Promocao;
+	use \Models\AcompDAO;
 
 // require 'src/Classes/Models/AcompDAO.php';
 // require 'src/Classes/Database/Connection.php';
@@ -12,7 +12,7 @@ use \Classes\Models\AcompDAO;
 
 	$promo = new Promocao("Feliz natal", 10);
 
-	$acpDAO = new AcompDAO();
+	$bruh = new AcompDAO;
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +31,11 @@ use \Classes\Models\AcompDAO;
 	<p><?= $acp ?></p>
 
 	<?php
-		// var_dump($acpDAO);
-		$acpDAO -> create($acp);
+		echo (__DIR__)."<br />";
+		var_dump($bruh);
+		$bruh -> create($acp);
 		echo "<hr />";
-		$acpDAO -> read();
+		$bruh -> read();
 	?>
 
 </body>
