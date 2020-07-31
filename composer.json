@@ -2,8 +2,8 @@
     "autoload": {
         "psr-4": {
             "Classes\\": "src/Classes/",
-            "Connection\\": "src/Classes/Database",
-            "Models\\": "src/Classes/Models"
+            "Class\\Connection\\": "src/Classes/Database",
+            "Class\\Models\\": "src/Classes/Models"
         }
     }
 }

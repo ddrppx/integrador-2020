@@ -1,16 +1,18 @@
 <?php
 
 require 'vendor/autoload.php';
-use Classes\Acompanhamento;
-use Classes\Promocao;
-require 'src/Classes/Models/AcompDAO.php';
-require 'src/Classes/Database/Connection.php';
+use \Classes\Acompanhamento;
+use \Classes\Promocao;
+use \Classes\Models\AcompDAO;
+
+// require 'src/Classes/Models/AcompDAO.php';
+// require 'src/Classes/Database/Connection.php';
 
 	$acp = new Acompanhamento("Batata", 4.50, "Grande");
 
 	$promo = new Promocao("Feliz natal", 10);
 
-	$acpDAO = new \Classes\AcompDAO();
+	$acpDAO = new AcompDAO();
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +31,7 @@ require 'src/Classes/Database/Connection.php';
 	<p><?= $acp ?></p>
 
 	<?php
+		// var_dump($acpDAO);
 		$acpDAO -> create($acp);
 		echo "<hr />";
 		$acpDAO -> read();
