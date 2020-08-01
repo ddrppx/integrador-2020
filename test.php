@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 	use \Classes\Acompanhamento;
 	use \Classes\Promocao;
-	use \Models\AcompDAO;
+	use \Classes\AcompDAO;
 
 // require 'src/Classes/Models/AcompDAO.php';
 // require 'src/Classes/Database/Connection.php';
@@ -33,7 +33,7 @@ require 'vendor/autoload.php';
 	<?php
 
 		$bruh -> create($acp);
-		echo "<hr />";
+		// echo "<hr />";
 		$bruh -> read();
 	?>
 

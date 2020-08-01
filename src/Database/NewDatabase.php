@@ -2,8 +2,6 @@
         try {
                 $db = new \PDO('sqlite:database.sqlite');
 
-                
-
                 $db -> exec("CREATE TABLE IF NOT EXISTS bebida (
                         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                         idPromocao INTEGER,
