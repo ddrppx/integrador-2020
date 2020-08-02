@@ -3,12 +3,12 @@
 require 'vendor/autoload.php';
 	use \Classes\Acompanhamento;
 	use \Classes\Promocao;
-	use \Classes\AcompDAO;
+	use \Models\AcompDAO;
 
 // require 'src/Classes/Models/AcompDAO.php';
 // require 'src/Classes/Database/Connection.php';
 
-	$acp = new Acompanhamento("Batata", 4.50, "Grande");
+	$acp = new Acompanhamento("Fatia de peixe", 12.50, "Gigante");
 
 	$promo = new Promocao("Feliz natal", 10);
 
@@ -33,8 +33,19 @@ require 'vendor/autoload.php';
 	<?php
 
 		$bruh -> create($acp);
-		// echo "<hr />";
-		$bruh -> read();
+
+		$rows = $bruh -> read();
+		echo "<br/>End.<br/>";
+
+		foreach ($rows as $acp){
+			echo "<table><tr>
+				<td>".$acp['id']."</td>
+				<td>".$acp ['nome']."</td>
+				<td>".$acp['valor']."</td>
+				<td>".$acp['tamanho']."</td>
+			</tr></table>";
+		}
+
 	?>
 
 </body>

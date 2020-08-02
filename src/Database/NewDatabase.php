@@ -1,19 +1,16 @@
 <?php
+                //Executa comandos SQL diretamente
         try {
                 $db = new \PDO('sqlite:database.sqlite');
 
-                $db -> exec("CREATE TABLE IF NOT EXISTS bebida (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                        idPromocao INTEGER,
-                        nome VARCHAR(30) NOT NULL,
-                        marca VARCHAR(30) NOT NULL,
-                        valor DOUBLE NOT NULL,
-                        tamanho VARCHAR(30),
-                        FOREIGN KEY (idPromocao) REFERENCES promocao(id)
-                )");
+                $sql = 'INSERT INTO acompanhamento (nome, valor, tamanho) VALUES ("Batata", 4.50, "Grande")';
+                $stmt = $db -> prepare($sql);
+                // $stmt -> bindValue();
+                
+                echo "FIM";
 
         } catch (PDOException $e) {
-                echo "<script>alert($e -> getMessage())</script>";
+                echo $e -> getMessage();
         }
         
 ?>
