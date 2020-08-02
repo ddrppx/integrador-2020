@@ -38,5 +38,21 @@ try {
             return $resultado;
         }
 
+        public function update(int $id, Acompanhamento $acp) {
+                //Comando SQL
+            $sql = 'UPDATE acompanhamento SET nome = ?, valor = ?, tamanho = ? WHERE id = ?';
+
+            $stmt = Connect::getConn() -> prepare($sql);
+            
+            $stmt -> bindValue(1, $acp -> getNome());
+            $stmt -> bindValue(2, $acp -> getValor());
+            $stmt -> bindValue(3, $acp -> getTamanho());
+            $stmt -> bindValue(4, $id);
+
+            $stmt -> execute();
+
+            echo "End update.";
+        }
+
     }
 ?>
