@@ -27,14 +27,15 @@ try {
         }
 
         public function read() {
-            $sql = 'SELECT * FROM acompanhamentos';
-
+                //Comando SQL
+            $sql = 'SELECT * FROM acompanhamento';
+                //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
-
-            if ($stmt -> rowCount() > 0) {
-                $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-                return $resultado;
-            }
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+            return $resultado;
         }
 
     }
