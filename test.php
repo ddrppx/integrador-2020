@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 // require 'src/Classes/Models/AcompDAO.php';
 // require 'src/Classes/Database/Connection.php';
 
-	$acp = new Acompanhamento("Fatia de peixe", 12.50, "Gigante");
+	$acp = new Acompanhamento("Canapé", 5.20, "Médio");
 
 	$promo = new Promocao("Feliz natal", 10);
 
@@ -32,13 +32,17 @@ require 'vendor/autoload.php';
 
 	<?php
 
-		$bruh -> create($acp);
+		// $bruh -> create($acp);
+
+		// $bruh -> update(5, $acp);
+
+		// $bruh -> delete(6);
 
 		$rows = $bruh -> read();
 		echo "<br/>End.<br/>";
 
 		foreach ($rows as $acp){
-			echo "<table><tr>
+			echo "<table style=\"boder: solid 1px white\"><tr>
 				<td>".$acp['id']."</td>
 				<td>".$acp ['nome']."</td>
 				<td>".$acp['valor']."</td>

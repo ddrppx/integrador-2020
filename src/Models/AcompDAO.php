@@ -41,17 +41,30 @@ try {
         public function update(int $id, Acompanhamento $acp) {
                 //Comando SQL
             $sql = 'UPDATE acompanhamento SET nome = ?, valor = ?, tamanho = ? WHERE id = ?';
-
+                //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
-            
+                //Agrega o valor ao local do '?' na variavel $sql
             $stmt -> bindValue(1, $acp -> getNome());
             $stmt -> bindValue(2, $acp -> getValor());
             $stmt -> bindValue(3, $acp -> getTamanho());
             $stmt -> bindValue(4, $id);
-
+                //Executa o comando sql
             $stmt -> execute();
 
             echo "End update.";
+        }
+
+        public function delete(int $id) {
+                //Comando SQL
+            $sql = 'DELETE FROM acompanhamento WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+                //Agrega o valor ao local do '?' na variavel $sql
+            $stmt -> bindValue(1, $id);
+                //Executa o comando sql
+            $stmt -> execute();
+
+            echo "End delete.";
         }
 
     }
