@@ -28,7 +28,7 @@
             Nome: ". $this -> getNome(). "<br /> 
             Valor: R$". $this -> __ValorTotal(). "<br />
             Desconto: ". $this -> getDesconto(). "%<br />
-            Tamanho: ". $this -> tamanho; 
+            Tamanho: ". $this -> getTamanho(); 
         }
     }
 ?>
