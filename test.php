@@ -1,20 +1,24 @@
 <?php
 
-require 'vendor/autoload.php';
+	require 'vendor/autoload.php';
 
-use Classes\Acompanhamento;
-use \Classes\Bebida;
+	use Classes\Acompanhamento;
+	use \Classes\Bebida;
+	use Classes\Cupom;
 	use \Classes\Promocao;
+
 	use \Models\acompDAO;
 	use \Models\bebidaDAO;
+	use Models\cupomDAO;
 
-	// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
-
-	$beb1 = new Bebida("Chá", 3.90,"Ana maria", "Médio");
-	$beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
+// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
+	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
+	$cupom1 = new Cupom("BANANA", 376);
+	$cupom2 = new Cupom("PKR2B", 25);
 
 	// $acompanhamento = new acompDAO;
 	// $bebidas = new BebidaDAO;
+	$cupons = new cupomDAO;
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +29,8 @@ use \Classes\Bebida;
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $beb1 ?></p>
-	<p><?= $beb2 ?></p>
+	<p><?= $cupom1 ?></p>
+	<p><?= $cupom2 ?></p>
 
 	<?php
 
@@ -41,18 +45,21 @@ use \Classes\Bebida;
 		// $bebs -> delete(6);
 		// $bebs -> read();
 
+		// $cupons -> create($cupom1);
+		// $cupons -> create($cupom2);
+		// $cupons -> update();
+		// $cupons -> delete();
 
-		// $rows = 
+		
 		echo "<br/>End.<br/>";
-
+		
+		// $rows = $cupons -> read();
 		// echo "<table style=\"boder: solid 1px white\">";
 		// foreach ($rows as $row){
 		// 	echo "<tr>
 		// 		<td>".$row['id']."</td>
-		// 		<td>".$row['marca']."</td>
-		// 		<td>".$row ['nome']."</td>
-		// 		<td>".$row['valor']."</td>
-		// 		<td>".$row['tamanho']."</td>
+		// 		<td>".$row['codigo']."</td>
+		// 		<td>".$row ['desconto']."</td>
 		// 	</tr>";
 		// }
 		// echo "</table>";
