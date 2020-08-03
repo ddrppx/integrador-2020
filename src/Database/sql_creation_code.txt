@@ -46,3 +46,14 @@ CREATE TABLE bebida (
 	tamanho VARCHAR(30)
 	FOREIGN KEY (idPromocao) REFERENCES promocao(id)
 );
+
+CREATE TABLE IF NOT EXISTS ingredientes (
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	ingrediente VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS lanche_ingredientes (
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	id_lanche INTEGER NOT NULL,
+	id_ingrediente INTEGER NOT NULL
+);
