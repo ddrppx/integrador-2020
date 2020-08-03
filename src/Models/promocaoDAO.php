@@ -33,7 +33,17 @@ class promocaoDAO {
                 //Variavel que ira retornar todas linhas do banco
             $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
                 //Retorno da variavel
-            return $resultado;
+            $rows = $resultado;
+            echo "<table style=\"boder: solid 1px black\">";
+            echo "<thead><tr><th>ID</th><th>Nome</th><th>Desconto</th></thead>";
+            foreach ($rows as $row){
+                echo "<tr>
+                    <td>".$row['id']."</td>
+                    <td>".$row['nome']."</td>
+                    <td>".$row ['desconto']."</td>
+                </tr>";
+            }
+            echo "</table>";
         }
 
         public function update(int $id, Promocao $promo) {
