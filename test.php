@@ -10,15 +10,18 @@
 	use \Models\acompDAO;
 	use \Models\bebidaDAO;
 	use Models\cupomDAO;
+	use Models\promocaoDAO;
 
-// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
+	// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
 	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
-	$cupom1 = new Cupom("BANANA", 376);
-	$cupom2 = new Cupom("PKR2B", 25);
+	// $cupom2 = new Cupom("PKR2B", 25);
+	$promo1 = new Promocao("Feriado", 10);
+	$promo2 = new Promocao("Passe de onibus", 79);
 
 	// $acompanhamento = new acompDAO;
 	// $bebidas = new BebidaDAO;
-	$cupons = new cupomDAO;
+	// $cupons = new cupomDAO;
+	$promos = new promocaoDAO;
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +32,8 @@
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $cupom1 ?></p>
-	<p><?= $cupom2 ?></p>
+	<p><?= $promo1 ?></p>
+	<p><?= $promo2 ?></p>
 
 	<?php
 
@@ -45,24 +48,30 @@
 		// $bebs -> delete(6);
 		// $bebs -> read();
 
-		// $cupons -> create($cupom1);
-		// $cupons -> create($cupom2);
+		// $cupons -> create();
+		// $cupons -> create();
 		// $cupons -> update();
 		// $cupons -> delete();
 
-		
+		// $promos -> create();
+		// $promos -> create();
+		// $promos -> update();
+		// $promos -> delete();
+		// $promos -> create();
+
 		echo "<br/>End.<br/>";
 		
-		// $rows = $cupons -> read();
-		// echo "<table style=\"boder: solid 1px white\">";
-		// foreach ($rows as $row){
-		// 	echo "<tr>
-		// 		<td>".$row['id']."</td>
-		// 		<td>".$row['codigo']."</td>
-		// 		<td>".$row ['desconto']."</td>
-		// 	</tr>";
-		// }
-		// echo "</table>";
+		$rows = $promos -> read();
+	
+		echo "<table style=\"boder: solid 1px white\">";
+		foreach ($rows as $row){
+			echo "<tr>
+				<td>".$row['id']."</td>
+				<td>".$row['nome']."</td>
+				<td>".$row ['desconto']."</td>
+			</tr>";
+		}
+		echo "</table>";
 
 	?>
 
