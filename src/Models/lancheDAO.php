@@ -8,7 +8,7 @@
 class lancheDAO {
        
         public function create(Lanche $lanche) {
-try {
+            try {
                     //Comando SQL
                 $sql = 'INSERT INTO lanche (nome, valor) VALUES (?, ?)';
                     //Conexão com banco + prepare
@@ -22,10 +22,17 @@ try {
                 $insertID = (int)Connect::getConn() -> lastInsertId();
                 var_dump($insertID); //Debug
 
+
             } catch (PDOException $e) {
                 $e -> getMessage();
             }
 
+        }
+
+        public function findId(Lanche $lanche) {
+            foreach ($lanche -> getIngredient() as $ingredient) {
+                echo $ingredient. "<br/>";
+            }
         }
 
         // public function read() {
