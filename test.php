@@ -5,23 +5,26 @@
 	use Classes\Acompanhamento;
 	use \Classes\Bebida;
 	use Classes\Cupom;
+	use \Classes\Lanche;
 	use \Classes\Promocao;
 
 	use \Models\acompDAO;
 	use \Models\bebidaDAO;
-	use Models\cupomDAO;
-	use Models\promocaoDAO;
+	use \Models\cupomDAO;
+	use \Models\promocaoDAO;
+	use \Models\lancheDAO;
 
 	// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
 	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
-	$promo1 = new Promocao("Feriado", 10);
-	$promo2 = new Promocao("Passe de onibus", 79);
+	// $promo1 = new Promocao("Feriado", 10);
+	$lanche = new Lanche( "Hamburguer", 7.50, ["Ovo", "Cebola"], [1, 2]);
 
 	// $acompanhamento = new acompDAO;
 	// $bebidas = new BebidaDAO;
 	// $cupons = new cupomDAO;
-	$promos = new promocaoDAO;
+	// $promos = new promocaoDAO;
+	$lanches = new lancheDAO;
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +35,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $promo1 ?></p>
-	<p><?= $promo2 ?></p>
+	<p><?= $lanche ?></p>
 
 	<?php
 
@@ -59,19 +61,21 @@
 		// $promos -> delete();
 		// $promos -> create();
 
+		$lanches -> findId($lanche);
+
 		echo "<br/>End.<br/>";
 		
-		$rows = $promos -> read();
+		// $rows = $promos -> read();
 	
-		echo "<table style=\"boder: solid 1px white\">";
-		foreach ($rows as $row){
-			echo "<tr>
-				<td>".$row['id']."</td>
-				<td>".$row['nome']."</td>
-				<td>".$row ['desconto']."</td>
-			</tr>";
-		}
-		echo "</table>";
+		// echo "<table style=\"boder: solid 1px white\">";
+		// foreach ($rows as $row){
+		// 	echo "<tr>
+		// 		<td>".$row['id']."</td>
+		// 		<td>".$row['nome']."</td>
+		// 		<td>".$row ['desconto']."</td>
+		// 	</tr>";
+		// }
+		// echo "</table>";
 
 	?>
 

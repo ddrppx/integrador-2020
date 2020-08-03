@@ -31,7 +31,18 @@ class lancheDAO {
 
         public function findId(Lanche $lanche) {
             foreach ($lanche -> getIngredient() as $ingredient) {
-                echo $ingredient. "<br/>";
+                echo $ingredient;
+                // $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
+                // $stmt -> bindValue(1, $ingredient, PDO::PARAM_STR);
+                // $resultado = $stmt -> execute();
+                $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
+                $stmt -> bindValue(1, $ingredient);
+                $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+                $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+                echo " ";
+                print_r($resultado);
+                echo "<br/>";
             }
         }
 
