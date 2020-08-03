@@ -41,7 +41,7 @@ class bebidaDAO {
 
         public function update(int $id, Bebida $bebida) {
                 //Comando SQL
-            $sql = 'UPDATE acompanhamento SET nome = ?, marca = ?, valor = ?, tamanho = ? WHERE id = ?';
+            $sql = 'UPDATE bebida SET nome = ?, marca = ?, valor = ?, tamanho = ? WHERE id = ?';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
                 //Agrega o valor ao local do '?' na variavel $sql

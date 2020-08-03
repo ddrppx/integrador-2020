@@ -5,7 +5,7 @@
     use \PDO;
     use \PDOException;
 
-class AcompDAO {
+class acompDAO {
        
         public function create(Acompanhamento $acmp) {
 try {

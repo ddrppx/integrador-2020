@@ -1,18 +1,20 @@
 <?php
 
 require 'vendor/autoload.php';
-	use \Classes\Acompanhamento;
+
+use Classes\Acompanhamento;
+use \Classes\Bebida;
 	use \Classes\Promocao;
-	use \Models\AcompDAO;
+	use \Models\acompDAO;
+	use \Models\bebidaDAO;
 
-// require 'src/Classes/Models/AcompDAO.php';
-// require 'src/Classes/Database/Connection.php';
+	// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
 
-	$acp = new Acompanhamento("Canapé", 5.20, "Médio");
+	$beb1 = new Bebida("Chá", 3.90,"Ana maria", "Médio");
+	$beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 
-	$promo = new Promocao("Feliz natal", 10);
-
-	$bruh = new AcompDAO;
+	// $acompanhamento = new acompDAO;
+	// $bebidas = new BebidaDAO;
 ?>
 
 <!DOCTYPE html>
@@ -23,32 +25,37 @@ require 'vendor/autoload.php';
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $acp ?></p>
-	<p><?= $promo ?></p>
-
-	<?php $acp -> addPromocao($promo); ?>
-
-	<p><?= $acp ?></p>
+	<p><?= $beb1 ?></p>
+	<p><?= $beb2 ?></p>
 
 	<?php
 
-		// $bruh -> create($acp);
+		// $acomps -> create($acp);
+		// $acomps -> update(5, $acp);
+		// $acomps -> delete(6);
+		// $acomps -> read() 
 
-		// $bruh -> update(5, $acp);
+		// $bebs -> create($beb1);
+		// $bebs -> create($beb2);
+		// $bebs -> update(6, $beb1);
+		// $bebs -> delete(6);
+		// $bebs -> read();
 
-		// $bruh -> delete(6);
 
-		$rows = $bruh -> read();
+		// $rows = 
 		echo "<br/>End.<br/>";
 
-		foreach ($rows as $acp){
-			echo "<table style=\"boder: solid 1px white\"><tr>
-				<td>".$acp['id']."</td>
-				<td>".$acp ['nome']."</td>
-				<td>".$acp['valor']."</td>
-				<td>".$acp['tamanho']."</td>
-			</tr></table>";
-		}
+		// echo "<table style=\"boder: solid 1px white\">";
+		// foreach ($rows as $row){
+		// 	echo "<tr>
+		// 		<td>".$row['id']."</td>
+		// 		<td>".$row['marca']."</td>
+		// 		<td>".$row ['nome']."</td>
+		// 		<td>".$row['valor']."</td>
+		// 		<td>".$row['tamanho']."</td>
+		// 	</tr>";
+		// }
+		// echo "</table>";
 
 	?>
 
