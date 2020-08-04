@@ -134,7 +134,17 @@ class lancheDAO {
                 //Executa o comando sql
             $stmt -> execute();
 
-            echo "End delete.";
+            echo "Finised deleting from lanche";
+            
+            $sql = 'DELETE FROM lanche_ingredientes WHERE id = ?';
+            //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            //Agrega o valor ao local do '?' na variavel $sql
+            $stmt -> bindValue(1, $id);
+            //Executa o comando sql
+            $stmt -> execute();
+            
+            echo "Finised deleting from lanche_ingredientes";
         }
 
     }
