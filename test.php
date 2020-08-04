@@ -18,13 +18,13 @@
 	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
 	// $promo1 = new Promocao("Feriado", 10);
-	$lanche = new Lanche( "Hamburguer", 7.50, ["Ovo", "Cebola"], [1, 2]);
+	// $lanche = new Lanche( "Hamburguer", 7.50, ["Ovo", "Cebola"], [1, 2]);
 
-	// $acompanhamento = new acompDAO;
-	// $bebidas = new BebidaDAO;
-	// $cupons = new cupomDAO;
-	// $promos = new promocaoDAO;
-	$lanches = new lancheDAO;
+	$acomps = new acompDAO;
+	$bebidas = new bebidaDAO;
+	$cupons = new cupomDAO;
+	$promos = new promocaoDAO;
+	// $lanches = new lancheDAO;
 ?>
 
 <!DOCTYPE html>
@@ -35,47 +35,43 @@
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $lanche ?></p>
+	<!-- <p><?= $lanche ?></p> -->
 
 	<?php
 
-		// $acomps -> create($acp);
-		// $acomps -> update(5, $acp);
-		// $acomps -> delete(6);
-		// $acomps -> read() 
+		// // $acomps -> create($);
+		// echo "<h3>Acompanhamentos</h3>";
+		// $acomps -> read();
+		// echo "<hr/>";
+		// // $acomps -> update();
+		// // $acomps -> delete();
+		
 
-		// $bebs -> create($beb1);
-		// $bebs -> create($beb2);
-		// $bebs -> update(6, $beb1);
-		// $bebs -> delete(6);
-		// $bebs -> read();
+		// // $bebidas -> create();
+		// echo "<h3>Bebidas</h3>";
+		// $bebidas -> read();
+		// echo "<hr/>";
+		// // $bebidas -> update();
+		// // $bebidas -> delete();
+		 
 
-		// $cupons -> create();
-		// $cupons -> create();
-		// $cupons -> update();
-		// $cupons -> delete();
+		// // $cupons -> create();
+		// echo "<h3>Cupons</h3>";
+		// $cupons -> read();
+		// echo "<hr/>";
+		// // $cupons -> update();
+		// // $cupons -> delete();
 
-		// $promos -> create();
-		// $promos -> create();
-		// $promos -> update();
-		// $promos -> delete();
-		// $promos -> create();
-
-		$lanches -> findId($lanche);
+		// // $promos -> create();
+		// echo "<h3>Promoções</h3>";
+		// $promos -> read();
+		// echo "<hr/>";
+		// // $promos -> update();
+		// // $promos -> delete();
+		// // $promos -> create();
 
 		echo "<br/>End.<br/>";
-		
-		// $rows = $promos -> read();
-	
-		// echo "<table style=\"boder: solid 1px white\">";
-		// foreach ($rows as $row){
-		// 	echo "<tr>
-		// 		<td>".$row['id']."</td>
-		// 		<td>".$row['nome']."</td>
-		// 		<td>".$row ['desconto']."</td>
-		// 	</tr>";
-		// }
-		// echo "</table>";
+
 
 	?>
 

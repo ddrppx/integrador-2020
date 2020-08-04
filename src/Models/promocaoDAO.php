@@ -34,7 +34,7 @@ class promocaoDAO {
             $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
                 //Retorno da variavel
             $rows = $resultado;
-            echo "<table style=\"boder: solid 1px black\">";
+            echo "<table>";
             echo "<thead><tr><th>ID</th><th>Nome</th><th>Desconto</th></thead>";
             foreach ($rows as $row){
                 echo "<tr>
