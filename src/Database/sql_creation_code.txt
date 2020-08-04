@@ -57,3 +57,11 @@ CREATE TABLE IF NOT EXISTS lanche_ingredientes (
 	id_lanche INTEGER NOT NULL,
 	id_ingrediente INTEGER NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS pedido_itens (
+	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    id_pedido INTEGER NOT NULL,
+    id_lanche INTEGER NOT NULL,
+    id_acomp INTEGER NOT NULL,
+    id_bebida INTEGER NOT NULL
+);
