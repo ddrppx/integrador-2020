@@ -97,16 +97,16 @@ class lancheDAO {
                 //Executa o comando sql
             $stmt -> execute();
 
-            echo "End update.";
+            echo "End Lanche update";
 
-            $sql = 'UPDATE lanche SET quantidade = ? WHERE id_lanche = ? AND id_ingrediente = ?';
+            $sql = 'UPDATE lanche_ingredientes SET quantidade = ? WHERE id_ingrediente = ? AND id_lanche = ?';
 
             $ingredientes = $lanche -> getIngredient();
-            //Retorna o array de quantidade de ingredientes do lanche
-        $receitas = $lanche -> getRecipe();
-            //Outra comando SQL de inserção
+                //Retorna o array de quantidade de ingredientes do lanche
+            $receitas = $lanche -> getRecipe();
+                //Outra comando SQL de inserção
+            $stmt = Connect::getConn() -> prepare($sql);
             for($i = 0; $i < count($ingredientes); $i++){
-                $stmt = Connect::getConn() -> prepare($sql);
                     //Novo valor da quantidade
                 $stmt -> bindValue(1, $receitas[$i], PDO::PARAM_INT);
                     //id do ingrediente
@@ -116,24 +116,26 @@ class lancheDAO {
                     //Executa o comando $sql
                 $stmt -> execute();
 
+                echo "End lanche_ingrediente";
+
                 echo "Linha adicionada: id do lanche: ".$id." int Ingrediente: ". $ingredientes[$i]. ". Quantidade: ". $receitas[$i];
                 echo "<br/>";
             }
 
         }
 
-        // public function delete(int $id) {
-        //         //Comando SQL
-        //     $sql = 'DELETE FROM acompanhamento WHERE id = ?';
-        //         //Faz conexão à classe que retorna a instancia do banco
-        //     $stmt = Connect::getConn() -> prepare($sql);
-        //         //Agrega o valor ao local do '?' na variavel $sql
-        //     $stmt -> bindValue(1, $id);
-        //         //Executa o comando sql
-        //     $stmt -> execute();
+        public function delete(int $id) {
+                //Comando SQL
+            $sql = 'DELETE FROM lanche WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+                //Agrega o valor ao local do '?' na variavel $sql
+            $stmt -> bindValue(1, $id);
+                //Executa o comando sql
+            $stmt -> execute();
 
-        //     echo "End delete.";
-        // }
+            echo "End delete.";
+        }
 
     }
 ?>

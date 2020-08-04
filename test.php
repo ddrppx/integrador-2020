@@ -18,7 +18,7 @@
 	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
 	// $promo1 = new Promocao("Feriado", 10);
-	$lanche = new Lanche("Hamburguer", 7.50, [2, 3, 6], [1, 1, 2]);
+	$lanche = new Lanche("Hamburguer talhado", 7.50, [2, 3, 6], [2, 2, 2]);
 
 	// $acomps = new acompDAO;
 	// $bebidas = new bebidaDAO;
@@ -71,7 +71,7 @@
 		// $promos -> create();
 
 		// $lanches -> create($lanche);
-		$lanches -> read_show();
+		$lanches -> update(1, $lanche);
 		echo "<br/>End.<br/>";
 
 
