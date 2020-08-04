@@ -70,8 +70,8 @@
 		// $promos -> delete();
 		// $promos -> create();
 
-		$lanches -> create($lanche);
-
+		// $lanches -> create($lanche);
+		$lanches -> read_show();
 		echo "<br/>End.<br/>";
 
 

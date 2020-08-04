@@ -49,54 +49,78 @@ class lancheDAO {
 
         }
 
-        public function findId(Lanche $lanche) {
-            // foreach ($lanche -> getIngredient() as $ingredient) {
-            //     echo $ingredient;
-            //     // $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
-            //     // $stmt -> bindValue(1, $ingredient, PDO::PARAM_STR);
-            //     // $resultado = $stmt -> execute();
-            //     $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
-            //     $stmt -> bindValue(1, $ingredient);
-            //     $stmt -> execute();
-            //     //Variavel que ira retornar todas linhas do banco
-            //     $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-            //     echo " ";
-            //     echo $resultado[0]['id'];
-            //     echo "<br/>";
-
-            //     loop para adicionar os itens ao SQL lanche_ingredient
-                
-            // }
-            }
+        public function read() {
+                //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+            // return $resultado;
+            var_dump($resultado);
         }
 
-        // public function read() {
-        //         //Comando SQL
-        //     $sql = 'SELECT * FROM acompanhamento';
-        //         //Faz conexão à classe que retorna a instancia do banco
-        //     $stmt = Connect::getConn() -> prepare($sql);
-        //     $stmt -> execute();
-        //         //Variavel que ira retornar todas linhas do banco
-        //     $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-        //         //Retorno da variavel
-        //     return $resultado;
-        // }
+        public function read_show() {
+                //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+            $rows = $resultado;
+            echo "<table>";
+            echo "<thead><th>ID</th><th>Nome</th><th>Ingrediente</th><th>Quantidade</th></thead>";
+            foreach ($rows as $row){
+                echo "<tr>
+                    <td>".$row['id']."</td>
+                    <td>".$row['nome']."</td>
+                    <td>".$row ['ingrediente']."</td>
+                    <td>".$row ['quantidade']."</td>
+                </tr>";
+            }
+            echo "</table>";
+        }
 
-        // public function update(int $id, Acompanhamento $acp) {
-        //         //Comando SQL
-        //     $sql = 'UPDATE acompanhamento SET nome = ?, valor = ?, tamanho = ? WHERE id = ?';
-        //         //Faz conexão à classe que retorna a instancia do banco
-        //     $stmt = Connect::getConn() -> prepare($sql);
-        //         //Agrega o valor ao local do '?' na variavel $sql
-        //     $stmt -> bindValue(1, $acp -> getNome());
-        //     $stmt -> bindValue(2, $acp -> getValor());
-        //     $stmt -> bindValue(3, $acp -> getTamanho());
-        //     $stmt -> bindValue(4, $id);
-        //         //Executa o comando sql
-        //     $stmt -> execute();
+        public function update(int $id, Lanche $lanche) {
+                //Comando SQL
+            $sql = 'UPDATE lanche SET nome = ?, valor = ? WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+                //Agrega o valor ao local do '?' na variavel $sql
+            $stmt -> bindValue(1, $lanche -> getNome());
+            $stmt -> bindValue(2, $lanche -> getValor());
+            $stmt -> bindValue(3, $id);
+                //Executa o comando sql
+            $stmt -> execute();
 
-        //     echo "End update.";
-        // }
+            echo "End update.";
+
+            $sql = 'UPDATE lanche SET quantidade = ? WHERE id_lanche = ? AND id_ingrediente = ?';
+
+            $ingredientes = $lanche -> getIngredient();
+            //Retorna o array de quantidade de ingredientes do lanche
+        $receitas = $lanche -> getRecipe();
+            //Outra comando SQL de inserção
+            for($i = 0; $i < count($ingredientes); $i++){
+                $stmt = Connect::getConn() -> prepare($sql);
+                    //Novo valor da quantidade
+                $stmt -> bindValue(1, $receitas[$i], PDO::PARAM_INT);
+                    //id do ingrediente
+                $stmt -> bindValue(2, $ingredientes[$i], PDO::PARAM_INT);
+                    //quantidade do tal ingrediente
+                $stmt -> bindValue(3, $id, PDO::PARAM_INT);
+                    //Executa o comando $sql
+                $stmt -> execute();
+
+                echo "Linha adicionada: id do lanche: ".$id." int Ingrediente: ". $ingredientes[$i]. ". Quantidade: ". $receitas[$i];
+                echo "<br/>";
+            }
+
+        }
 
         // public function delete(int $id) {
         //         //Comando SQL
