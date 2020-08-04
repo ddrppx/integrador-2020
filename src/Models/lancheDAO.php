@@ -13,15 +13,35 @@ class lancheDAO {
                 $sql = 'INSERT INTO lanche (nome, valor) VALUES (?, ?)';
                     //Conexão com banco + prepare
                 $stmt = Connect::getConn() -> prepare($sql);
-
                     //Agrega o valor ao local do '?' na variavel $sql
                 $stmt -> bindValue(1, $lanche -> getNome(),PDO::PARAM_STR);
                 $stmt -> bindValue(2, $lanche -> getValor());
                     //Executa com os valores agregados
-                $stmt -> execute();
-                $insertID = (int)Connect::getConn() -> lastInsertId();
-                var_dump($insertID); //Debug
+                $stmt -> execute();               
+                    //ID do Lanche recém  inserido
+                $insertedID = (int)Connect::getConn() -> lastInsertId();
+                //Retorna o array de ingredientes do lanche
+                $ingredientes = $lanche -> getIngredient();
+                    //Retorna o array de quantidade de ingredientes do lanche
+                $receitas = $lanche -> getRecipe();
+                    //Outra comando SQL de inserção
+                $sql = 'INSERT INTO lanche_ingredientes (id_lanche, id_ingrediente, quantidade) VALUES (?, ?, ?)';
+                    //Prepara uma nova conexão ao banco
+                $stmt = Connect::getConn() -> prepare($sql);
+                    //For para inserir um array ao banco (Tabela lanche_ingredientes)
+                for($i = 0; $i < count($ingredientes); $i++){
+                        //id recém adicionado
+                    $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                        //id do ingrediente
+                    $stmt -> bindValue(2, $ingredientes[$i], PDO::PARAM_INT);
+                        //quantidade do tal ingrediente
+                    $stmt -> bindValue(3, $receitas[$i], PDO::PARAM_INT);
+                        //Executa o comando $sql
+                    $stmt -> execute();
 
+                    echo "Linha adicionada: id do lanche: ".$insertedID." int Ingrediente: ". $ingredientes[$i]. ". Quantidade: ". $receitas[$i];
+                    echo "<br/>";
+                }
 
             } catch (PDOException $e) {
                 $e -> getMessage();
@@ -30,19 +50,23 @@ class lancheDAO {
         }
 
         public function findId(Lanche $lanche) {
-            foreach ($lanche -> getIngredient() as $ingredient) {
-                echo $ingredient;
-                // $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
-                // $stmt -> bindValue(1, $ingredient, PDO::PARAM_STR);
-                // $resultado = $stmt -> execute();
-                $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
-                $stmt -> bindValue(1, $ingredient);
-                $stmt -> execute();
-                //Variavel que ira retornar todas linhas do banco
-                $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-                echo " ";
-                print_r($resultado);
-                echo "<br/>";
+            // foreach ($lanche -> getIngredient() as $ingredient) {
+            //     echo $ingredient;
+            //     // $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
+            //     // $stmt -> bindValue(1, $ingredient, PDO::PARAM_STR);
+            //     // $resultado = $stmt -> execute();
+            //     $stmt = Connect::getConn() -> prepare('SELECT * FROM ingredientes WHERE ingrediente = ?');
+            //     $stmt -> bindValue(1, $ingredient);
+            //     $stmt -> execute();
+            //     //Variavel que ira retornar todas linhas do banco
+            //     $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            //     echo " ";
+            //     echo $resultado[0]['id'];
+            //     echo "<br/>";
+
+            //     loop para adicionar os itens ao SQL lanche_ingredient
+                
+            // }
             }
         }
 

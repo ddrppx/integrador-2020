@@ -5,12 +5,10 @@
         use \PDOException;
         //Executa comandos SQL diretamente
         try {
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Carne bovina")');
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Carne suína")');
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Ovo")');
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Alface")');
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Tomate")');
-                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Cebola")');
+                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Queijo cheddar")');
+                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Queijo prato")');
+                $dbh = Connect::getConn() -> exec('INSERT INTO ingredientes (ingrediente) VALUES("Picles")');
+ 
 
 
                 echo "Finished.";

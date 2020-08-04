@@ -98,7 +98,7 @@
             return "Nome: ". $this -> getNome(). "<br />
             Valor: R$". $this -> __ValorTotal(). "<br />
             Desconto: ". $this -> getDesconto(). "%<br />
-            Ingredientes: ". $this -> getIngredientString();                
+            Ingredientes: ". $this -> getIngredientString(). "<br /> Receita: ". $this -> getRecipeString();                
         }
     }
 ?>

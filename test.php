@@ -18,13 +18,13 @@
 	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
 	// $promo1 = new Promocao("Feriado", 10);
-	// $lanche = new Lanche( "Hamburguer", 7.50, ["Ovo", "Cebola"], [1, 2]);
+	$lanche = new Lanche("Hamburguer", 7.50, [2, 3, 6], [1, 1, 2]);
 
-	$acomps = new acompDAO;
-	$bebidas = new bebidaDAO;
-	$cupons = new cupomDAO;
-	$promos = new promocaoDAO;
-	// $lanches = new lancheDAO;
+	// $acomps = new acompDAO;
+	// $bebidas = new bebidaDAO;
+	// $cupons = new cupomDAO;
+	// $promos = new promocaoDAO;
+	$lanches = new lancheDAO;
 ?>
 
 <!DOCTYPE html>
@@ -35,40 +35,42 @@
 	<title>Document</title>
 </head>
 <body>
-	<!-- <p><?= $lanche ?></p> -->
+	<p><?= $lanche ?></p>
 
 	<?php
 
-		// // $acomps -> create($);
+		// $acomps -> create($);
 		// echo "<h3>Acompanhamentos</h3>";
 		// $acomps -> read();
 		// echo "<hr/>";
-		// // $acomps -> update();
-		// // $acomps -> delete();
+		// $acomps -> update();
+		// $acomps -> delete();
 		
 
-		// // $bebidas -> create();
+		// $bebidas -> create();
 		// echo "<h3>Bebidas</h3>";
 		// $bebidas -> read();
 		// echo "<hr/>";
-		// // $bebidas -> update();
-		// // $bebidas -> delete();
+		// $bebidas -> update();
+		// $bebidas -> delete();
 		 
 
-		// // $cupons -> create();
+		// $cupons -> create();
 		// echo "<h3>Cupons</h3>";
 		// $cupons -> read();
 		// echo "<hr/>";
-		// // $cupons -> update();
-		// // $cupons -> delete();
+		// $cupons -> update();
+		// $cupons -> delete();
 
-		// // $promos -> create();
+		// $promos -> create();
 		// echo "<h3>Promoções</h3>";
 		// $promos -> read();
 		// echo "<hr/>";
-		// // $promos -> update();
-		// // $promos -> delete();
-		// // $promos -> create();
+		// $promos -> update();
+		// $promos -> delete();
+		// $promos -> create();
+
+		$lanches -> create($lanche);
 
 		echo "<br/>End.<br/>";
 
