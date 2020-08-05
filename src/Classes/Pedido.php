@@ -1,6 +1,6 @@
 <?php
 namespace Classes;
-
+    use \Classes\Lanche;
         //Especificando a classe
     class Pedido {
 
@@ -50,7 +50,7 @@ namespace Classes;
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
             $this -> cupom;
-            $this -> produtos = array();
+            $this -> produtos = [];
         }
 
             //Método toString
@@ -63,7 +63,7 @@ namespace Classes;
             Valor total: R$". $this -> getValor();
         }
             //Adiciona um item/produto à lista de itens do pedido
-        public function addProduto($produto){
+        public function addProduto(Lanche $produto){
             array_push($this -> produtos, $produto);
         }
 
@@ -143,5 +143,15 @@ namespace Classes;
         public function remCupom(){
             $this -> cupom = null;
         }
+
+            //Retorna o array da receita inteira
+        public function getIdProdutos($produto) {
+            return $produto -> getId();
+        }
+
+            //Retorna uma posiçao do array receita
+        // public function getUniqueProduto($pos) {
+        //     return $this -> produtos[$pos];
+        // }
     }
 ?>

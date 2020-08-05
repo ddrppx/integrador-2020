@@ -1,12 +1,13 @@
 <?php
     namespace Models;
     use Classes\Pedido;
+    use Classes\Lanche;
     use Database\Connect;
     use \PDO;
     use \PDOException;
 
 class lancheDAO {
-       
+
         public function create(Pedido $pedido) {
             try {
                     //Comando SQL

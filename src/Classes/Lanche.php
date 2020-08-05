@@ -88,7 +88,7 @@
 
             //Método construtor
         public function __construct($id, $nome, $valor, $ingredient, $recipe) {
-            $this -> id = $id;
+            $this -> id = id;
             $this -> nome = $nome;
             $this -> valor = $valor;
             $this -> ingredient = $ingredient;

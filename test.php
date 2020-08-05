@@ -6,6 +6,7 @@
 	use \Classes\Bebida;
 	use Classes\Cupom;
 	use \Classes\Lanche;
+	use \Classes\Pedido;
 	use \Classes\Promocao;
 
 	use \Models\acompDAO;
@@ -14,11 +15,16 @@
 	use \Models\promocaoDAO;
 	use \Models\lancheDAO;
 
-	// $acp = new Acompanhamento("Batata-frita", 3.50, "Grande");
-	// $beb2 = new Bebida("Refrigerante Guaraná", 2.67, "Antártica", "Grande");
+	$acp = new Acompanhamento(1, "Batata", 4.50, "Grande");
+	$beb2 = new Bebida(2, "Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
 	// $promo1 = new Promocao("Feriado", 10);
-	$lanche = new Lanche("Hamburguer talhado", 7.50, [2, 3, 6], [2, 2, 2]);
+	$lanche = new Lanche(1,"Hamburguer talhado", 7.50, [2, 3, 6], [2, 2, 2]);
+
+	$ped = new Pedido(0, 0);
+	// $ped -> addProduto($lanche);
+	// $ped -> addProduto($acp);
+	// $ped -> addProduto($beb2);
 
 	// $acomps = new acompDAO;
 	// $bebidas = new bebidaDAO;
@@ -35,7 +41,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $lanche ?></p>
+	<p><?= $ped ?></p>
 
 	<?php
 
@@ -71,10 +77,17 @@
 		// $promos -> create();
 
 		// $lanches -> create($lanche);
-		$lanches -> update(1, $lanche);
+		// $lanches -> update(1, $lanche);
+
+		// print_r($ped -> getArrayProdutos());
+		// print($ped -> getUniqueProduto(0));
+		// print($ped -> getUniqueProduto(1));
 		echo "<br/>End.<br/>";
-
-
+		// echo get_class($lanche). "<br/>";
+		// echo get_class($beb2). "<br/>";
+		// echo get_class($acp);
+		$ad = $ped -> getIdProdutos($lanche);
+		var_dump($ad);
 	?>
 
 </body>
