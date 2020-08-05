@@ -1,6 +1,7 @@
 <?php
 namespace Classes;
     use \Classes\Lanche;
+    date_default_timezone_set ('America/Sao_Paulo');
         //Especificando a classe
     class Pedido {
 
@@ -11,7 +12,7 @@ namespace Classes;
         public $valorT;
         public $produtos;
         public $cupom;
-        public $prodIds = [];
+        public $prodIds;
         
             //Método GET
         public function getHora() {
@@ -47,11 +48,12 @@ namespace Classes;
 
             //Metodo construtor
         public function __construct($modoP, $metodoP) {
-            $this -> hora = date('m/d/Y h:i:s a', time()); //Receberá a hora atual
+            $this -> hora = date('Y-m-d H:i:s', time()); //Receberá a hora atual
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
             $this -> cupom;
             $this -> produtos = [];
+            $this -> produdoIds = [];
         }
 
             //Método toString
@@ -67,7 +69,7 @@ namespace Classes;
         public function addProduto(Produto $produto){
             array_push($this -> produtos, $produto);
             
-            // $this -> prodIds = get_class($produto) => $produto -> getId()); 
+            $this -> produtoIds[] = $produto -> idReturn(); 
         }
 
         public function getProdutos() {
@@ -149,11 +151,11 @@ namespace Classes;
 
             //Retorna o array da receita inteira
         public function getIds() {
-            return $this -> prodIds;
+            return $this -> produtoIds;
         }
 
         public function getId($pos) {
-            return $this -> prodIds[$pos];
+            return $this -> produtoIds[$pos];
         }
 
             //Retorna uma posiçao do array receita

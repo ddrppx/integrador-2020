@@ -80,45 +80,11 @@
 
 		// $lanches -> create($lanche);
 		// $lanches -> update(1, $lanche);
-
-		// print_r($ped -> getArrayProdutos());
-		// print($ped -> getUniqueProduto(0));
-		// print($ped -> getUniqueProduto(1));
+		// echo $ped -> getHora();
+		$pedido -> create($ped);
 		echo "<br/>End.<br/>";
-		// echo get_class($lanche). "<br/>";
-		// echo get_class($beb2). "<br/>";
-		// echo get_class($acp);
-		// print_r($ped -> getIds());
-		echo "<br/>";
+	
 
-		// $pedido -> create($ped);
-		// for ($i=0; $i <= 2; $i++) { 
-		// 	echo "<br/>".$ped -> getId($i)."<br/>";
-		// }
-		// if (strcmp("Classes\Lanche", get_class($lanche)) {
-		// 	echo "Sim porra";
-		//  } 
-		//  else { "Nao krl". "<br/>"
-		//  }
-		$test = [];
-		array_push($test, $lanche -> idReturn());
-		array_push($test, $beb2 -> idReturn());
-		array_push($test, $acp -> idReturn());
-		// $test = $beb2 -> idReturn();
-		// $test = $acp -> idReturn();
-		print_r($test);
-		echo "<br/>";
-		// foreach ($test as $key => $value) {
-		// 	print_r($value). "<br/>";
-		// }
-		echo "<br/>";
-		print_r(array_keys($test[0]));
-		
-		echo "<br/>";
-		print_r(array_keys($test));
-		// echo get_class($acp). "<br/>";
-		// echo get_class($beb2). "<br/>";
-		// echo strcmp("ab", "AsB");
 	?>
 
 </body>

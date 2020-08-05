@@ -10,40 +10,82 @@ class pedidoDAO {
 
         public function create(Pedido $pedido) {
             try {
-                //     //Comando SQL
-                // $sql = 'INSERT INTO pedido (hora, md_preparo, mtd_pagamento, valor) VALUES (?, ?, ?)';
-                //     //Conexão com banco + prepare
-                // $stmt = Connect::getConn() -> prepare($sql);
-                //     //Agrega o valor ao local do '?' na variavel $sql
-                // $stmt -> bindValue(1, $pedido -> getHora(),PDO::PARAM_STR);
-                // $stmt -> bindValue(2, $pedido -> getModoPreparo());
-                // $stmt -> bindValue(3, $pedido -> getMetodoPagamento());
-                // $stmt -> bindValue(3, $pedido -> getValor());
-                // //Executa com os valores agregados
-                // $stmt -> execute();               
-                //     //ID do Lanche recém  inserido
-                // $insertedID = (int)Connect::getConn() -> lastInsertId();
-                // //Retorna o array de ingredientes do lanche
-                 $idItens = $pedido -> getIds();
-                //     //Outra comando SQL de inserção
-                $sql = 'INSERT INTO lanche_ingredientes (id_lanche, id_ingrediente, quantidade) VALUES (?, ?, ?)';
-                    //Prepara uma nova conexão ao banco
+                    //Comando SQL
+                $sql = 'INSERT INTO pedido (hora, md_preparo, mtd_pagamento, valor) VALUES (?, ?, ?, ?)';
+                echo "<br/>Start<br/>";
+                //Conexão com banco + prepare
                 $stmt = Connect::getConn() -> prepare($sql);
-                    //For para inserir um array ao banco (Tabela lanche_ingredientes)
-                for($i = 0; $i < count($idItens); $i++){
-                        //id recém adicionado
-                    $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
-                        //id do ingrediente
-                    $stmt -> bindValue(2, $ingredientes[$i], PDO::PARAM_INT);
-                        //quantidade do tal ingrediente
-                    $stmt -> bindValue(3, $receitas[$i], PDO::PARAM_INT);
-                        //Executa o comando $sql
-                    $stmt -> execute();
-
-                    echo "Linha adicionada: id do lanche: ".'$insertedID'." int Ingrediente: ". $idItens[$i];
-                    echo "<br/>";
+                //Agrega o valor ao local do '?' na variavel $sql
+                $stmt -> bindValue(1, $pedido -> getHora());
+                $stmt -> bindValue(2, $pedido -> getModoPreparo());
+                $stmt -> bindValue(3, $pedido -> getMetodoPagamento());
+                $stmt -> bindValue(4, $pedido -> getValor());
+                //Executa com os valores agregados
+                $stmt -> execute();               
+                echo "<br/>Start 2/6<br/>";
+                //ID do Lanche recém  inserido
+                $insertedID = (int)Connect::getConn() -> lastInsertId();
+                //Retorna o array de ingredientes do lanche
+                $idItens = $pedido -> getIds();
+                //For para inserir um array ao banco (Tabela lanche_x)
+                $arLanches = []; //Lanches
+                $arBebidas = []; //Bebidas
+                $arAcomps = []; //Acompanhamentos
+                //Cada valor é separado pela chave no array "key()"
+                echo "<br/>Start 3/6<br/>";
+                for ($i=0; $i < count($idItens); $i++) { 
+                    //Se o a linha do array for da classe "Lanche"
+                    if (key($idItens[$i]) == 'Classes\Lanche'){
+                        $arLanches[] = $idItens[$i]['Classes\Lanche'];
+                        //Se o a linha do array for da classe "Acompanhamento"
+                    } elseif (key($idItens[$i]) == 'Classes\Acompanhamento') {
+                        $arAcomps[] = $idItens[$i]['Classes\Acompanhamento'];
+                        //Se o a linha do array for da classe "Bebida"
+                    } elseif (key($idItens[$i]) == 'Classes\Bebida') {
+                        $arBebidas[] = $idItens[$i]['Classes\Bebida'];
+                    }
                 }
-
+                
+                echo "<br/>Start 4/6<br/>";
+                //Outra comando SQL de inserção (pedido_lanche)
+                $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche) VALUES (?, ?)';
+                //Prepara uma nova conexão ao banco
+                $stmt = Connect::getConn() -> prepare($sql);
+                $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                //Loop para inserir todos lanches
+                foreach ($arLanches as $lanche) {
+                    $stmt -> bindValue(2, $lanche, PDO::PARAM_INT);
+                    //Executa a cada item no array
+                    $stmt -> execute();
+                }
+                
+                echo "<br/>Start 5/6<br/>";
+                //Outra comando SQL de inserção (pedido_acomp)
+                $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp) VALUES (?, ?)';
+                //Prepara uma nova conexão ao banco
+                $stmt = Connect::getConn() -> prepare($sql);
+                $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                //Loop para inserir todos lanches
+                foreach ($arAcomps as $acomp) {
+                    $stmt -> bindValue(2, $acomp, PDO::PARAM_INT);
+                    //Executa a cada item no array
+                    $stmt -> execute();
+                }
+                
+                echo "<br/>Start 6/6<br/>";
+                //Outra comando SQL de inserção (pedido_bebida)
+                $sql = 'INSERT INTO pedido_bebida (id_pedido, id_bebida) VALUES (?, ?)';
+                //Prepara uma nova conexão ao banco
+                $stmt = Connect::getConn() -> prepare($sql);
+                $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                    //Loop para inserir todos lanches
+                foreach ($arBebidas as $bebida) {
+                    $stmt -> bindValue(2, $bebida, PDO::PARAM_INT);
+                        //Executa a cada item no array
+                    $stmt -> execute();
+                }
+    
+                echo "Finised.";
             } catch (PDOException $e) {
                 $e -> getMessage();
             }
