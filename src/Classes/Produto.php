@@ -5,10 +5,21 @@
     abstract class Produto { //É uma classe abstrar mais ainda nao foi implementada, ficaria 'abstract class Produto'
         
             //Atributos da classe
+        public $id;
         public $nome;
         public $valor;
         public $desconto;
         public $promocao;
+
+            //Método GET
+        public function getId() {
+            return $this -> id;
+        }
+        
+            //Método SET
+        public function setId($id) {
+            $this -> id = $id;
+        }
 
             //Método GET
         public function getNome() {

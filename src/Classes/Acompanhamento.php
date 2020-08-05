@@ -16,7 +16,8 @@
             $this -> tamanho = $tam;
         }
 
-        public function __construct($nome, $valor, $tamanho) {
+        public function __construct($id, $nome, $valor, $tamanho) {
+            $this -> id = $id;
             $this -> nome = $nome;
             $this -> valor = $valor;
             $this -> tamanho = $tamanho;

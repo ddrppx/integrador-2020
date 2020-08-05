@@ -60,7 +60,7 @@ namespace Classes;
             Modo de Preparo: ". $this -> getModoPreparo(). "<br />
             Metodo de Pagamento: ". $this -> getMetodoPagamento(). "<br />
             ". $this -> getProdutos(). "<br />
-            Valor total: R$". $this -> valorTotal();
+            Valor total: R$". $this -> getValor();
         }
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto($produto){
@@ -77,7 +77,7 @@ namespace Classes;
             return $strOutput;
         }
 
-        public function valorTotal(){
+        public function getValor(){
                 //Products recebe os itens de $produto(Todos itens do pedido)
             $somaProdutos = 0; //Inicializa a variavel
             for($i = 0; $i < count($this -> produtos); $i++){

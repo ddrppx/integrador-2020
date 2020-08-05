@@ -16,6 +16,7 @@ CREATE TABLE pedido (
 	hora TIMESTAMP NOT NULL,
 	modoPreparo VARCHAR(30) NOT NULL,
 	metodoPagamento VARCHAR(30) NOT NULL,
+	valor DOUBLE NOT NULL,
 	FOREIGN KEY (idCupom) REFERENCES cupom(id)
 );
 
