@@ -11,6 +11,7 @@ namespace Classes;
         public $valorT;
         public $produtos;
         public $cupom;
+        public $prodIds = [];
         
             //Método GET
         public function getHora() {
@@ -63,8 +64,10 @@ namespace Classes;
             Valor total: R$". $this -> getValor();
         }
             //Adiciona um item/produto à lista de itens do pedido
-        public function addProduto(Lanche $produto){
+        public function addProduto(Produto $produto){
             array_push($this -> produtos, $produto);
+            
+            // $this -> prodIds = get_class($produto) => $produto -> getId()); 
         }
 
         public function getProdutos() {
@@ -145,8 +148,12 @@ namespace Classes;
         }
 
             //Retorna o array da receita inteira
-        public function getIdProdutos($produto) {
-            return $produto -> getId();
+        public function getIds() {
+            return $this -> prodIds;
+        }
+
+        public function getId($pos) {
+            return $this -> prodIds[$pos];
         }
 
             //Retorna uma posiçao do array receita

@@ -14,6 +14,7 @@
 	use \Models\cupomDAO;
 	use \Models\promocaoDAO;
 	use \Models\lancheDAO;
+	use \Models\pedidoDAO;
 
 	$acp = new Acompanhamento(1, "Batata", 4.50, "Grande");
 	$beb2 = new Bebida(2, "Refrigerante Guaraná", 2.67, "Antártica", "Grande");
@@ -22,15 +23,16 @@
 	$lanche = new Lanche(1,"Hamburguer talhado", 7.50, [2, 3, 6], [2, 2, 2]);
 
 	$ped = new Pedido(0, 0);
-	// $ped -> addProduto($lanche);
-	// $ped -> addProduto($acp);
-	// $ped -> addProduto($beb2);
+	$ped -> addProduto($lanche);
+	$ped -> addProduto($acp);
+	$ped -> addProduto($beb2);
 
 	// $acomps = new acompDAO;
 	// $bebidas = new bebidaDAO;
 	// $cupons = new cupomDAO;
 	// $promos = new promocaoDAO;
-	$lanches = new lancheDAO;
+	// $lanches = new lancheDAO;
+	$pedido = new pedidoDAO;
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +88,37 @@
 		// echo get_class($lanche). "<br/>";
 		// echo get_class($beb2). "<br/>";
 		// echo get_class($acp);
-		$ad = $ped -> getIdProdutos($lanche);
-		var_dump($ad);
+		// print_r($ped -> getIds());
+		echo "<br/>";
+
+		// $pedido -> create($ped);
+		// for ($i=0; $i <= 2; $i++) { 
+		// 	echo "<br/>".$ped -> getId($i)."<br/>";
+		// }
+		// if (strcmp("Classes\Lanche", get_class($lanche)) {
+		// 	echo "Sim porra";
+		//  } 
+		//  else { "Nao krl". "<br/>"
+		//  }
+		$test = [];
+		array_push($test, $lanche -> idReturn());
+		array_push($test, $beb2 -> idReturn());
+		array_push($test, $acp -> idReturn());
+		// $test = $beb2 -> idReturn();
+		// $test = $acp -> idReturn();
+		print_r($test);
+		echo "<br/>";
+		// foreach ($test as $key => $value) {
+		// 	print_r($value). "<br/>";
+		// }
+		echo "<br/>";
+		print_r(array_keys($test[0]));
+		
+		echo "<br/>";
+		print_r(array_keys($test));
+		// echo get_class($acp). "<br/>";
+		// echo get_class($beb2). "<br/>";
+		// echo strcmp("ab", "AsB");
 	?>
 
 </body>

@@ -20,7 +20,11 @@
         public function setId($id) {
             $this -> id = $id;
         }
-
+            //retorna o ID com a classe atual
+        public function idReturn() {
+            $array = array(get_class($this) => $this -> id);
+            return $array;
+        }
             //Método GET
         public function getNome() {
             return $this -> nome;
