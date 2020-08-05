@@ -81,7 +81,8 @@
 		// $lanches -> create($lanche);
 		// $lanches -> update(1, $lanche);
 		// echo $ped -> getHora();
-		$pedido -> create($ped);
+		// $pedido -> create($ped);
+		$pedido -> read();
 		echo "<br/>End.<br/>";
 	
 

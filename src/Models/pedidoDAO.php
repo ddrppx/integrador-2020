@@ -94,35 +94,39 @@ class pedidoDAO {
 
         public function read() {
                 //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+            $sql = 'SELECT p.id, p.valor,
+            la.nome as la_nome, la.valor as la_valor,
+            ac.nome as ac_nome, ac.tamanho as ac_tamanho, ac.valor as ac_valor,
+            be.nome as be_nome, be.marca as be_marca , be.tamanho as be_tamanho, be.valor as be_valor
+            FROM pedido p
+            JOIN pedido_acomp pa ON pa.id_pedido = p.id
+            JOIN pedido_lanche pl ON pl.id_pedido = p.id
+            JOIN pedido_bebida pb ON p.id = pb.id_pedido
+            JOIN lanche la ON la.id = pl.id_lanche
+            JOIN bebida be ON be.id = pb.id_bebida
+            JOIN acompanhamento ac ON ac.id = pa.id';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> execute();
                 //Variavel que ira retornar todas linhas do banco
             $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
                 //Retorno da variavel
-            // return $resultado;
-            var_dump($resultado);
-        }
+             var_dump($resultado);
+            }
 
         public function read_show() {
-                //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
-                //Faz conexão à classe que retorna a instancia do banco
-            $stmt = Connect::getConn() -> prepare($sql);
-            $stmt -> execute();
-                //Variavel que ira retornar todas linhas do banco
-            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-                //Retorno da variavel
-            $rows = $resultado;
+
+            $rows = $this -> read();
             echo "<table>";
-            echo "<thead><th>ID</th><th>Nome</th><th>Ingrediente</th><th>Quantidade</th></thead>";
+            echo "<thead><th>ID</th><th>Valor Pedido</th><th>Nome</th><th>Quantidade</th></thead>";
             foreach ($rows as $row){
                 echo "<tr>
                     <td>".$row['id']."</td>
-                    <td>".$row['nome']."</td>
-                    <td>".$row ['ingrediente']."</td>
-                    <td>".$row ['quantidade']."</td>
+                    <td>".$row['valor']."</td>
+                    <td>".$row['la_nome']."</td>
+                    <td>".$row['la_valor']."</td>
+                    <td>".$row ['tamanho']."</td>
+                    <td>".$row ['marca']."</td>
                 </tr>";
             }
             echo "</table>";
