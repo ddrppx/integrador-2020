@@ -17,7 +17,7 @@
 	use \Models\pedidoDAO;
 
 	$acp = new Acompanhamento(1, "Batata", 4.50, "Grande");
-	$beb2 = new Bebida(2, "Refrigerante Guaraná", 2.67, "Antártica", "Grande");
+	$beb2 = new Bebida(4, "Refrigerante Guaraná", 2.67, "Antártica", "Grande");
 	// $cupom2 = new Cupom("PKR2B", 25);
 	// $promo1 = new Promocao("Feriado", 10);
 	$lanche = new Lanche(1,"Hamburguer talhado", 7.50, [2, 3, 6], [2, 2, 2]);
@@ -81,8 +81,8 @@
 		// $lanches -> create($lanche);
 		// $lanches -> update(1, $lanche);
 		// echo $ped -> getHora();
-		// $pedido -> create($ped);
-		$pedido -> read();
+		$pedido -> create($ped);
+		// $pedido -> update(1, $ped);
 		echo "<br/>End.<br/>";
 	
 
