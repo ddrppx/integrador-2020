@@ -16,10 +16,16 @@ if (isset($_GET['add']) && $_GET['add'] == "carrinho"){
     $idProduto = $_GET['id'];
     if(!isset($_SESSION['itens'][$idProduto])) {
         $_SESSION['itens'][$idProduto] = 1;
+        $_SESSION['itens'][$idProduto]['classe'] = "Lanche";
+        
     } else {
         $_SESSION['itens'][$idProduto] += 1;
     }
 }
+
+    echo "<pre>";
+    print_r($_SESSION['itens']);
+    echo "</pre>";
 
 if (count($_SESSION['itens']) == 0) {
     echo 'Carrinho Vazio <br/> <a href="test.php"> Adicionar itens</a>'; 
@@ -30,7 +36,7 @@ if (count($_SESSION['itens']) == 0) {
         echo "Nome: ". $prods[0]['nome']. "<br/>";
         echo "Valor: ". $prods[0]['valor']. "<br/>";
         echo "Quantidade ". $quantidade ."<br/>";
-        echo "Total: ". ($prods[0]['valor'] * $quantidade). "<hr/><br/>";
-        echo '<a href="remover.php?remover=carrinho&&id='. $idProduto.'"> Remover </a>'; 
+        echo "Total: ". ($prods[0]['valor'] * $quantidade);
+        echo '<a href="remover.php?remover=carrinho&&id='. $idProduto.'"> Remover </a>'. "<hr/><br/>"; 
     } 
 }

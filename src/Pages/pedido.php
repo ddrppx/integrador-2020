@@ -8,6 +8,7 @@ session_start();
 
     if(isset($_POST)){
         $pag = $_POST['pagamento'];
+        echo $_POST['categoria'];
     } else {
         $errors[] = "Post pagamento não recebido.";
     }
@@ -43,35 +44,30 @@ session_start();
 
             <!-- Container Lateral -->
             <div class="col-sm-12 col-md-3 borderGray" id="lateral-categoria">
+                <form name="form" method="post" action=""/>
+                    <div class="card my-2" onclick="sendSubmit('categoria',1)">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanches</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
 
-            <div class="card my-2" onclick="selecionarCat('1')">
-                <div class="card-body">
-                    <h5 class="card-title">Lanches</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
+                    <div class="card my-2" onclick="sendSubmit('categoria',2)">
+                        <div class="card-body">
+                            <h5 class="card-title">Acompanhamentos</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
 
-            <div class="card my-2" onclick="selecionarCat('2')">
-                <div class="card-body">
-                    <h5 class="card-title">Acompanhamentos</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
+                    <div class="card my-2" onclick="sendSubmit('categoria',3)">
+                        <div class="card-body">
+                            <h5 class="card-title">Bebidas</h5>
+                        </div>
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
+                    </div>
 
-            <div class="card my-2" onclick="selecionarCat('3')">
-                <div class="card-body">
-                    <h5 class="card-title">Bebidas</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
-            <div class="card my-2" onclick="selecionarCat('4')">
-                <div class="card-body">
-                    <h5 class="card-title">Sobremesas</h5>
-                </div>
-                <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
-            </div>
-
+                    <input type="hidden" id="categoria" name="categoria" value=""/>
+                </form>
         </div>
 
             <!-- Container -->

@@ -32,7 +32,7 @@
 	// $cupons = new cupomDAO;
 	// $promos = new promocaoDAO;
 	// $lanches = new lancheDAO;
-	// $pedido = new pedidoDAO;
+	$pedido = new pedidoDAO;
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +83,7 @@
 		// echo $ped -> getHora();
 		// $pedido -> create($ped);
 		// $pedido -> update(1, $ped);
+		// $pedido -> delete(2);
 		echo "<br/>End.<br/>";
 			// Teste array com obj
 		// $produto = [];

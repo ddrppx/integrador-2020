@@ -16,66 +16,15 @@ function selecionarCat(x) {
     let items = '';
     switch (x) {
         case '1':
-            for(i = 0; i < 3; i++){
-                items += `
-                <div class="card my-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Lanche ${i + 1}</h5>
-                    </div>
-                    <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-                </div>
-                
-                `;
-            }
+            
             break;
         case '2':
-            for(i = 0; i < 3; i++){
-                items += `
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Acompanhamento ${i + 1}</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-                `;
-            }
+            
             break;
         case "3":
-            for(i = 0; i < 3; i++){
-                items += `
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Bebida ${i + 1}</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-                `;
-            }
+            
             break;
-        case '4':
-            for(i = 0; i < 3; i++){
-                items += `
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Sobremesa ${i + 1}</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-                `;
-            }
-            break;
-        case '5':
-            for(i = 0; i < 3; i++){
-                items += `
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Prato ${i + 1}</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/pratos.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-                    `;
-                }
-                break;
+       
         default:
             break;
     }

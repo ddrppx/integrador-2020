@@ -9,6 +9,7 @@
         public $nome;
         public $valor;
         public $desconto;
+        public $quantidade;
         public $promocao;
 
             //Método GET
@@ -43,6 +44,15 @@
             //Método SET
         public function setValor($valor) {
             $this -> valor = $valor;
+        }
+            //Método GET
+        public function getQtd() {
+            return $this -> quantidade;
+        }
+
+            //Método SET
+        public function setQtd($qtd) {
+            $this -> quantidade = $qtd;
         }
 
             //Método GET
