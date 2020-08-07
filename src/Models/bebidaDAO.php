@@ -57,11 +57,12 @@ class bebidaDAO {
 
             foreach ($rows as $row){
                     echo '
-                    <div class="card mb-0 mt-0">
-                        <img class="card-img-top mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
+                    <div class="card mb-1 mt-1">
+                        <img class="card-img-top mb-0" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text text-left h6">'.$row['nome']. $row['marca']. $row['tamanho'].'</h5>
-                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
+                            <p class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</p>
+                            <p class="card-text text-left h6">'. $row['tamanho'].'</p>
+                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</p>
                         </div>
                      </div>';
             }

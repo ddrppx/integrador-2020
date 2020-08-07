@@ -13,7 +13,7 @@
                 </div>
               </div>
         </div>
-
+      </div>
      <!-- CDN Ajax/JQuery -->
     <script src="../javascript/jquery.min.js"></script>
     <!-- CDN Popper.js (Bootstrap) -->

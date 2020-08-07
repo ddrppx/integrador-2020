@@ -64,19 +64,17 @@ class lancheDAO {
 
         public function read_show() {
             $rows = $this -> read();
-                // echo "<table>";
-                // echo "<thead><th>ID</th><th>Nome</th><th>Valor</th><th>Tamanho</th></thead>";
+            
             foreach ($rows as $row){
                 echo '
-                    <div class="card mb-0 mt-0">
+                    <div class="card mb-1 mt-1">
                         <img class="card-img-top mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>
-                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
+                            <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>
                         </div>
                     </div>';
                 }
-                // echo "</table>";
         }
 
         public function update(int $id, Lanche $lanche) {
