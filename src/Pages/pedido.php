@@ -1,5 +1,7 @@
 <?php
 
+use Models\acompDAO;
+use Models\bebidaDAO;
 use Models\lancheDAO;
 
 session_start();
@@ -13,14 +15,28 @@ session_start();
     }
 
         //Checa se $_POST['categoria'] existe
-    if(isset($_POST['categoria']) || $_POST['categoria'] == 1){
-       $lanches = new lancheDAO;
-       $rows = $lanches -> read();
-    }
+    if(isset($_POST['categoria'])) {
 
+        if($_POST['categoria'] == 1) {
+        $produtos = new lancheDAO;
+        $rows = $produtos -> read();
+        echo "Lanche";
+        } elseif ($_POST['categoria'] == 2) {
+            $produtos = new acompDAO;
+            $rows = $produtos -> read();
+        echo "Acomp";
+    } elseif ($_POST['categoria'] == 3) {
+        $produtos = new bebidaDAO;
+        $rows = $produtos -> read();
+        echo "Bebida";
+
+        }   
+    }
+    echo "<br/>";
+    var_dump($rows);
     echo $_POST['categoria'];
 
-    $produtos = new lancheDAO;
+    $acp = new acompDAO;
 ?>
 
 <!DOCTYPE html>
@@ -80,17 +96,7 @@ session_start();
             <!-- Container -->
             <div class="col-sm-12 col-md-9 borderGray" id="lateral-produtos">
                 <div id="cards_container" class="card-columns">
-                    <?php $rows = $produtos -> read(); 
-                    foreach ($rows as $row) {
-                    ?>
-                    <div class="card my-2">
-                        <img class="card-img-top mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-                        <div class="card-body">
-                        <p class="card-title h5"><?= $row['nome'] ?></p>
-                        <p class="card-title h6 text-right"><?= "R$".number_format($row['valor'],2) ?></p>
-                        </div>
-                    </div>
-                    <?php } ?>
+                    <?php $acp -> read_show(); ?>
 
                 </div>
             </div>
@@ -103,7 +109,7 @@ session_start();
                 <h2>Itens</h2>
             </div>
             <div class="col card-columns sliderItens borderGray text-left vertAlign">
-                <?php print_r($rows); ?>
+                <?php //$acp -> read_show(); ?>
             </div>
         </div>
     </div>

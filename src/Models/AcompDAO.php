@@ -35,18 +35,24 @@ try {
                 //Variavel que ira retornar todas linhas do banco
             $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
                 //Retorno da variavel
-            $rows = $resultado;
-            echo "<table>";
-            echo "<thead><th>ID</th><th>Nome</th><th>Valor</th><th>Tamanho</th></thead>";
+            return $resultado;
+        }
+
+        public function read_show() {
+            $rows = $this -> read();
+            // echo "<table>";
+            // echo "<thead><th>ID</th><th>Nome</th><th>Valor</th><th>Tamanho</th></thead>";
             foreach ($rows as $row){
-                echo "<tr>
-                    <td>".$row['id']."</td>
-                    <td>".$row['nome']."</td>
-                    <td>".$row ['valor']."</td>
-                    <td>".$row ['tamanho']."</td>
-                </tr>";
+                    echo '
+                    <div class="card mb-0 mt-0">
+                        <img class="card-img-top mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
+                            <!-- <p class="card-text justify-content h4">Tam:'.$row['tamanho'].' R$'.$row['valor'].'</h5> -->
+                        </div>
+                     </div>';
             }
-            echo "</table>";
+            // echo "</table>";
         }
 
         public function update(int $id, Acompanhamento $acp) {
