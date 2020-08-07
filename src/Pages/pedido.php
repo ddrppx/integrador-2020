@@ -6,12 +6,19 @@ session_start();
 
     require_once "../../vendor/autoload.php";
 
-    if(isset($_POST)){
+    if(isset($_POST['pagamento'])){
         $pag = $_POST['pagamento'];
-        echo $_POST['categoria'];
     } else {
         $errors[] = "Post pagamento não recebido.";
     }
+
+        //Checa se $_POST['categoria'] existe
+    if(isset($_POST['categoria']) || $_POST['categoria'] == 1){
+       $lanches = new lancheDAO;
+       $rows = $lanches -> read();
+    }
+
+    echo $_POST['categoria'];
 
     $produtos = new lancheDAO;
 ?>
@@ -96,35 +103,7 @@ session_start();
                 <h2>Itens</h2>
             </div>
             <div class="col card-columns sliderItens borderGray text-left vertAlign">
-
-                    <div class="card mb-0 mt-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Lanche 2</h5>
-                        </div>
-                        <img class="card-img-bottom" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-
-                    <div class="card mb-0 mt-0">
-                        <div class="card-body">
-                        <h5 class="card-title">Acompanhamento 1</h5>
-                    </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-
-                    
-                    <div class="card mb-0 mt-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Bebida 3</h5>
-                        </div>
-                            <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>
-
-                    <div class="card mb-0 mt-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Sobremesa 5</h5>
-                        </div>
-                            <img class="card-img-bottom mb-2" src="../static/svg/segment/sobremesas.svg" height="110px" width="110px" alt="Card image cap">
-                    </div>                    
+                <?php print_r($rows); ?>
             </div>
         </div>
     </div>
