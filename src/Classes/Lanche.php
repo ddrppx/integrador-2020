@@ -87,13 +87,13 @@
         }
 
             //Método construtor
-        public function __construct($id, $nome, $valor, $ingredient, $recipe) {
-            $this -> id = $id;
-            $this -> nome = $nome;
-            $this -> valor = $valor;
-            $this -> ingredient = $ingredient;
-            $this -> recipe = $recipe;
-        }
+        // public function __construct($id, $nome, $valor, $ingredient, $recipe) {
+        //     $this -> id = $id;
+        //     $this -> nome = $nome;
+        //     $this -> valor = $valor;
+        //     $this -> ingredient = $ingredient;
+        //     $this -> recipe = $recipe;
+        // }
             //Método toString
         public function __toString() {
             return "Nome: ". $this -> getNome(). "<br />

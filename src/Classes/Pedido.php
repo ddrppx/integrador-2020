@@ -67,9 +67,15 @@ namespace Classes;
         }
             //Adiciona um item/produto à lista de itens do pedido
         public function addProduto(Produto $produto){
+                //Adiciona o produto no parametro ao array de produtos
             array_push($this -> produtos, $produto);
-            
+                //Armazena o ID do produto num array
             $this -> produtoIds[] = $produto -> idReturn(); 
+        }
+
+        public function remProduto(int $x){
+                //Deleta o produto na posição x
+                array_slice($this -> produtos, $x);
         }
 
         public function getProdutos() {

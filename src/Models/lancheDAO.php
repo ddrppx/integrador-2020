@@ -51,7 +51,7 @@ class lancheDAO {
 
         public function read() {
                 //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+            $sql = 'SELECT lc.id, lc.nome, lc.valor FROM lanche lc';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> execute();
@@ -59,12 +59,14 @@ class lancheDAO {
             $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
                 //Retorno da variavel
             // return $resultado;
-            var_dump($resultado);
+            return $resultado;
         }
 
         public function read_show() {
                 //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+            $sql = 'SELECT lc.id, lc.nome, lc.valor FROM lanche lc';
+            // $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
+
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> execute();

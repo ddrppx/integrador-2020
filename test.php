@@ -28,11 +28,11 @@
 	$ped -> addProduto($beb2);
 
 	// $acomps = new acompDAO;
-	// $bebidas = new bebidaDAO;
+	$bebidas = new bebidaDAO;
 	// $cupons = new cupomDAO;
 	// $promos = new promocaoDAO;
 	// $lanches = new lancheDAO;
-	$pedido = new pedidoDAO;
+	// $pedido = new pedidoDAO;
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<p><?= $ped ?></p>
+	<!-- <p><?= $ped ?></p> -->
 
 	<?php
 
@@ -81,11 +81,34 @@
 		// $lanches -> create($lanche);
 		// $lanches -> update(1, $lanche);
 		// echo $ped -> getHora();
-		$pedido -> create($ped);
+		// $pedido -> create($ped);
 		// $pedido -> update(1, $ped);
 		echo "<br/>End.<br/>";
-	
+			// Teste array com obj
+		// $produto = [];
 
+		// $produto[] = $lanche;
+		// $produto[] = $acp;
+
+		// print_r($produto);
+
+		// echo "<pre>";
+		// foreach ($produto as $key => $value) {
+		// 	echo $key. ": " .$value. "<br/>";
+		// }
+		session_start();
+		$rows = $bebidas -> read();
+			//nome marca valor tamanho
+		foreach ($rows as $valores) {
+			echo "Nome: ". $valores['nome']. "<br/>";
+			echo "Marca: ". $valores['marca']. "<br/>";
+			echo "Valor: ". $valores['valor']. "<br/>";
+			echo "Tamanho: ". $valores['tamanho']. "<br/>";
+			echo '<a href="carrinho.php?add=carrinho&id='. $valores['id']. '">Adicionar ao carrinho </a>';
+			echo "<br/>";
+		}
+		
+		echo "</pre>";
 	?>
 
 </body>

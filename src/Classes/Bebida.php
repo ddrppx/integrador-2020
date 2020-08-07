@@ -27,13 +27,13 @@
             $this -> tamanho = $tam;
         }
 
-        public function __construct($id, $nome, $valor, $marca, $tamanho) {
-            $this -> id = $id;
-            $this -> nome = $nome;
-            $this -> valor = $valor;
-            $this -> marca = $marca;
-            $this -> tamanho = $tamanho;
-        }
+        // public function __construct($id, $nome, $valor, $marca, $tamanho) {
+        //     $this -> id = $id;
+        //     $this -> nome = $nome;
+        //     $this -> valor = $valor;
+        //     $this -> marca = $marca;
+        //     $this -> tamanho = $tamanho;
+        // }
 
         public function __toString() {
             return "- Bebida -<br /> 

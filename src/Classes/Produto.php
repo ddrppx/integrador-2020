@@ -74,15 +74,14 @@
 
                 return number_format($valorT, 2);
                     //Retorna o valor formatado em duas casas decimais
-            
         }
 
             //Método construtor
-        public function __construct($nome, $valor) {
-            $this -> nome = $nome;
-            $this -> valor = $valor;
-            $this -> promocao;
-        }
+        // public function __construct($nome, $valor) {
+        //     $this -> nome = $nome;
+        //     $this -> valor = $valor;
+        //     $this -> promocao;
+        // }
             //Adiciona uma promocao ao item
         public function addPromocao($promocao) {
             $this -> promocao = $promocao;
@@ -103,7 +102,7 @@
                     Nome: ". $this -> getNome(). "<br />
                     Valor: R$". $this -> getValor(). "<br />
                     Desconto: ". $this -> getDesconto(). "%<br />
-                     Valor Total: R$". $this -> __ValorTotal();
+                    Valor Total: R$". $this -> __ValorTotal();
         }   
     }
 ?>
