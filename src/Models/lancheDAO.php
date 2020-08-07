@@ -63,28 +63,20 @@ class lancheDAO {
         }
 
         public function read_show() {
-                //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, lc.valor FROM lanche lc';
-            // $sql = 'SELECT lc.id, lc.nome, ing.ingrediente, li.quantidade FROM lanche lc JOIN lanche_ingredientes li ON lc.id = id_lanche JOIN ingredientes ing ON ing.id = li.id;';
-
-                //Faz conexão à classe que retorna a instancia do banco
-            $stmt = Connect::getConn() -> prepare($sql);
-            $stmt -> execute();
-                //Variavel que ira retornar todas linhas do banco
-            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-                //Retorno da variavel
-            $rows = $resultado;
-            echo "<table>";
-            echo "<thead><th>ID</th><th>Nome</th><th>Ingrediente</th><th>Quantidade</th></thead>";
+            $rows = $this -> read();
+                // echo "<table>";
+                // echo "<thead><th>ID</th><th>Nome</th><th>Valor</th><th>Tamanho</th></thead>";
             foreach ($rows as $row){
-                echo "<tr>
-                    <td>".$row['id']."</td>
-                    <td>".$row['nome']."</td>
-                    <td>".$row ['ingrediente']."</td>
-                    <td>".$row ['quantidade']."</td>
-                </tr>";
-            }
-            echo "</table>";
+                echo '
+                    <div class="card mb-0 mt-0">
+                        <img class="card-img-top mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
+                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
+                        </div>
+                    </div>';
+                }
+                // echo "</table>";
         }
 
         public function update(int $id, Lanche $lanche) {

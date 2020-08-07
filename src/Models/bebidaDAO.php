@@ -55,18 +55,17 @@ class bebidaDAO {
         public function read_show() {
             $rows = $this -> read();
 
-            echo "<table>";
-            echo "<thead><tr><th>ID</th><th>Nome</th><th>Marca</th><th>Valor</th><th>Tamanho</th></thead>";
             foreach ($rows as $row){
-                echo "<tr>
-                    <td>".$row['id']."</td>
-                    <td>".$row['nome']."</td>
-                    <td>".$row ['marca']."</td>
-                    <td>".$row ['valor']."</td>
-                    <td>".$row ['tamanho']."</td>
-                </tr>";
+                    echo '
+                    <div class="card mb-0 mt-0">
+                        <img class="card-img-top mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text text-left h6">'.$row['nome']. $row['marca']. $row['tamanho'].'</h5>
+                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
+                        </div>
+                     </div>';
             }
-            echo "</table>";
+            // echo "</table>";
         }
 
         public function update(int $id, Bebida $bebida) {

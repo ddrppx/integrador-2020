@@ -32,10 +32,15 @@ div #lateral-categoria {
     overflow-y: scroll; /* Barra de rolagem oculta */
 }
 
+div #lateral-produtos {
+    max-height: 540px;
+    overflow-y: scroll; /* Barra de rolagem oculta */
+}
+
 /* Largura da barra de rolagem */
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 1px;
-} */
+} 
 
     /* Estilização do texto no card na lateral da pagina produto pedido */
 div .card-body {

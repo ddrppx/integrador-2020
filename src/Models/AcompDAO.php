@@ -8,7 +8,7 @@
 class acompDAO {
        
         public function create(Acompanhamento $acmp) {
-try {
+            try {
                     //Comando SQL
                 $sql = 'INSERT INTO acompanhamento (nome, valor, tamanho) VALUES (?, ?, ?)';
                     //Conexão com banco + prepare
@@ -48,7 +48,7 @@ try {
                         <img class="card-img-top mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>
-                            <!-- <p class="card-text justify-content h4">Tam:'.$row['tamanho'].' R$'.$row['valor'].'</h5> -->
+                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
                         </div>
                      </div>';
             }

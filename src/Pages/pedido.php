@@ -19,24 +19,23 @@ session_start();
 
         if($_POST['categoria'] == 1) {
         $produtos = new lancheDAO;
-        $rows = $produtos -> read();
+        // $rows = $produtos -> read();
         echo "Lanche";
         } elseif ($_POST['categoria'] == 2) {
             $produtos = new acompDAO;
-            $rows = $produtos -> read();
+            // $rows = $produtos -> read();
         echo "Acomp";
     } elseif ($_POST['categoria'] == 3) {
         $produtos = new bebidaDAO;
-        $rows = $produtos -> read();
+        // $rows = $produtos -> read();
         echo "Bebida";
 
         }   
     }
-    echo "<br/>";
-    var_dump($rows);
-    echo $_POST['categoria'];
+    // echo "<br/>";
+    // var_dump($rows);
+    // echo $_POST['categoria'];
 
-    $acp = new acompDAO;
 ?>
 
 <!DOCTYPE html>
@@ -96,8 +95,7 @@ session_start();
             <!-- Container -->
             <div class="col-sm-12 col-md-9 borderGray" id="lateral-produtos">
                 <div id="cards_container" class="card-columns">
-                    <?php $acp -> read_show(); ?>
-
+                    <?php $produtos -> read_show(); ?>
                 </div>
             </div>
         </div>
