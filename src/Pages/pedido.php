@@ -10,28 +10,43 @@ session_start();
 
     if(isset($_POST['pagamento'])){
         $pag = $_POST['pagamento'];
+        $produtos = new lancheDAO;
     } else {
         $errors[] = "Post pagamento não recebido.";
     }
 
-        //Checa se $_POST['categoria'] existe
-    if(isset($_POST['categoria'])) {
-
-        if($_POST['categoria'] == 1) {
-        $produtos = new lancheDAO;
-        // $rows = $produtos -> read();
-        } elseif ($_POST['categoria'] == 2) {
-            $produtos = new acompDAO;
-            // $rows = $produtos -> read();
-    } elseif ($_POST['categoria'] == 3) {
-        $produtos = new bebidaDAO;
-        // $rows = $produtos -> read();
-
-        }   
+    if (isset($_POST['categoria'])) { // check if POST have that index or not
+        $category = $_POST['categoria']; // if yes then reassign it's value
+        $_SESSION['categoria'] = $category;  // set reassigned value to session variable
     }
+    // $produtos = new lancheDAO;
+        //Checa se $_POST['categoria'] existe
+    // if(!isset($_POST['categoria']) || !isset($_SESSION['categoria'])) {
+    //      $_SESSION['categoria'] = $_POST['categoria'];
+    
+        if($_SESSION['categoria'] == 1) {
+            $produtos = new lancheDAO;
+            echo "lanche";
+        // $rows = $produtos -> read();
+        } elseif ($_SESSION['categoria'] == 2) {
+            $produtos = new acompDAO;
+            echo "acomp";
+            // $rows = $produtos -> read();
+        } elseif ($_SESSION['categoria'] == 3) {
+            $produtos = new bebidaDAO;
+            echo "bebida";
+        // $rows = $produtos -> read();
+        }
+    // }
+    // } else {
+    //     $produtos = new lancheDAO;
+    // }
     // echo "<br/>";
     // var_dump($rows);
     // echo $_POST['categoria'];
+        var_dump($_POST);
+        echo "<br/>";
+        var_dump($_GET);
 
 ?>
 
@@ -63,8 +78,8 @@ session_start();
 
             <!-- Container Lateral -->
             <div class="col-12 col-md-3 borderGray" id="lateral-categoria">
-                <div class="row d-flex flex-wrap card-column content-justify-around"
-                <form name="form" method="post" action="">
+                <div class="row d-flex flex-wrap card-column content-justify-around">
+                <form name="form" id="form-categoria" method="post" action="">
         <!-- <div class="row d-sm-flex"> -->
                 <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0 "> -->
                     <div class="card my-1 col-4 col-sm-4 col-md-12" onclick="sendSubmit('categoria',1)">
@@ -99,9 +114,13 @@ session_start();
         <!-- </div> -->
             <!-- Container -->
             <div class="col-12 col-sm-12 col-md-9 borderGray" id="lateral-produtos">
+                <form name="produtos" id="form-produtos" method="get" action="">
                 <div id="cards-container" class="card-columns d-flex flex-wrap">
-                    <?php $produtos -> read_show(); ?>
+                    <?php 
+                    isset($produtos)? $produtos -> read_show() : var_dump($produtos); ?>
                 </div>
+                <input type="hidden" name="add" id="add" value="carrinho">
+                </form>
             </div>
         </div>
     </div>

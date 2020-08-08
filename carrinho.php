@@ -40,13 +40,28 @@ if (count($_SESSION['itens']) == 0) {
     } 
 }
 
+//-----------------------------------------------------------------
+
     //Modificacoes
-if (!isset($_SESSION['itens'])){
+if (!isset($_SESSION['lanches'])){
 
     $_SESSION['lanches'] = [];
-    $_SESSION['acomps'] = [];
-    $_SESSION['bebidas'] = [];
+    echo "Lanche";
+
 }
+    //Modificacoes
+if (!isset($_SESSION['acomps'])){
+
+    $_SESSION['acomps'] = [];
+    echo "Acompanhamento";
+}
+    //Modificacoes
+if (!isset($_SESSION['bebidas'])){
+
+    $_SESSION['bebidas'] = [];
+    echo "Bebida";
+}
+
     //STOPPED HERE
 if (isset($_POST['add']) && $_POST['add'] == "carrinho"){
     $idProduto = $_GET['id'];

@@ -11,6 +11,15 @@ function sendSubmit(newiD, newValue) {
     console.log(newValue);
 }
 
+function escolherProduto(newiD, newValue) {
+    let input = document.getElementById(newiD);
+    input.value = newValue; //Muda o value do input
+    let form = document.getElementById('form-produtos');
+    form.submit();
+    //Realiza a ação de pressionar o botão Enviar
+    console.log(newValue);
+}
+
 function selecionarCat(x) {
     const selectDiv = document.querySelector('#cards_container');
     let items = '';

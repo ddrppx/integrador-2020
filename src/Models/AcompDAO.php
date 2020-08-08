@@ -40,11 +40,10 @@ class acompDAO {
 
         public function read_show() {
             $rows = $this -> read();
-            // echo "<table>";
-            // echo "<thead><th>ID</th><th>Nome</th><th>Valor</th><th>Tamanho</th></thead>";
+
             foreach ($rows as $row){
                     echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                    <div class="card col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
                         <img class="card-img-top mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>
@@ -52,7 +51,6 @@ class acompDAO {
                         </div>
                      </div>';
             }
-            // echo "</table>";
         }
 
         public function update(int $id, Acompanhamento $acp) {
