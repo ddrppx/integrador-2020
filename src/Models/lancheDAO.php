@@ -67,7 +67,7 @@ class lancheDAO {
             
             foreach ($rows as $row){
                 echo '
-                    <div class="card mb-1 mt-1">
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
                         <img class="card-img-top mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>

@@ -57,8 +57,8 @@ class bebidaDAO {
 
             foreach ($rows as $row){
                     echo '
-                    <div class="card mb-1 mt-1">
-                        <img class="card-img-top mb-0" src="http://lorempixel.com/300/150?4" alt="Card image cap">
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                        <img class="card-img-top mb-0" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <h6 class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
                             <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</p>

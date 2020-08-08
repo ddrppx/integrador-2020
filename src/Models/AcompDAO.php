@@ -53,6 +53,19 @@ class acompDAO {
             }
         }
 
+        public function readId(int $id) {
+            //Comando SQL
+        $sql = 'SELECT * FROM acompanhamento WHERE id = ?';
+            //Faz conexão à classe que retorna a instancia do banco
+        $stmt = Connect::getConn() -> prepare($sql);
+        $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+        $stmt -> execute();
+            //Variavel que ira retornar todas linhas do banco
+        $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            //Retorno da variavel
+        return $resultado;
+    }
+
         public function update(int $id, Acompanhamento $acp) {
                 //Comando SQL
             $sql = 'UPDATE acompanhamento SET nome = ?, valor = ?, tamanho = ? WHERE id = ?';
