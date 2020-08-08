@@ -1,5 +1,5 @@
-		<div class="container-fluid">
-			<div class="container container-fluid">
+		<div class="container">
+			<div class="container">
 				<div class="row flex-nowrap">
 					<div class="col-md-4" id="geolocation">
 					</div>

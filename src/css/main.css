@@ -32,6 +32,10 @@ div #lateral-categoria {
     overflow-y: scroll; /* Barra de rolagem oculta */
 }
 
+#lateral-categoria .card {
+    width: 100% \9;
+}
+
 div #lateral-produtos {
     max-height: 540px;
     overflow-y: scroll; /* Barra de rolagem oculta */
@@ -103,4 +107,7 @@ div#opt:hover {
     margin-bottom: 2px;
 }
 
+.customSize {
+    max-width: 148px;
 
+}

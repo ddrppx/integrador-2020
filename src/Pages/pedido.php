@@ -62,36 +62,44 @@ session_start();
         <div class="row">
 
             <!-- Container Lateral -->
-            <div class="col-sm-12 col-md-3 borderGray" id="lateral-categoria">
-                <form name="form" method="post" action=""/>
-                    <div class="card my-1" onclick="sendSubmit('categoria',1)">
+            <div class="col-12 col-md-3 borderGray" id="lateral-categoria">
+                <div class="row d-flex flex-wrap card-column content-justify-around"
+                <form name="form" method="post" action="">
+        <!-- <div class="row d-sm-flex"> -->
+                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0 "> -->
+                    <div class="card my-1 col-4 col-sm-4 col-md-12" onclick="sendSubmit('categoria',1)">
                         <div class="card-body">
                             <h5 class="card-title">Lanches</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
+                <!-- </div> -->
 
-                    <div class="card my-1" onclick="sendSubmit('categoria',2)">
+                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
+                    <div class="card my-1 col-4 col-sm-4 col-md-12" onclick="sendSubmit('categoria',2)">
                         <div class="card-body">
                             <h5 class="card-title">Acompanhamentos</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
+                <!-- </div> -->
 
-                    <div class="card my-1" onclick="sendSubmit('categoria',3)">
+                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
+                    <div class="card my-1 col-4 col-sm-4 col-md-12" onclick="sendSubmit('categoria',3)">
                         <div class="card-body">
                             <h5 class="card-title">Bebidas</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
-
+                <!-- </div> -->
                     <input type="hidden" id="categoria" name="categoria" value=""/>
                 </form>
-        </div>
-
+                </div>
+                </div>
+        <!-- </div> -->
             <!-- Container -->
-            <div class="col-sm-12 col-md-9 borderGray rol-col-3" id="lateral-produtos">
-                <div id="cards_container" class="card-columns">
+            <div class="col-12 col-sm-12 col-md-9 borderGray" id="lateral-produtos">
+                <div id="cards-container" class="card-columns d-flex flex-wrap">
                     <?php $produtos -> read_show(); ?>
                 </div>
             </div>
@@ -110,7 +118,7 @@ session_start();
     </div>
     
     <div class="container mt-2">
-        <div class="row">
+        <div class="row flex-nowrap">
             <div class="col-md-6 text-right px-1">
                 <button type="button" class="btn btn-lg btn-secondary">Cancelar</button>
             </div>
