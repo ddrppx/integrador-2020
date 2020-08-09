@@ -110,6 +110,9 @@
 		}
 		
 		echo "</pre>";
+	
+		$test = $bebidas -> readId('nome, valor', 2);
+		var_dump($test);
 	?>
 
 </body>

@@ -36,6 +36,10 @@ session_start();
             $produtos = new bebidaDAO;
         // $rows = $produtos -> read();
         }
+
+        if(!isset($_SESSION['preco'])){
+            $_SESSION['preco'] = 0.00;
+        }
     // }
     // } else {
     //     $produtos = new lancheDAO;
@@ -144,8 +148,18 @@ session_start();
 
     <div class="container container-fluid">
         <div class="row">
-            <div class="col text-center">
+            <div class="col-3 text-left">
+                <button class="btn btn-secondary" id="pedido-voltar" onclick="voltarPagamento()">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+                       <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    Voltar</button>
+            </div>
+            <div class="col-6 text-center">
                 <h2>Produtos</h2>
+            </div>
+            <div class="col-3 text-center">
             </div>
         </div>
     </div>
@@ -206,8 +220,11 @@ session_start();
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h2>Itens</h2>
+            <div class="col-6 text-left d-flex flex-nowrap">
+                <h2>Itens do pedido</h2>
+            </div>
+            <div class="col-6 text-right flex-nowrap">
+                <span id="preco" class="h4 btn-primary disable">R$<?= number_format($_SESSION['preco'], 2) ?></span>
             </div>
             <div class="col card-columns sliderItens borderGray text-left vertAlign">
                 <?php

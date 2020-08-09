@@ -62,6 +62,20 @@ class lancheDAO {
             return $resultado;
         }
 
+        public function readValor(int $id) {
+                //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT valor FROM lanche WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+                // return $resultado;
+            return $resultado;
+        }
+
         public function read_show() {
             $rows = $this -> read();
             

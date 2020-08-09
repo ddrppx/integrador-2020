@@ -1,10 +1,16 @@
 <?php
 
     require_once dirname(__DIR__, 2)."/vendor/autoload.php";
+
+    use Models\acompDAO;
     use Models\bebidaDAO;
     use Models\lancheDAO;
 
 session_start();
+    $lanche = new lancheDAO;
+    $bebida = new bebidaDAO;
+    $acomp = new acompDAO;
+    
 
         //-----Carrinho-----
     //Se nao existir SESSION['lanches']
@@ -123,4 +129,27 @@ if (count($_SESSION['lanches']) == 0) {
         echo "</pre>";
     }
 
-    echo "<br/><a href=\"/pedido.php\">Voltar</a>";
+    $valor = 0;
+
+    $lanches = $_SESSION['lanches']; 
+    foreach ($lanches as $id => $quantidade) {
+        $res = $lanche -> readValor($id);
+        $valor+= $res['valor'] * $quantidade;
+    }
+    
+    $bebidas = $_SESSION['bebidas'];
+    foreach ($bebidas as $id => $quantidade) {
+        $res = $bebida -> readValor($id);
+        $valor+= $res['valor'] * $quantidade;
+        // $res = $res * $quantidade;
+    }
+    
+    $acomps = $_SESSION['acomp'];
+    foreach ($acomps as $id => $quantidade) {
+        $res = $acomp -> readValor($id);
+        $valor+= $res['valor'] * $quantidade;
+    }
+
+    $_SESSION['preco'] = $valor;
+
+    echo "Done.";

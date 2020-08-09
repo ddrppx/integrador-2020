@@ -53,15 +53,15 @@ class acompDAO {
             }
         }
 
-        public function readId(int $id) {
+        public function readValor(int $id) {
             //Comando SQL
-        $sql = 'SELECT * FROM acompanhamento WHERE id = ?';
+        $sql = 'SELECT valor FROM acompanhamento WHERE id = ?';
             //Faz conexão à classe que retorna a instancia do banco
         $stmt = Connect::getConn() -> prepare($sql);
         $stmt -> bindValue(1, $id, PDO::PARAM_INT);
         $stmt -> execute();
             //Variavel que ira retornar todas linhas do banco
-        $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
             //Retorno da variavel
         return $resultado;
     }

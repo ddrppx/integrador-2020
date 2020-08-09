@@ -109,5 +109,11 @@ div#opt:hover {
 
 .customSize {
     max-width: 148px;
+}
 
+#preco {
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 20px;
+    color: white;
 }

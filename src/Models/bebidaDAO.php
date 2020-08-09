@@ -39,15 +39,15 @@ class bebidaDAO {
             return $resultado;
         }
 
-        public function readId(int $id) {
+        public function readValor(int $id) {
                 //Comando SQL
-            $sql = 'SELECT * FROM bebida WHERE id = ?';
+            $sql = 'SELECT valor FROM bebida WHERE id = ?';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> bindValue(1, $id, PDO::PARAM_INT);
             $stmt -> execute();
                 //Variavel que ira retornar todas linhas do banco
-            $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
                 //Retorno da variavel
             return $resultado;
         }
