@@ -4,7 +4,6 @@
     use Database\Connect;
     use \PDO;
     use \PDOException;
-    define('DS', DIRECTORY_SEPARATOR);
 class lancheDAO {
        
         public function create(Lanche $lanche) {
@@ -51,7 +50,7 @@ class lancheDAO {
 
         public function read() {
                 //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT lc.id, lc.nome, lc.valor FROM lanche lc';
+            $sql = 'SELECT lc.id, lc.nome, lc.valor, lc.imagem FROM lanche lc';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> execute();
@@ -90,14 +89,30 @@ class lancheDAO {
             return $resultado;
         }
 
-        public function read_show() {
+        public function readShowAll() {
             $rows = $this -> read();
 
             foreach ($rows as $row){
-                $imagem = dirname(__DIR__, 1).DS.'static'.DS.'produtos'.DS.$row['imagem'];
+                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
                     <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
-                        <img class="card-img-top mb-2" src="'.$imagem.'" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
+                            <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>
+                        </div>
+                    </div>';
+                }
+        }
+
+        public function readWhereOutput(int $id) {
+            $rows = $this -> readID($id);
+
+            foreach ($rows as $row){
+                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+                echo '
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>
                             <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>

@@ -28,7 +28,7 @@ class acompDAO {
 
         public function read() {
                 //Comando SQL
-            $sql = 'SELECT * FROM acompanhamento';
+            $sql = 'SELECT id, nome, valor, tamanho, imagem FROM acompanhamento';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> execute();
@@ -54,17 +54,68 @@ class acompDAO {
         }
 
         public function readValor(int $id) {
-            //Comando SQL
-        $sql = 'SELECT valor FROM acompanhamento WHERE id = ?';
+                //Comando SQL
+            $sql = 'SELECT valor FROM acompanhamento WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+            return $resultado;
+        }
+
+        public function readShowAll() {
+            $rows = $this -> read();
+
+            foreach ($rows as $row){
+                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+                echo '
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')>
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
+                        <div class="card-body">
+                        <h6 class="card-text text-justify h6">'.$row['nome'].'</br>'. $row['tamanho'].'
+                        <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</p>
+                        </div>
+                    </div>';
+                }
+        }
+
+        public function readID(int $id) {
+            //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT id, nome, marca, valor, tamanho, imagem FROM bebida';
             //Faz conexão à classe que retorna a instancia do banco
-        $stmt = Connect::getConn() -> prepare($sql);
-        $stmt -> bindValue(1, $id, PDO::PARAM_INT);
-        $stmt -> execute();
-            //Variavel que ira retornar todas linhas do banco
-        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
-            //Retorno da variavel
-        return $resultado;
-    }
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+                // return $resultado;
+            return $resultado;
+        }
+
+        public function readWhereOutput(int $id) {
+        $rows = $this -> readID($id);
+
+        foreach ($rows as $row){
+            $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+            foreach ($rows as $row){
+                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+                echo '
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
+                        <div class="card-body">
+                        <h6 class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
+                        </div>
+                    </div>';
+                }
+            }
+        }
+
+
+    
 
         public function update(int $id, Acompanhamento $acp) {
                 //Comando SQL

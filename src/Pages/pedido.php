@@ -17,8 +17,8 @@ session_start();
     // unset($_SESSION['bebidas']);
     // unset($_SESSION['lanches']);
 
-    if (isset($_POST['categoria'])) { // check if POST have that index or not
-        $category = $_POST['categoria']; // if yes then reassign it's value
+    if (isset($_GET['categoria'])) { // check if POST have that index or not
+        $category = $_GET['categoria']; // if yes then reassign it's value
         $_SESSION['categoria'] = $category;  // set reassigned value to session variable
     }
     // $produtos = new lancheDAO;
@@ -235,7 +235,7 @@ session_start();
                     if (!$_SESSION['lanches'] == 0){
                         foreach ($$_SESSION['lanches'] as $id => $qtd) {
                             ?>
-                            
+
                             <?php
                         }
                     }
