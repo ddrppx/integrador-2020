@@ -35,11 +35,11 @@
 			</div>
         </div>
 
-        <form name="form" method="post" action="pagamento.php">
+        <form name="form" method="get" action="pagamento.php">
 
         <div class="container pt-2 pb-5 optionHover" >
 			<div class="row pt-2 pb-5 text-center">
-                <div class="col-md mx-4  itemHover">
+                <div class="col-md mx-4 itemHover">
                     <h2>Comer aqui</h2>
                         <!-- Comer aqui -->
                     <div class="text-center" onclick="sendSubmit('preparo', 0)">

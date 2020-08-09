@@ -170,7 +170,7 @@ session_start();
             <!-- Container Lateral -->
             <div class="col-12 col-md-3 borderGray" id="lateral-categoria">
                 <div class="row d-flex flex-wrap card-columns justify-content-center">
-                <form name="form" id="form-categoria" method="post" action="">
+                <form name="form" id="form-categoria" method="get" action="">
         <!-- <div class="row d-sm-flex"> -->
                 <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0 "> -->
                     <div class="card my-1 mx-0 col-sm-3 col-md-12" onclick="sendSubmit('categoria',1)">
@@ -228,16 +228,19 @@ session_start();
             </div>
             <div class="col card-columns sliderItens borderGray text-left vertAlign">
                 <?php
-                // echo count($_SESSION['itens']);
-                // if (count($_SESSION['itens']) == 0) {
-                //     echo 'Não há itens no pedido'; 
-                // }else {
-                    // echo "<pre>";
-                    var_dump($_SESSION['lanches']);
-                    var_dump($_SESSION['bebidas']);
-                    var_dump($_SESSION['acomp']);
-                    // echo "</pre>";
-                // }
+
+                if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
+                    echo '<p class="h1">Pedido Vazio.</p>'; 
+                }else {
+                    if (!$_SESSION['lanches'] == 0){
+                        foreach ($$_SESSION['lanches'] as $id => $qtd) {
+                            ?>
+                            
+                            <?php
+                        }
+                    }
+                }
+
             ?>
             </div>
         </div>

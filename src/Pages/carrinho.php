@@ -153,3 +153,7 @@ if (count($_SESSION['lanches']) == 0) {
     $_SESSION['preco'] = $valor;
 
     echo "Done.";
+
+    clearstatcache()
+
+    ?>

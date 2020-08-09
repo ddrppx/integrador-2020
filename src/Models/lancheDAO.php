@@ -4,7 +4,7 @@
     use Database\Connect;
     use \PDO;
     use \PDOException;
-
+    define('DS', DIRECTORY_SEPARATOR);
 class lancheDAO {
        
         public function create(Lanche $lanche) {
@@ -76,13 +76,28 @@ class lancheDAO {
             return $resultado;
         }
 
+        public function readID(int $id) {
+                //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT id, nome, valor FROM lanche WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+                // return $resultado;
+            return $resultado;
+        }
+
         public function read_show() {
             $rows = $this -> read();
-            
+
             foreach ($rows as $row){
+                $imagem = dirname(__DIR__, 1).DS.'static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
                     <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
-                        <img class="card-img-top mb-2" src="../static/svg/segment/lanches.svg" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-top mb-2" src="'.$imagem.'" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</h5>
                             <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>

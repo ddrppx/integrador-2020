@@ -3,10 +3,10 @@
 
     $errors = [];
     
-    if(isset($_POST)){
-        $_SESSION['preparo'] = $_POST['preparo'];
+    if(isset($_GET)){
+        $_SESSION['preparo'] = $_GET['preparo'];
     } else {
-        $errors[] = "Post preparo não foi recebido";
+        $errors[] = "Get preparo não foi recebido";
     }
 
     $_SESSION['errors'] = $errors;
@@ -48,7 +48,7 @@
 			</div>
         </div>
 
-        <form name="form" method="post" action="pedido.php">
+        <form name="form" method="get" action="pedido.php">
 
         <div class="container pt-2 pb-5">
 			<div class="row pt-2 pb-5 text-center">

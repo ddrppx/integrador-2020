@@ -111,7 +111,8 @@
 		
 		echo "</pre>";
 	
-		$test = $bebidas -> readId('nome, valor', 2);
+		$test = $bebidas -> readValor(2);
+		unset($_SESSION['acomp']);
 		var_dump($test);
 	?>
 
