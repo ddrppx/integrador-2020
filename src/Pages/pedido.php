@@ -48,49 +48,51 @@ session_start();
         // echo "<br/>";
         // var_dump($_GET);
             //-----Carrinho-----
-        if (!isset($_SESSION['lanches'])){
-            $_SESSION['lanches'] = [];
+        // if (!isset($_SESSION['lanches'])){
+        //     $_SESSION['lanches'] = [];
 
-        }
+        // }
         
-        if (!isset($_SESSION['bebidas'])){
-            $_SESSION['bebidas'] = [];
-        }
+        // if (!isset($_SESSION['bebidas'])){
+        //     $_SESSION['bebidas'] = [];
+        // }
         
-        if (!isset($_SESSION['acomp'])){
-            $_SESSION['acomp'] = [];
-        }
+        // if (!isset($_SESSION['acomp'])){
+        //     $_SESSION['acomp'] = [];
+        // }
 
-        var_dump($_SESSION);
-        if (isset($_GET['carrinho']) && $_GET['carrinho'] == '1'){
-            $idProduto = $_GET['id'];
-            echo "Id produto: $idProduto";
-            if(isset($_GET['type']) && $_GET['type'] == 1){
+        // var_dump($_SESSION);
+        // if (isset($_GET['carrinho']) && $_GET['carrinho'] == '1'){
+        //     $idProduto = $_GET['id'];
+        //     echo "Id produto: $idProduto";
+        //     if(isset($_GET['type']) && $_GET['type'] == 1){
  
-                if(!isset($_GET['lanches'][$idProduto])){
-                    $_SESSION['lanches'][$idProduto] = 1;
-                } else {
-                    $_SESSION['lanches'][$idProduto] += 1;
-                }
-            }
+        //         if(!isset($_GET['lanches'][$idProduto])){
+        //             $_SESSION['lanches'][$idProduto] = 1;
+        //         } else {
+        //             $_SESSION['lanches'][$idProduto] += 1;
+        //         }
+        //     }
 
-            if(isset($_GET['type']) && $_GET['type'] == 2){
+        //     if(isset($_GET['type']) && $_GET['type'] == 2){
 
-                if(!isset($_GET['bebidas'][$idProduto])){
-                    $_SESSION['bebidas'][$idProduto] = 1;
-                } else {
-                    $_SESSION['bebidas'][$idProduto] += 1;
-                }
-            }
+        //         if(!isset($_GET['bebidas'][$idProduto])){
+        //             $_SESSION['bebidas'][$idProduto] = 1;
+        //         } else {
+        //             $_SESSION['bebidas'][$idProduto] += 1;
+        //         }
+        //     }
 
-            if(isset($_GET['type']) && $_GET['type'] == '3'){
-                echo "<br/>Acomp flag<br/>";
-                if(!isset($_GET['type'][$idProduto])){
-                    $_SESSION['acomp'][$idProduto] = 1;
-                } else {
-                    $_SESSION['acomp'][$idProduto] += 1;
-                }
-            }
+        //     if(isset($_GET['type']) && $_GET['type'] == '3'){
+        //         echo "<br/>Acomp flag<br/>";
+        //         if(!isset($_GET['type'][$idProduto])){
+        //             $_SESSION['acomp'][$idProduto] = 1;
+        //         } else {
+        //             $_SESSION['acomp'][$idProduto] += 1;
+        //         }
+        //     }
+
+            
 
             
             // if(!isset($_SESSION['itens'][$idProduto])) {
@@ -99,7 +101,7 @@ session_start();
             // } else {
             //     $_SESSION['itens'][$idProduto] += 1;
             // }
-        }
+        // }
         
         switch (strtolower(get_class($produtos))){
             case 'models\lanchedao':
@@ -189,7 +191,7 @@ session_start();
         <!-- </div> -->
             <!-- Container -->
             <div class="col-12 col-sm-12 col-md-9 borderGray" id="lateral-produtos">
-                <form name="produtos" id="form-produtos" method="get" action="">
+                <form name="produtos" id="form-produtos" method="get" action="carrinho.php">
                 <div id="cards-container" class="card-columns d-flex flex-wrap justify-content-evenly">
                     <?php 
                     isset($produtos)? $produtos -> read_show() : var_dump($produtos); ?>
