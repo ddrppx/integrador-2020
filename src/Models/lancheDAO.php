@@ -77,7 +77,7 @@ class lancheDAO {
 
         public function readID(int $id) {
                 //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT id, nome, valor FROM lanche WHERE id = ?';
+            $sql = 'SELECT id, nome, valor, imagem FROM lanche WHERE id = ?';
                 //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> bindValue(1, $id, PDO::PARAM_INT);
@@ -95,30 +95,27 @@ class lancheDAO {
             foreach ($rows as $row){
                 $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
                         <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
-                            <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>
+                            <p class="card-text text-left h6">'.$row['nome'].'</p>
+                            <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</p>
                         </div>
                     </div>';
                 }
         }
 
-        public function readWhereOutput(int $id) {
-            $rows = $this -> readID($id);
-
-            foreach ($rows as $row){
-                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-                echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
-                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
-                            <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</h5>
-                        </div>
-                    </div>';
-                }
+        public function readWhereOutput(int $id, int $qtd) {
+            $row = $this -> readID($id);
+            $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+            echo '
+                <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                    <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text text-left h6">'.$row['nome'].'</p>
+                        <p class="card-text align-text-right h5 bottomCart"> x'.$qtd.'</p>
+                    </div>
+                </div>';
         }
 
         public function update(int $id, Lanche $lanche) {

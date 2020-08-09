@@ -38,21 +38,6 @@ class acompDAO {
             return $resultado;
         }
 
-        public function read_show() {
-            $rows = $this -> read();
-
-            foreach ($rows as $row){
-                    echo '
-                    <div class="card col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
-                        <img class="card-img-top mb-2" src="../static/svg/segment/acompanhamentos.svg" height="110px" width="110px" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text text-left h6">'.$row['nome'].'</h5>
-                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</h5>
-                        </div>
-                     </div>';
-            }
-        }
-
         public function readValor(int $id) {
                 //Comando SQL
             $sql = 'SELECT valor FROM acompanhamento WHERE id = ?';
@@ -70,9 +55,9 @@ class acompDAO {
             $rows = $this -> read();
 
             foreach ($rows as $row){
-                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+                $imgPath = '..'.DS.'static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')>
+                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
                         <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
                         <div class="card-body">
                         <h6 class="card-text text-justify h6">'.$row['nome'].'</br>'. $row['tamanho'].'
@@ -83,9 +68,9 @@ class acompDAO {
         }
 
         public function readID(int $id) {
-            //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT id, nome, marca, valor, tamanho, imagem FROM bebida';
-            //Faz conexão à classe que retorna a instancia do banco
+                //Comando SQL, Com JOIN pois envolve 3 tabelas
+            $sql = 'SELECT id, nome, valor, tamanho, imagem FROM acompanhamento WHERE id = ?';
+                //Faz conexão à classe que retorna a instancia do banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> bindValue(1, $id, PDO::PARAM_INT);
             $stmt -> execute();
@@ -96,26 +81,20 @@ class acompDAO {
             return $resultado;
         }
 
-        public function readWhereOutput(int $id) {
-        $rows = $this -> readID($id);
-
-        foreach ($rows as $row){
+        public function readWhereOutput(int $id, int $qtd) {
+        $row = $this -> readID($id);
             $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-            foreach ($rows as $row){
-                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-                echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
-                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
-                        <div class="card-body">
-                        <h6 class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
-                        </div>
-                    </div>';
-                }
-            }
+            echo '
+                <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                    <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
+                    <div class="card-body align-text-bottom">
+                        <p class="card-text text-left h6">'.$row['nome'].'</p>
+                        <p class="card-text text-left h6">'.$row['tamanho'].'</p>
+                        <p class="card-text text-right h5 bottomCart">x'.$qtd.'</p>
+                    </div>
+                </div>
+            ';
         }
-
-
-    
 
         public function update(int $id, Acompanhamento $acp) {
                 //Comando SQL

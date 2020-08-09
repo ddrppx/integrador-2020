@@ -73,7 +73,7 @@ class bebidaDAO {
                 foreach ($rows as $row){
                     $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                     echo '
-                        <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                        <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
                             <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
                             <div class="card-body">
                             <h6 class="card-text text-justify h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
@@ -85,34 +85,30 @@ class bebidaDAO {
 
         public function readID(int $id) {
             //Comando SQL, Com JOIN pois envolve 3 tabelas
-            $sql = 'SELECT id, nome, marca, valor, tamanho, imagem FROM bebida';
+            $sql = 'SELECT id, nome, marca, valor, tamanho, imagem FROM bebida WHERE id = ?';
             //Faz conexão à classe que retorna a instancia do banco
-        $stmt = Connect::getConn() -> prepare($sql);
-        $stmt -> bindValue(1, $id, PDO::PARAM_INT);
-        $stmt -> execute();
-            //Variavel que ira retornar todas linhas do banco
-        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
-            //Retorno da variavel
-            // return $resultado;
-        return $resultado;
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $id, PDO::PARAM_INT);
+            $stmt -> execute();
+                //Variavel que ira retornar todas linhas do banco
+            $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+                //Retorno da variavel
+                // return $resultado;
+            return $resultado;
     }
 
-    public function readWhereOutput(int $id) {
-        $rows = $this -> readID($id);
-
-        foreach ($rows as $row){
-            $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-            foreach ($rows as $row){
-                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-                echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
-                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
-                        <div class="card-body">
-                        <h6 class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
-                        </div>
-                    </div>';
-                }
-        }
+    public function readWhereOutput(int $id, int $qtd) {
+        $row = $this -> readID($id);
+        $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
+        echo '
+            <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+                <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
+                <div class="card-body">
+                    <p class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'</p>
+                    <p class="card-text text-right h5 bottomCart">x'.$qtd.'</p>
+                </div>
+            </div>
+        ';
     }
 
         public function update(int $id, Bebida $bebida) {

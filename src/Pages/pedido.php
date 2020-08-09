@@ -40,73 +40,8 @@ session_start();
         if(!isset($_SESSION['preco'])){
             $_SESSION['preco'] = 0.00;
         }
-    // }
-    // } else {
-    //     $produtos = new lancheDAO;
-    // }
-    // echo "<br/>";
-    // var_dump($rows);
-    // echo $_POST['categoria'];
-
-        // var_dump($_POST);
-        // echo "<br/>";
-        // var_dump($_GET);
-            //-----Carrinho-----
-        // if (!isset($_SESSION['lanches'])){
-        //     $_SESSION['lanches'] = [];
-
-        // }
         
-        // if (!isset($_SESSION['bebidas'])){
-        //     $_SESSION['bebidas'] = [];
-        // }
-        
-        // if (!isset($_SESSION['acomp'])){
-        //     $_SESSION['acomp'] = [];
-        // }
-
-        // var_dump($_SESSION);
-        // if (isset($_GET['carrinho']) && $_GET['carrinho'] == '1'){
-        //     $idProduto = $_GET['id'];
-        //     echo "Id produto: $idProduto";
-        //     if(isset($_GET['type']) && $_GET['type'] == 1){
- 
-        //         if(!isset($_GET['lanches'][$idProduto])){
-        //             $_SESSION['lanches'][$idProduto] = 1;
-        //         } else {
-        //             $_SESSION['lanches'][$idProduto] += 1;
-        //         }
-        //     }
-
-        //     if(isset($_GET['type']) && $_GET['type'] == 2){
-
-        //         if(!isset($_GET['bebidas'][$idProduto])){
-        //             $_SESSION['bebidas'][$idProduto] = 1;
-        //         } else {
-        //             $_SESSION['bebidas'][$idProduto] += 1;
-        //         }
-        //     }
-
-        //     if(isset($_GET['type']) && $_GET['type'] == '3'){
-        //         echo "<br/>Acomp flag<br/>";
-        //         if(!isset($_GET['type'][$idProduto])){
-        //             $_SESSION['acomp'][$idProduto] = 1;
-        //         } else {
-        //             $_SESSION['acomp'][$idProduto] += 1;
-        //         }
-        //     }
-
-            
-
-            
-            // if(!isset($_SESSION['itens'][$idProduto])) {
-            //     $_SESSION['itens'][$idProduto] = 1;
-
-            // } else {
-            //     $_SESSION['itens'][$idProduto] += 1;
-            // }
-        // }
-        
+            //Checa o tipo atual do display (Lanche, Acompanhamento ou Bebida)
         switch (strtolower(get_class($produtos))){
             case 'models\lanchedao':
                 $type = 1;
@@ -118,16 +53,7 @@ session_start();
                 $type = 3;
                 break;
         }
-            // foreach ($_SESSION['itens'] as $idProduto => $quantidade) {
-            //     $prods = $produtos -> readId($idProduto);
-                
-                
-            //     echo "Nome: ". $prods[0]['nome']. "<br/>";
-            //     echo "Valor: ". $prods[0]['valor']. "<br/>";
-            //     echo "Quantidade ". $quantidade ."<br/>";
-            //     echo "Total: ". ($prods[0]['valor'] * $quantidade);
-            //     echo '<a href="remover.php?remover=carrinho&&id='. $idProduto.'"> Remover </a>'. "<hr/><br/>"; 
-            // } 
+ 
 
 ?>
 
@@ -208,7 +134,7 @@ session_start();
                 <form name="produtos" id="form-produtos" method="get" action="carrinho.php">
                 <div id="cards-container" class="card-columns d-flex flex-wrap justify-content-evenly">
                     <?php 
-                    isset($produtos)? $produtos -> read_show() : var_dump($produtos); ?>
+                    isset($produtos) ? $produtos -> readShowAll() : var_dump($produtos); ?>
                 </div>
                 <input type="hidden" name="type" value="<?= $type ?>">
                 <input type="hidden" name="carrinho" value="1">
@@ -224,19 +150,32 @@ session_start();
                 <h2>Itens do pedido</h2>
             </div>
             <div class="col-6 text-right flex-nowrap">
-                <span id="preco" class="h4 btn-primary disable">R$<?= number_format($_SESSION['preco'], 2) ?></span>
+                <span id="preco" class="h4 btn-primary disable align-middle">R$<?= number_format($_SESSION['preco'], 2) ?></span>
             </div>
-            <div class="col card-columns sliderItens borderGray text-left vertAlign">
+            <div class="col card-columns sliderItens borderGray text-left vertAlign d-flex flex-nowrap justify-content-evenly">
                 <?php
 
                 if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
                     echo '<p class="h1">Pedido Vazio.</p>'; 
                 }else {
                     if (!$_SESSION['lanches'] == 0){
-                        foreach ($$_SESSION['lanches'] as $id => $qtd) {
-                            ?>
+                        $lcDAO = new lancheDAO;
+                        foreach ($_SESSION['lanches'] as $id => $qtd) {
+                            $lcDAO -> readWhereOutput($id, $qtd);
+                        }
+                    }
 
-                            <?php
+                    if (!$_SESSION['bebidas'] == 0){
+                        $bbdDAO = new bebidaDAO;
+                        foreach ($_SESSION['bebidas'] as $id => $qtd) {
+                            $bbdDAO -> readWhereOutput($id, $qtd);
+                        }
+                    }
+                    
+                    if (!$_SESSION['acomp'] == 0){
+                        $acpDAO = new acompDAO;
+                        foreach ($_SESSION['acomp'] as $id => $qtd) {
+                            $acpDAO -> readWhereOutput($id, $qtd);
                         }
                     }
                 }
@@ -249,10 +188,31 @@ session_start();
     <div class="container mt-2">
         <div class="row flex-nowrap">
             <div class="col-md-6 text-right px-1">
-                <button type="button" class="btn btn-lg btn-secondary">Cancelar</button>
+                <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
             </div>
             <div class="col-md-6 text-left px-1">
                 <button type="button" class="btn btn-lg btn-success">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="cancelModalLabel">Cancelar?!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="h5">Ao clicar em em 'Continuar' você irá cancelar totalmente o pedido, o levando à tela inicial.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-primary">Continuar</button>
+                </div>
             </div>
         </div>
     </div>

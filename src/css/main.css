@@ -95,7 +95,6 @@ div#opt:hover {
 }
 
 .sliderItens {
-    max-height: 200px;
     overflow-x: scroll;
     padding-top: 10px;
     padding-bottom: 5px;
@@ -116,4 +115,10 @@ div#opt:hover {
     padding: 5px;
     margin-top: 20px;
     color: white;
+}
+
+.bottomCart {
+    position: absolute;
+    bottom: 1rem;        /*15px;*/
+    right: 1.3rem        /*20px;*/
 }
