@@ -75,7 +75,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Produtos</title>
+	<title>Realize seu pedido</title>
 	
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
@@ -122,7 +122,7 @@ session_start();
                 <form name="form" id="form-categoria" method="get" action="">
         <!-- <div class="row d-sm-flex"> -->
                 <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0 "> -->
-                    <div class="card my-1 mx-0 col-sm-3 col-md-12" onclick="sendSubmit('categoria',1)">
+                    <div class="card my-1 mx-0 col-sm-3 col-md-12 itemHover" onclick="sendSubmit('categoria',1)">
                         <div class="card-body">
                             <h5 class="card-title">Lanches</h5>
                         </div>
@@ -131,7 +131,7 @@ session_start();
                 <!-- </div> -->
 
                 <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
-                    <div class="card my-1 mx-0  col-sm-3 col-md-12" onclick="sendSubmit('categoria',2)">
+                    <div class="card my-1 mx-0  col-sm-3 col-md-12 itemHover" onclick="sendSubmit('categoria',2)">
                         <div class="card-body">
                             <h5 class="card-title">Acompanhamentos</h5>
                         </div>
@@ -140,7 +140,7 @@ session_start();
                 <!-- </div> -->
 
                 <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
-                    <div class="card my-1 mx-0  col-sm-3 col-md-12" onclick="sendSubmit('categoria',3)">
+                    <div class="card my-1 mx-0  col-sm-3 col-md-12 itemHover" onclick="sendSubmit('categoria',3)">
                         <div class="card-body">
                             <h5 class="card-title">Bebidas</h5>
                         </div>
@@ -173,7 +173,7 @@ session_start();
                 <h2>Itens do pedido</h2>
             </div>
             <div class="col-6 text-right flex-nowrap">
-                <span id="preco" class="h4 btn-primary disable align-middle">R$<?= number_format($_SESSION['preco'], 2) ?></span>
+                <span id="preco" class="h3 btn-primary disable align-middle">R$<?= number_format($_SESSION['preco'], 2) ?></span>
             </div>
             <div class="col card-columns sliderItens borderGray text-left vertAlign d-flex flex-nowrap justify-content-evenly">
                 <?php
@@ -246,4 +246,8 @@ session_start();
         </div>
     </div>
 
-    <?php include "footer.php"; ?>
+    <?php 
+    include "footer.php";
+        //Indica a origem do request(?) para a outra pagina
+    $_SESSION['origem'] = 'pedido.php'; 
+    ?>

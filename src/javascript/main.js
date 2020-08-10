@@ -20,12 +20,20 @@ function escolherProduto(newiD, newValue) {
     console.log(newValue);
 }
 
+    //Diminui a quantidade do item no carrinho
+function diminuirQtd(type, id){
+    window.location.assign(`carrinho.php?diminuir=1&&type=${type}&&id=${id}`);
+}
+    //Volta da pagina preparo para o início
 function voltarInicio() {
     window.location.assign("../../index.php");
 }
+
+    //Volta da pagina pagamento para preparo
 function voltarPreparo() {
     window.location.assign("preparo.php");
 }
+    //Volta da pagina pedido para pagamento
 function voltarPagamento() {
     window.location.assign("pagamento.php");
 }

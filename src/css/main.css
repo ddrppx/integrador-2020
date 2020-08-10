@@ -95,9 +95,9 @@ div#opt:hover {
 }
  
 .cartHover:hover{
-    background-color: lightslategrey;
+    /* background-color: #007bff; */
     transition: 0.5s;
-    color: white;
+    color: #007bff;
     cursor: pointer;
 } 
 
@@ -107,8 +107,9 @@ div#opt:hover {
     padding: 0px;
 } 
 
-.cartHover:hover > .remover {
+.cartHover:hover > div .remover {
     display: block !important;
+    transition: 0.3s;
 }
 
 
