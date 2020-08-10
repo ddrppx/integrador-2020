@@ -183,8 +183,10 @@ use Models\lancheDAO;
                 <?php
 
                 if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
+                    $itens = 0;
                     echo '<span class="h5 emptyCart">Não há itens no pedido...</span>'; 
                 }else {
+                    $itens = 1;
                         //Se tal count(lanches) nao for igual a zero
                         if (!$_SESSION['lanches'] == 0){
                             $lcDAO = new lancheDAO;
@@ -220,7 +222,7 @@ use Models\lancheDAO;
                 <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
             </div>
             <div class="col-md-6 text-left px-1">
-                <button type="button" class="btn btn-lg btn-success">Confirmar</button>
+                <button type="button" onclick="confirmar(<?= $itens ?>)"class="btn btn-lg btn-success">Confirmar</button>
             </div>
         </div>
     </div>

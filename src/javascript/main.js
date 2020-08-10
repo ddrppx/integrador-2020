@@ -31,7 +31,11 @@ function diminuirQtd(type, id){
 }
 
 function confirmar(x){
-    window.location.assign(`checkout.php?finalizar=${x}`);
+    if (x === 1) {
+        window.location.assign(`checkout.php?finalizar=${x}`);
+    } else {
+        console.log('Sem itens no pedido...');
+    }
 }
 
     //Remove o item do carrinho
@@ -50,4 +54,8 @@ function voltarPreparo() {
     //Volta da pagina pedido para pagamento
 function voltarPagamento() {
     window.location.assign("pagamento.php");
+}
+
+function voltarPedido(){
+    window.location.assign("pedido.php");
 }

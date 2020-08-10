@@ -6,6 +6,8 @@ use Models\lancheDAO;
 
 session_start();
 
+
+
     require_once "../../vendor/autoload.php";
 
     if(isset($_GET['pagamento'])){
@@ -14,9 +16,15 @@ session_start();
         $produtos = new lancheDAO;
     }
 
+    $_SESSION['origem'] = "checkout.php";
+
     if (isset($_GET['categoria'])) { // check if POST have that index or not
         $category = $_GET['categoria']; // if yes then reassign it's value
         $_SESSION['categoria'] = $category;  // set reassigned value to session variable
+    }
+
+    if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pedido.php">';
     }
 ?>
 
@@ -25,7 +33,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Produtos</title>
+	<title>Checkout</title>
 	
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
@@ -38,7 +46,7 @@ session_start();
     <div class="container container-fluid">
         <div class="row">
             <div class="col-3 text-left">
-                <button class="btn btn-secondary" id="pedido-voltar" onclick="voltarPagamento()">
+                <button class="btn btn-secondary" id="pedido-voltar" onclick="voltarPedido()">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
@@ -53,97 +61,84 @@ session_start();
         </div>
     </div>
 
-    <div class="container my-2">
-        <div class="row">
-
-            <!-- Container Lateral -->
-            <div class="col-12 col-md-3 borderGray" id="lateral-categoria">
-                <div class="row d-flex flex-wrap card-columns justify-content-center">
-                <form name="form" id="form-categoria" method="get" action="">
-        <!-- <div class="row d-sm-flex"> -->
-                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0 "> -->
-                    <div class="card my-1 mx-0 col-sm-3 col-md-12" onclick="sendSubmit('categoria',1)">
-                        <div class="card-body">
-                            <h5 class="card-title">Lanches</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="120px" width="120px" alt="Card image cap">
-                    </div>
-                <!-- </div> -->
-
-                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
-                    <div class="card my-1 mx-0  col-sm-3 col-md-12" onclick="sendSubmit('categoria',2)">
-                        <div class="card-body">
-                            <h5 class="card-title">Acompanhamentos</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="120px" width="120px" alt="Card image cap">
-                    </div>
-                <!-- </div> -->
-
-                <!-- <div class="col-md-3 col-sm-4 my-0 mx-0 px-0 py-0"> -->
-                    <div class="card my-1 mx-0  col-sm-3 col-md-12" onclick="sendSubmit('categoria',3)">
-                        <div class="card-body">
-                            <h5 class="card-title">Bebidas</h5>
-                        </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="120px" width="120px" alt="Card image cap">
-                    </div>
-                <!-- </div> -->
-                    <input type="hidden" id="categoria" name="categoria" value=""/>
-                </form>
-                </div>
-                </div>
-        <!-- </div> -->
             <!-- Container -->
-            <div class="col-12 col-sm-12 col-md-9 borderGray" id="lateral-produtos">
-                <form name="produtos" id="form-produtos" method="get" action="carrinho.php">
-                <div id="cards-container" class="card-columns d-flex flex-wrap justify-content-evenly">
-                    <?php 
-                    isset($produtos) ? $produtos -> readShowAll() : var_dump($produtos); ?>
+            <div class="col-12 borderGray my-2" id="lateral-produtos">
+                <?php
+
+                    if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
+                    } else {
+                            //Se tal count(lanches) nao for igual a zero id, nome, valor, imagem
+                            if (!$_SESSION['lanches'] == 0){
+                                $lcDAO = new lancheDAO;
+                                foreach ($_SESSION['lanches'] as $id => $qtd) {
+                                    $res = $lcDAO -> readID($id);
+                                    $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$res['imagem'];
+                                    ?>
+                                        <div class="row card-columns d-flex flex-wrap justify-content-evenly">
+                                            <div class="col-4 vertAlign cartHover">
+                                                    <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
+                                                    <p class="h4 text-center">
+                                                        <?= $res['nome']?><br/> R$<?= number_format($res['valor'],2) ?>
+                                                    </p>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success p-0 m-2"  id="btnplus" onclick="aumentarQtd(1,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                                 </svg></b>
+                                            </button>
+                                                <!-- <button class="btn btn-primary" id="btnminus"><b>-</b></button> -->
+                                            <button type="button" class="btn btn-info p-0 m-2" onclick="diminuirQtd(1,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                                                </svg>
+                                                </svg></b>
+                                            </button>
+
+                                            <button type="button" class="btn btn-danger p-0 m-2" onclick="removerProd(1,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" onclick="removerProd(1, <?= $res['id'] ?>)" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                                                </svg></b>
+                                            </button>
+                                            </div>
+                                            <div class="col-4 vertAlign">
+                                                <span class="h3 borderGray mx-1 my-1 px-3 py-2 mr-1"><?= 'x'.$qtd ?></span>
+                                            </div>
+                                    </div>
+                                    
+                                    <?php
+                                }
+                        }
+                        //     //Se tal count(bebidas) nao for igual a zero
+                        // if (!$_SESSION['bebidas'] == 0){
+                        //     $bbdDAO = new bebidaDAO;
+                        //     foreach ($_SESSION['bebidas'] as $id => $qtd) {
+                        //         echo "<div>";
+                        //         $bbdDAO -> readWhereOutput($id, $qtd);
+                        //         echo "</div>";
+                        //     }
+                        // }
+                        //     //Se tal count(acomp) nao for igual a zero
+                        // if (!$_SESSION['acomp'] == 0){
+                        //     $acpDAO = new acompDAO;
+                        //     foreach ($_SESSION['acomp'] as $id => $qtd) {
+                        //         echo "<div>";
+                        //         $acpDAO -> readWhereOutput($id, $qtd);
+                        //         echo "</div>";
+                        //     }
+                        // }
+                    }
+
+                    ?>
                 </div>
-                <input type="hidden" name="type" value="<?= $type ?>">
-                <input type="hidden" name="carrinho" value="1">
-                <input type="hidden" name="id" id="add" value="">
-                </form>
-            </div>
-        </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-6 text-left d-flex flex-nowrap">
-                <h2>Itens do pedido</h2>
-            </div>
-            <div class="col-6 text-right flex-nowrap">
-                <span id="preco" class="h4 btn-primary disable align-middle">R$<?= number_format($_SESSION['preco'], 2) ?></span>
-            </div>
-            <div class="col card-columns sliderItens borderGray text-left vertAlign d-flex flex-nowrap justify-content-evenly">
-                <?php
-
-                if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
-                    echo '<p class="h1">Pedido Vazio.</p>'; 
-                }else {
-                    if (!$_SESSION['lanches'] == 0){
-                        $lcDAO = new lancheDAO;
-                        foreach ($_SESSION['lanches'] as $id => $qtd) {
-                            $lcDAO -> readWhereOutput($id, $qtd);
-                        }
-                    }
-
-                    if (!$_SESSION['bebidas'] == 0){
-                        $bbdDAO = new bebidaDAO;
-                        foreach ($_SESSION['bebidas'] as $id => $qtd) {
-                            $bbdDAO -> readWhereOutput($id, $qtd);
-                        }
-                    }
-                    
-                    if (!$_SESSION['acomp'] == 0){
-                        $acpDAO = new acompDAO;
-                        foreach ($_SESSION['acomp'] as $id => $qtd) {
-                            $acpDAO -> readWhereOutput($id, $qtd);
-                        }
-                    }
-                }
-
-            ?>
+            <div class="col-12 text-right flex-nowrap align-right">
+                <span id="preco" class="h4 btn-primary disable">R$<?= number_format($_SESSION['preco'], 2) ?></span>
             </div>
         </div>
     </div>
