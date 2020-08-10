@@ -47,10 +47,13 @@ div #produtos-checkout {
 }
 
 /* Largura da barra de rolagem */
-::-webkit-scrollbar {
-    width: 1px;
-} 
-
+#lateral-categoria::-webkit-scrollbar {
+    width: 0px;
+}
+/* Largura da barra de rolagem */
+#lateral-produtos::-webkit-scrollbar {
+    width: 0px;
+}
     /* Estilização do texto no card na lateral da pagina produto pedido */
 div .card-body {
     padding: 5px;
@@ -69,23 +72,11 @@ div .card-body {
     border-radius: 4px;
 }
 
-
 .vertAlign {
     margin: auto;
     width: 50%;
     padding: 10px;
 }
-/* 
-div#opt {
-    cursor: pointer;
-    border-radius: 8px;
-}
-div#opt:hover {
-    background-color: #007bff;
-    transition: 0.5s;
-    color: white;
-    cursor: pointer;
-} */
 
 .itemHover{
     cursor: pointer;
@@ -152,3 +143,17 @@ div#opt:hover {
     margin: auto;
     vertical-align: middle;
 }
+ 
+#cartSlider::-webkit-scrollbar, #produtos-checkout::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    display: block;
+}
+
+#cartSlider::-webkit-scrollbar-thumb, #produtos-checkout::-webkit-scrollbar-thumb {
+    width: 8px;
+    height: 8px;
+    display: block;
+    background-color: #007bff;
+    border-radius: 4px;
+}  
