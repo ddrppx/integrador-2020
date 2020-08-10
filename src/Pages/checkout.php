@@ -5,23 +5,10 @@ use Models\bebidaDAO;
 use Models\lancheDAO;
 
 session_start();
-
-
-
     require_once "../../vendor/autoload.php";
-
-    if(isset($_GET['pagamento'])){
-        $pag = $_GET['pagamento'];
-        $_SESSION['pagamento'] = $pag;
-        $produtos = new lancheDAO;
-    }
 
     $_SESSION['origem'] = "checkout.php";
 
-    if (isset($_GET['categoria'])) { // check if POST have that index or not
-        $category = $_GET['categoria']; // if yes then reassign it's value
-        $_SESSION['categoria'] = $category;  // set reassigned value to session variable
-    }
 
     if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
         echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pedido.php">';

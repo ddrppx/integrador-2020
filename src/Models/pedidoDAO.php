@@ -22,9 +22,8 @@ class pedidoDAO {
                 $stmt -> bindValue(4, $pedido -> getValor());
                 //Executa com os valores agregados
                 $stmt -> execute();               
-                echo "<br/>Start 2/6<br/>";
                 //ID do Lanche recém  inserido
-                $insertedID = (int)Connect::getConn() -> lastInsertId();
+                $insertedID = (int)$this -> insertedID();
                 //Retorna o array de ingredientes do lanche
                 $idItens = $pedido -> getIds();
                 //For para inserir um array ao banco (Tabela lanche_x)
@@ -32,7 +31,6 @@ class pedidoDAO {
                 $arBebidas = []; //Bebidas
                 $arAcomps = []; //Acompanhamentos
                 //Cada valor é separado pela chave no array "key()"
-                echo "<br/>Start 3/6<br/>";
                 for ($i=0; $i < count($idItens); $i++) { 
                     //Se o a linha do array for da classe "Lanche"
                     if (key($idItens[$i]) == 'Classes\Lanche'){
@@ -46,9 +44,8 @@ class pedidoDAO {
                     }
                 }
                 
-                echo "<br/>Start 4/6<br/>";
                 //Outra comando SQL de inserção (pedido_lanche)
-                $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche) VALUES (?, ?)';
+                $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche) VALUES (?, ?, ?)';
                 //Prepara uma nova conexão ao banco
                 $stmt = Connect::getConn() -> prepare($sql);
                 $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
@@ -59,7 +56,6 @@ class pedidoDAO {
                     $stmt -> execute();
                 }
                 
-                echo "<br/>Start 5/6<br/>";
                 //Outra comando SQL de inserção (pedido_acomp)
                 $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp) VALUES (?, ?)';
                 //Prepara uma nova conexão ao banco
@@ -72,7 +68,6 @@ class pedidoDAO {
                     $stmt -> execute();
                 }
                 
-                echo "<br/>Start 6/6<br/>";
                 //Outra comando SQL de inserção (pedido_bebida)
                 $sql = 'INSERT INTO pedido_bebida (id_pedido, id_bebida) VALUES (?, ?)';
                 //Prepara uma nova conexão ao banco
@@ -90,6 +85,50 @@ class pedidoDAO {
                 $e -> getMessage();
             }
 
+        }
+
+        public function insertedID(){
+            $insertedID = (int)Connect::getConn() -> lastInsertId();
+            return $insertedID;
+        }
+
+        public function insertPedidoLanche(int $insertedID, int $idLanche, int $qtd) {
+                //Outra comando SQL de inserção (pedido_lanche)
+            $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche, quantidade) VALUES (?, ?, ?)';
+                //Prepara uma nova conexão ao banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                //Loop para inserir todos lanches
+            $stmt -> bindValue(2, $idLanche, PDO::PARAM_INT);
+            $stmt -> bindValue(3, $qtd, PDO::PARAM_INT);
+                //Executa a cada item no array
+            $stmt -> execute();
+        }
+
+        public function insertPedidoAcomp(int $insertedID, int $idAcomp, int $qtd) {
+                //Outra comando SQL de inserção (pedido_lanche)
+                $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp, quantidade) VALUES (?, ?, ?)';
+                //Prepara uma nova conexão ao banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                //Loop para inserir todos lanches
+            $stmt -> bindValue(2, $idAcomp, PDO::PARAM_INT);
+            $stmt -> bindValue(3, $qtd, PDO::PARAM_INT);
+                //Executa a cada item no array
+            $stmt -> execute();
+        }
+
+        public function insertPedidoBebida(int $insertedID, int $idBebida, int $qtd) {
+                //Outra comando SQL de inserção (pedido_lanche)
+                $sql = 'INSERT INTO pedido_bebida (id_pedido, id_bebida) VALUES (?, ?)';
+                //Prepara uma nova conexão ao banco
+            $stmt = Connect::getConn() -> prepare($sql);
+            $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
+                //Loop para inserir todos lanches
+            $stmt -> bindValue(2, $idBebida, PDO::PARAM_INT);
+            $stmt -> bindValue(3, $qtd, PDO::PARAM_INT);
+                //Executa a cada item no array
+            $stmt -> execute();
         }
 
         public function read() {

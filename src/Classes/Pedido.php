@@ -47,10 +47,11 @@ namespace Classes;
         }
 
             //Metodo construtor
-        public function __construct($modoP, $metodoP) {
+        public function __construct($modoP, $metodoP, $valor) {
             $this -> hora = date('Y-m-d H:i:s', time()); //Receberá a hora atual
             $this -> modoPreparo = $modoP;
             $this -> metodoPagamento = $metodoP;
+            $this -> valorT = $valor;
             $this -> cupom;
             $this -> produtos = [];
             $this -> produdoIds = [];
@@ -102,8 +103,10 @@ namespace Classes;
                 $somaProdutos = $somaProdutos - ($somaProdutos * ($cupom -> getDesconto() / 100));
             }
 
+            $this -> valorT += $somaProdutos;
                 //Retorna valor descontado
-            return $somaProdutos;
+            return $this -> valorT;
+
         }
 
         public function customizar($lanche) {
