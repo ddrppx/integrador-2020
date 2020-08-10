@@ -41,6 +41,11 @@ div #lateral-produtos {
     overflow-y: scroll; /* Barra de rolagem oculta */
 }
 
+div #produtos-checkout {
+    max-height: 720px;
+    overflow-y: scroll; /* Barra de rolagem oculta */
+}
+
 /* Largura da barra de rolagem */
 ::-webkit-scrollbar {
     width: 1px;

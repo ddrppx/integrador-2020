@@ -62,7 +62,7 @@ session_start();
     </div>
 
             <!-- Container -->
-            <div class="col-12 borderGray my-2" id="lateral-produtos">
+            <div class="col-12 borderGray mb-2" id="produtos-checkout">
                 <?php
 
                     if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
@@ -82,55 +82,126 @@ session_start();
                                                     </p>
                                             </div>
                                             <div class="col-4 vertAlign d-flex justify-content-center">
-                                            <button type="button" class="btn btn-success p-0 m-2"  id="btnplus" onclick="aumentarQtd(1,<?= $res['id'] ?>)"><b>
+                                                <span class="h2 borderGray mx-1 my-1 px-3 py-2 mr-1"><?= 'x '.$qtd ?></span>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success p-0"  id="btnplus" onclick="aumentarQtd(1,<?= $res['id'] ?>)"><b>
                                                 <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                                                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
                                                  </svg></b>
                                             </button>
                                                 <!-- <button class="btn btn-primary" id="btnminus"><b>-</b></button> -->
-                                            <button type="button" class="btn btn-info p-0 m-2" onclick="diminuirQtd(1,<?= $res['id'] ?>)"><b>
+                                            <button type="button" class="btn btn-info p-0 ml-1 mr-1" onclick="diminuirQtd(1,<?= $res['id'] ?>)"><b>
                                                 <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
                                                 </svg>
                                                 </svg></b>
                                             </button>
 
-                                            <button type="button" class="btn btn-danger p-0 m-2" onclick="removerProd(1,<?= $res['id'] ?>)"><b>
+                                            <button type="button" class="btn btn-danger p-0" onclick="removerProd(1,<?= $res['id'] ?>)"><b>
                                                 <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" onclick="removerProd(1, <?= $res['id'] ?>)" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
                                                     <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
                                                 </svg></b>
                                             </button>
                                             </div>
-                                            <div class="col-4 vertAlign">
-                                                <span class="h3 borderGray mx-1 my-1 px-3 py-2 mr-1"><?= 'x'.$qtd ?></span>
-                                            </div>
+
                                     </div>
                                     
                                     <?php
                                 }
                         }
-                        //     //Se tal count(bebidas) nao for igual a zero
-                        // if (!$_SESSION['bebidas'] == 0){
-                        //     $bbdDAO = new bebidaDAO;
-                        //     foreach ($_SESSION['bebidas'] as $id => $qtd) {
-                        //         echo "<div>";
-                        //         $bbdDAO -> readWhereOutput($id, $qtd);
-                        //         echo "</div>";
-                        //     }
-                        // }
-                        //     //Se tal count(acomp) nao for igual a zero
-                        // if (!$_SESSION['acomp'] == 0){
-                        //     $acpDAO = new acompDAO;
-                        //     foreach ($_SESSION['acomp'] as $id => $qtd) {
-                        //         echo "<div>";
-                        //         $acpDAO -> readWhereOutput($id, $qtd);
-                        //         echo "</div>";
-                        //     }
-                        // }
-                    }
 
+                            //Se tal count(bebidas) nao for igual a zero
+                        if (!$_SESSION['bebidas'] == 0){
+                            $bbdDAO = new bebidaDAO;
+                            foreach ($_SESSION['bebidas'] as $id => $qtd) {
+                                $res = $bbdDAO -> readID($id);
+                                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$res['imagem'];
+                                ?>
+                                    <div class="row card-columns d-flex flex-wrap justify-content-evenly">
+                                            <div class="col-4 vertAlign cartHover">
+                                                    <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
+                                                    <p class="h4 text-center">
+                                                        <?= $res['nome'].' '. $res['marca']?> <?= $res['tamanho'] ?> <br/>R$<?= number_format($res['valor'],2) ?>
+                                                    </p>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                                <span class="h2 borderGray mx-1 my-1 px-3 py-2 mr-1"><?= 'x '.$qtd ?></span>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success p-0"  id="btnplus" onclick="aumentarQtd(2,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                                 </svg></b>
+                                            </button>
+                                                <!-- <button class="btn btn-primary" id="btnminus"><b>-</b></button> -->
+                                            <button type="button" class="btn btn-info p-0 ml-1 mr-1" onclick="diminuirQtd(2,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                                                </svg>
+                                                </svg></b>
+                                            </button>
+
+                                            <button type="button" class="btn btn-danger p-0" onclick="removerProd(2,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"  xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                                                </svg></b>
+                                            </button>
+                                            </div>
+
+                                    </div>
+                                <?php
+                            }
+                        }
+                            //Se tal count(acomp) nao for igual a zero
+                        if (!$_SESSION['acomp'] == 0){
+                            $acpDAO = new acompDAO;
+                            foreach ($_SESSION['acomp'] as $id => $qtd) {
+                                $res = $acpDAO -> readID($id);
+                                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$res['imagem'];
+                            }
+                            ?>
+                                    <div class="row card-columns d-flex flex-wrap justify-content-evenly">
+                                            <div class="col-4 vertAlign cartHover">
+                                                    <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
+                                                    <p class="h4 text-center">
+                                                        <?= $res['nome'].' '.$res['tamanho'] ?><br/> R$<?= number_format($res['valor'],2) ?>
+                                                    </p>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                                <span class="h2 borderGray mx-1 my-1 px-3 py-2 mr-1"><?= 'x '.$qtd ?></span>
+                                            </div>
+                                            <div class="col-4 vertAlign d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success p-0"  id="btnplus" onclick="aumentarQtd(3,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                                 </svg></b>
+                                            </button>
+                                                <!-- <button class="btn btn-primary" id="btnminus"><b>-</b></button> -->
+                                            <button type="button" class="btn btn-info p-0 ml-1 mr-1" onclick="diminuirQtd(3,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                                                </svg>
+                                                </svg></b>
+                                            </button>
+
+                                            <button type="button" class="btn btn-danger p-0" onclick="removerProd(3,<?= $res['id'] ?>)"><b>
+                                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"  xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                                                </svg></b>
+                                            </button>
+                                            </div>
+
+                                    </div>
+                        <?php
+                        }
+                    }
                     ?>
                 </div>
     </div>

@@ -85,7 +85,7 @@ class bebidaDAO {
     public function readWhereOutput(int $id, int $qtd) {
         $row = $this -> readID($id);
         $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
-        echo '
+        echo ' 
             <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 cartHover">
                 <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
                 <div class="card-body">
