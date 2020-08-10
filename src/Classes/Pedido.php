@@ -36,7 +36,7 @@ namespace Classes;
         public function getMetodoPagamento() {
             //Traduz o atributo de boolean para String
             $pag = $this->metodoPagamento;
-            $pag == 0 ? $pag = "Dinheiro" : $pag = "Cartão";
+            $pag == 0 ? $pag = "Dinheiro" : $pag = "Cartao";
             
             return $pag;
         }

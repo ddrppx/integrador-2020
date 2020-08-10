@@ -64,7 +64,7 @@ session_start();
                                         <div class="row card-columns d-flex flex-wrap justify-content-evenly">
                                             <div class="col-4 vertAlign cartHover">
                                                     <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
-                                                    <p class="h4 text-center">
+                                                    <p class="h5 text-center">
                                                         <?= $res['nome']?><br/> R$<?= number_format($res['valor'],2) ?>
                                                     </p>
                                             </div>
@@ -110,7 +110,7 @@ session_start();
                                     <div class="row card-columns d-flex flex-wrap justify-content-evenly">
                                             <div class="col-4 vertAlign cartHover">
                                                     <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
-                                                    <p class="h4 text-center">
+                                                    <p class="h5 text-center">
                                                         <?= $res['nome'].' '. $res['marca']?> <?= $res['tamanho'] ?> <br/>R$<?= number_format($res['valor'],2) ?>
                                                     </p>
                                             </div>
@@ -155,7 +155,7 @@ session_start();
                                     <div class="row card-columns d-flex flex-wrap justify-content-evenly">
                                             <div class="col-4 vertAlign cartHover">
                                                     <img class="card-img-top mb-2" src="<?= $imgPath ?>" height="140px" width="140px" alt="Card image cap">
-                                                    <p class="h4 text-center">
+                                                    <p class="h5 text-center">
                                                         <?= $res['nome'].' '.$res['tamanho'] ?><br/> R$<?= number_format($res['valor'],2) ?>
                                                     </p>
                                             </div>
@@ -207,7 +207,10 @@ session_start();
                 <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
             </div>
             <div class="col-md-6 text-left px-1">
-                <button type="button" class="btn btn-lg btn-success">Confirmar</button>
+                <form name="form-finalizar" method="post" action="finalizar.php">
+                    <input type="hidden" name="finalizar" value="1"/>
+                    <button type="submit" class="btn btn-lg btn-success">Confirmar</button>
+                </form>
             </div>
         </div>
     </div>
