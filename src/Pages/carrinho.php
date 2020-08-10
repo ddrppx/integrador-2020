@@ -1,12 +1,13 @@
 <?php
 
     require_once dirname(__DIR__, 2)."/vendor/autoload.php";
-
     use Models\acompDAO;
     use Models\bebidaDAO;
     use Models\lancheDAO;
 
-session_start();
+    session_start();
+
+    //Classes (Models) sendo instanciadas
     $lanche = new lancheDAO;
     $bebida = new bebidaDAO;
     $acomp = new acompDAO;
@@ -108,6 +109,5 @@ session_start();
 
     $_SESSION['preco'] = $valor;
 
-    clearstatcache();
-
+    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pedido.php">';
     ?>

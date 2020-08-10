@@ -201,17 +201,21 @@ session_start();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="cancelModalLabel">Cancelar?!</h4>
+                    <h3 class="modal-title" id="cancelModalLabel">Cancelar?</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p class="h5">Ao clicar em em 'Continuar' você irá cancelar totalmente o pedido, o levando à tela inicial.</p>
+                    <p class="h5">Tem certeza que deseja proseguir?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-                    <button type="button" class="btn btn-primary">Continuar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
+                    <form name="cancel" method="get" action="cancelar.php">
+                        <button type="submit" class="btn btn-secondary">Continuar</button>
+                        <input type="hidden" name="cancelar" id="input-cancel" value="1"/>
+                    </form>
                 </div>
             </div>
         </div>
