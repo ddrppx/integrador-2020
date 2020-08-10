@@ -119,6 +119,7 @@
 
     $_SESSION['preco'] = $valor;
 
+    $origem = $_SESSION['origem'];
 
     echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL='.$origem.'">';
     ?>
