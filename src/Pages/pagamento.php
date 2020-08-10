@@ -1,15 +1,10 @@
 <?php
     session_start();
 
-    $errors = [];
-    
-    if(isset($_GET)){
-        $_SESSION['preparo'] = $_GET['preparo'];
-    } else {
-        $errors[] = "Get preparo não foi recebido";
+    if(isset($_GET['preparo'])){
+        $prep = $_GET['preparo'];
+        $_SESSION['preparo'] = $prep;
     }
-
-    $_SESSION['errors'] = $errors;
 
 ?>
 

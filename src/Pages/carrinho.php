@@ -14,22 +14,6 @@
     
 
         //-----Carrinho-----
-    //Se nao existir SESSION['lanches']
-    if (!isset($_SESSION['lanches'])){
-        $_SESSION['lanches'] = [];
-        
-    }
-    
-    //Se nao existir SESSION['bebidas']
-    if (!isset($_SESSION['bebidas'])){
-        $_SESSION['bebidas'] = [];
-    }
-    
-        //Se nao existir SESSION['acomp']
-    if (!isset($_SESSION['acomp'])){
-        $_SESSION['acomp'] = [];
-    }
-    
         //Checa se os parametros foram passados
     if (isset($_GET['carrinho']) && $_GET['carrinho'] == '1'){
         $idProduto = $_GET['id'];
@@ -64,27 +48,6 @@
         }
     }
 
-        //Checa a lista de bebidas, se tiver mais que 0
-    if (count($_SESSION['bebidas']) == 0) {
-        echo '<br/>Nenhuma bebida.<br/>';
-    } else {
-        echo "<br/>Bebidas:<br/>";
-        echo "<pre>";
-        var_dump($_SESSION['bebidas']);
-        echo "</pre>";
-        echo "<br/>";
-    }
-
-        //Checa a lista de acompanhamentos, se tiver mais que 0
-    if (count($_SESSION['acomp']) == 0) {
-        echo '<br/>Nenhuma bebida.<br/>';
-    } else {
-        echo "<br/>Acompanhamentos:<br/>";
-        echo "<pre>";
-        var_dump($_SESSION['acomp']);
-        echo "</pre>";
-    }
-
         //Calculo do valor do pedido
     $valor = 0;
 
@@ -108,6 +71,7 @@
     }
 
     $_SESSION['preco'] = $valor;
+
 
     echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=pedido.php">';
     ?>

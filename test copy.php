@@ -1,82 +1,45 @@
-<html>
-    <head>
-        
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
-
-        <script>
-        // num = 1;
-        
-        //     function showNum(num) {
-        //         document.getElementById('h2').value = num;
-        //         setValue(num);
-        //     }
-
-        //     function aumentarN(num) {
-        //         num++;
-        //         num > 5 ? num = 5:"";
-
-        //         setValue(num);
-        //     }
-
-        //     function diminuirN() {
-        //         num--;
-        //         num < 0 ? num = 0 : "";
-
-        //         setValue(num);
-        //     }
-
-        // setValue(num);
-
-        var minutes = 25,
-            seconds = 0,
-            isPaused = true,
-            timerId = 0,
-            remainingTime,
-            countdownHandle;
-
-
-        $(function(x) { // on page load
-        $('.plus').on('click', function(){
-            minutes++;
-            $('.value').html(minutes);
-        });
-
-        $('.minus').on('click', function(){
-            minutes--;
-            $('.value').html(minutes);
-        });
-        });
-        </script>
-    </head>
-    <body>
-        <!-- <input type="button" id="diminuiAcrescimo" value="-" onclick="diminuirN()">
-        <h2 id="h2"></h2>
-        <input type="button" id="aumentaAcrescimo" value="+" onclick="aumentarN()"> -->
-
-<div class="control-wrapper" id="session">
-    <div class="control-header">SESSION LENGTH</div>
-        <div class="control">
-          <button class="plus">  +  </button> &nbsp; 
-          <h2 class="value">1</h2>
-          <button class="minus">  -  </div>
-    </div>
-    
-    <div class="control-header">SESSION LENGTH</div>
-        <div class="control">
-          <button class="plus">  +  </button> &nbsp; 
-          <h2 class="value">1</h2>
-          <button class="minus">  -  </div>
-    </div>
-
-    <div class="control-header">SESSION LENGTH</div>
-        <div class="control">
-          <button class="plus">  +  </button> &nbsp; 
-          <h2 class="value">1</h2>
-          <button class="minus">  -  </div>
-    </div>
-
-           
-    </body>
-</html>
+<html> 
+<head> 
+    <style> 
+    .container {
+    position: relative;  
+    width:100%;
+    max-width:100px;
+}
+.container:before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;left:0;right:0;
+  background-color:rgba(0,0,0,0);
+}
+.container:hover::before {
+  background-color:rgba(0,0,0,0.5);
+}
+.container img {
+  display:block;
+}
+.container button {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  opacity:0;
+} 
+.container:hover button {   
+  opacity: 1;
+}
+    </style> 
+</head> 
+  
+<body style=""> 
+<div class="container">
+  <img src="http://placeimg.com/100/100/animals" alt="Snow">
+   <button class="btn">Button</button>
+   
+</div>
+</body> 
+  
+</html> 

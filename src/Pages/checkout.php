@@ -11,63 +11,13 @@ session_start();
     if(isset($_GET['pagamento'])){
         $pag = $_GET['pagamento'];
         $_SESSION['pagamento'] = $pag;
+        $produtos = new lancheDAO;
     }
 
     if (isset($_GET['categoria'])) { // check if POST have that index or not
         $category = $_GET['categoria']; // if yes then reassign it's value
         $_SESSION['categoria'] = $category;  // set reassigned value to session variable
     }
-        //Se nao existir SESSION['lanches']
-        if (!isset($_SESSION['lanches'])){
-            $_SESSION['lanches'] = [];
-            
-        }
-        
-        //Se nao existir SESSION['bebidas']
-        if (!isset($_SESSION['bebidas'])){
-            $_SESSION['bebidas'] = [];
-        }
-        
-            //Se nao existir SESSION['acomp']
-        if (!isset($_SESSION['acomp'])){
-            $_SESSION['acomp'] = [];
-        }
-
-        if (!isset($_SESSION['categoria'])){
-            $_SESSION['categoria'] == 1;
-        }
-
-        if(isset($_SESSION['categoria'])) {
-            if($_SESSION['categoria'] == 1) {
-                $produtos = new lancheDAO;
-            // $rows = $produtos -> read();
-            } elseif ($_SESSION['categoria'] == 2) {
-                $produtos = new acompDAO;
-                // $rows = $produtos -> read();
-            } elseif ($_SESSION['categoria'] == 3) {
-                $produtos = new bebidaDAO;
-            // $rows = $produtos -> read();
-            }
-        }
-
-        if(!isset($_SESSION['preco'])){
-            $_SESSION['preco'] = 0.00;
-        }
-        
-            //Checa o tipo atual do display (Lanche, Acompanhamento ou Bebida)
-        switch (strtolower(get_class($produtos))){
-            case 'models\lanchedao':
-                $type = 1;
-                break;
-            case 'models\bebidadao':
-                $type = 2;
-                break;
-            case 'models\acompdao':
-                $type = 3;
-                break;
-        }
- 
-
 ?>
 
 <!DOCTYPE html>
@@ -80,16 +30,6 @@ session_start();
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
 
-    <style>
-        .hide {
-            display: none;
-            }
-                
-            .myDiv:hover .hide {
-            display: block;
-            color: red;
-            }
-    </style>
 </head>
 <body>
 
@@ -106,7 +46,7 @@ session_start();
                     Voltar</button>
             </div>
             <div class="col-6 text-center">
-                <h2>Produtos</h2>
+                <h2>Checkout</h2>
             </div>
             <div class="col-3 text-center">
             </div>
@@ -179,23 +119,22 @@ session_start();
                 <?php
 
                 if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {
-                    echo '<span class="h5 emptyCart">Não há itens no pedido...</span>'; 
+                    echo '<p class="h1">Pedido Vazio.</p>'; 
                 }else {
-                        //Se tal count(lanches) nao for igual a zero
-                        if (!$_SESSION['lanches'] == 0){
-                            $lcDAO = new lancheDAO;
-                            foreach ($_SESSION['lanches'] as $id => $qtd) {
-                                $lcDAO -> readWhereOutput($id, $qtd);
+                    if (!$_SESSION['lanches'] == 0){
+                        $lcDAO = new lancheDAO;
+                        foreach ($_SESSION['lanches'] as $id => $qtd) {
+                            $lcDAO -> readWhereOutput($id, $qtd);
                         }
                     }
-                        //Se tal count(bebidas) nao for igual a zero
+
                     if (!$_SESSION['bebidas'] == 0){
                         $bbdDAO = new bebidaDAO;
                         foreach ($_SESSION['bebidas'] as $id => $qtd) {
                             $bbdDAO -> readWhereOutput($id, $qtd);
                         }
                     }
-                        //Se tal count(acomp) nao for igual a zero
+                    
                     if (!$_SESSION['acomp'] == 0){
                         $acpDAO = new acompDAO;
                         foreach ($_SESSION['acomp'] as $id => $qtd) {
@@ -205,7 +144,6 @@ session_start();
                 }
 
             ?>
-
             </div>
         </div>
     </div>

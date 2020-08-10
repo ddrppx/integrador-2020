@@ -82,17 +82,35 @@ div#opt:hover {
     cursor: pointer;
 } */
 
-.itemHover, .card {
+.itemHover{
     cursor: pointer;
     border-radius: 8px;
 }
 
-.itemHover:hover, .card:hover {
+.itemHover:hover{
     background-color: #007bff;
     transition: 0.5s;
     color: white;
     cursor: pointer;
 }
+ 
+.cartHover:hover{
+    background-color: lightslategrey;
+    transition: 0.5s;
+    color: white;
+    cursor: pointer;
+} 
+
+.remover {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+} 
+
+.cartHover:hover > .remover {
+    display: block !important;
+}
+
 
 .sliderItens {
     overflow-x: scroll;
@@ -121,4 +139,10 @@ div#opt:hover {
     position: absolute;
     bottom: 1rem;        /*15px;*/
     right: 1.3rem        /*20px;*/
+}
+
+.emptyCart {
+    position: relative;
+    margin: auto;
+    vertical-align: middle;
 }
