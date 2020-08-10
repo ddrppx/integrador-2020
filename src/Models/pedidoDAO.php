@@ -12,7 +12,6 @@ class pedidoDAO {
             try {
                     //Comando SQL
                 $sql = 'INSERT INTO pedido (hora, md_preparo, mtd_pagamento, valor) VALUES (?, ?, ?, ?)';
-                echo "<br/>Start<br/>";
                 //Conexão com banco + prepare
                 $stmt = Connect::getConn() -> prepare($sql);
                 //Agrega o valor ao local do '?' na variavel $sql
@@ -27,6 +26,7 @@ class pedidoDAO {
                 //Retorna o array de ingredientes do lanche
                 $idItens = $pedido -> getIds();
                 //For para inserir um array ao banco (Tabela lanche_x)
+                //Metodo usado se utilizarmos o addProduto($produto)
                 $arLanches = []; //Lanches
                 $arBebidas = []; //Bebidas
                 $arAcomps = []; //Acompanhamentos
@@ -45,7 +45,7 @@ class pedidoDAO {
                 }
                 
                 //Outra comando SQL de inserção (pedido_lanche)
-                $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche) VALUES (?, ?, ?)';
+                $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche, quantidade) VALUES (?, ?, ?)';
                 //Prepara uma nova conexão ao banco
                 $stmt = Connect::getConn() -> prepare($sql);
                 $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
@@ -57,7 +57,7 @@ class pedidoDAO {
                 }
                 
                 //Outra comando SQL de inserção (pedido_acomp)
-                $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp) VALUES (?, ?)';
+                $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp, quantidade) VALUES (?, ?, ?)';
                 //Prepara uma nova conexão ao banco
                 $stmt = Connect::getConn() -> prepare($sql);
                 $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
@@ -86,12 +86,30 @@ class pedidoDAO {
             }
 
         }
+            //Escreve somente na tabela pedido, e retorna o ID recem criado
+        public function createSingle(Pedido $pedido) {
+                 //Comando SQL
+            $sql = 'INSERT INTO pedido (hora, md_preparo, mtd_pagamento, valor) VALUES (?, ?, ?, ?)';
+                //Conexão com banco + prepare
+            $stmt = Connect::getConn() -> prepare($sql);
+                //Agrega o valor ao local do '?' na variavel $sql
+            $stmt -> bindValue(1, $pedido -> getHora());
+            $stmt -> bindValue(2, $pedido -> getModoPreparo());
+            $stmt -> bindValue(3, $pedido -> getMetodoPagamento());
+            $stmt -> bindValue(4, $pedido -> getValor());
+                //Executa com os valores agregados
+            $stmt -> execute();               
+                //ID do Lanche recém  inserido
+            return $this -> insertedID();
+        }
 
+            //Retorna o ultimo id cadastrado (Usado logo após escrever no banco)
         public function insertedID(){
             $insertedID = (int)Connect::getConn() -> lastInsertId();
             return $insertedID;
         }
 
+            //Insere dados na tabela pedido_lanche (JOIN)
         public function insertPedidoLanche(int $insertedID, int $idLanche, int $qtd) {
                 //Outra comando SQL de inserção (pedido_lanche)
             $sql = 'INSERT INTO pedido_lanche (id_pedido, id_lanche, quantidade) VALUES (?, ?, ?)';
@@ -105,9 +123,10 @@ class pedidoDAO {
             $stmt -> execute();
         }
 
+            //Insere dados na tablea pedido_acomp (JOIN)
         public function insertPedidoAcomp(int $insertedID, int $idAcomp, int $qtd) {
-                //Outra comando SQL de inserção (pedido_lanche)
-                $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp, quantidade) VALUES (?, ?, ?)';
+                //Outra comando SQL de inserção (pedido_acomp)
+            $sql = 'INSERT INTO pedido_acomp (id_pedido, id_acomp, quantidade) VALUES (?, ?, ?)';
                 //Prepara uma nova conexão ao banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
@@ -118,9 +137,10 @@ class pedidoDAO {
             $stmt -> execute();
         }
 
+            //Insere dados na tabela pedido_bebida (JOIN)
         public function insertPedidoBebida(int $insertedID, int $idBebida, int $qtd) {
-                //Outra comando SQL de inserção (pedido_lanche)
-                $sql = 'INSERT INTO pedido_bebida (id_pedido, id_bebida) VALUES (?, ?)';
+                //Outra comando SQL de inserção (pedido_bebida)
+                $sql = 'INSERT INTO pedido_bebida (id_pedido, id_bebida, quantidade) VALUES (?, ?, ?)';
                 //Prepara uma nova conexão ao banco
             $stmt = Connect::getConn() -> prepare($sql);
             $stmt -> bindValue(1, $insertedID, PDO::PARAM_INT);
