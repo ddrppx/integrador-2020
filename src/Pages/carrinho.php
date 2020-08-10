@@ -12,8 +12,39 @@
     $bebida = new bebidaDAO;
     $acomp = new acompDAO;
     
-
+    $origem = $_SESSION['origem'];
+        //Test
+    if (!isset($_GET['type'])){
+        $_GET['type'] = 1;
+    }
         //-----Carrinho-----
+    if(isset($_GET['remover']) && $_GET['remover'] == '1') {
+        $idProduto = $_GET['id'];
+            //Se o tipo passado como parametro for 1 = Lanche
+        if(isset($_GET['type']) && $_GET['type'] == '1'){
+            
+            if(isset($_SESSION['lanches'][$idProduto])){
+                unset($_SESSION['lanches'][$idProduto]);
+            }
+        }
+        
+            //Se o tipo passado como parametro for 1 = Bebida
+        if(isset($_GET['type']) && $_GET['type'] == '2'){
+            
+            if(isset($_SESSION['bebidas'][$idProduto])){
+                unset($_SESSION['bebidas'][$idProduto]);
+            }
+        }
+        
+            //Se o tipo passado como parametro for 1 = Acompanhamentos
+        if(isset($_GET['type']) && $_GET['type'] == '3'){
+            
+            if(isset($_SESSION['acomp'][$idProduto])){
+                unset($_SESSION['acomp'][$idProduto]);
+            }
+        }
+    }
+
         //Checa se os parametros foram passados
     if (isset($_GET['carrinho']) && $_GET['carrinho'] == '1'){
         $idProduto = $_GET['id'];
@@ -21,28 +52,30 @@
         //Se o tipo passado como parametro for 1 = Lanche
         if(isset($_GET['type']) && $_GET['type'] == '1'){
             
-            if(isset($_GET['lanches'][$idProduto])){
+            if(!isset($_SESSION['lanches'][$idProduto])){
                 $_SESSION['lanches'][$idProduto] = 1;
             } else {
                 $_SESSION['lanches'][$idProduto] += 1;
             }
         }
-        
-        //Se o tipo passado como parametro for 1 = Bebida
+
+            //Se o tipo passado como parametro for 1 = Bebida
         if(isset($_GET['type']) && $_GET['type'] == '2'){
-            
-            if(isset($_GET['bebidas'][$idProduto])){
+                //Se o item nao existir no carrinho ele cria
+            if(!isset($_SESSION['bebidas'][$idProduto])){
                 $_SESSION['bebidas'][$idProduto] = 1;
             } else {
+                    //Se ele existir, adiciona a quantidade
                 $_SESSION['bebidas'][$idProduto] += 1;
             }
         }
-        
+
         //Se o tipo passado como parametro for 1 = Acompanhamentos
         if(isset($_GET['type']) && $_GET['type'] == '3'){
-            if(isset($_GET['type'][$idProduto])){
+            if(!isset($_SESSION['acomp'][$idProduto])){
                 $_SESSION['acomp'][$idProduto] = 1;
             } else {
+                    //Se ele existir, adiciona a quantidade
                 $_SESSION['acomp'][$idProduto] += 1;
             }
         }
@@ -51,9 +84,6 @@
         //Checa se os parametros foram passados
     if (isset($_GET['diminuir']) && $_GET['diminuir'] == '1'){
         $idProduto = $_GET['id'];
-        echo "Diminuir flag";
-        echo "GET id ". $_GET['id'];
-        echo "GET Type: ".$_GET['type'];
 
             //Se o tipo passado como parametro for 1 = Lanche
         if(isset($_GET['type']) && $_GET['type'] == '1'){
@@ -75,10 +105,10 @@
             }
 
                 //Checa se o produto existe, e se é maior que 0
-            if(isset($_SESSION['bebidas'][$idProduto]) && $_SESSION['bebidas'][$idProduto] > 0){
-                $_SESSION['bebidas'][$idProduto] -= 1;
+            if(isset($_SESSION['acomp'][$idProduto]) && $_SESSION['bebidas'][$idProduto] > 0){
+                $_SESSION['acomp'][$idProduto] -= 1;
             } else { //Se nao for maior que 0, o produto é tirado do carrinho apos apertar diminuir
-                 unset($_SESSION['bebidas'][$idProduto]);    
+                 unset($_SESSION['acomp'][$idProduto]);    
             }
         }
                 
@@ -119,7 +149,9 @@
 
     $_SESSION['preco'] = $valor;
 
-    $origem = $_SESSION['origem'];
+    echo "<pre>";
+    var_dump($_SESSION);
+    echo "</pre>";
 
     echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL='.$origem.'">';
     ?>

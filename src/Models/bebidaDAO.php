@@ -101,7 +101,7 @@ class bebidaDAO {
         $row = $this -> readID($id);
         $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
         echo '
-            <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3">
+            <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 cartHover">
                 <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
                 <div class="card-body">
                     <p class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'</p>
@@ -109,16 +109,16 @@ class bebidaDAO {
 
                     <div class="text-left remover">
 
-                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus btn-success rounded" onclick="escolherProduto(\'add\','.$row['id'].')" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus btn-success rounded" onclick="aumentarQtd(2,'.$row['id'].')" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                         <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
                         </svg>
                     
-                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-dash btn-info rounded" onclick="diminuirQtd(1, '.$row['id'].')" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-dash btn-info rounded" onclick="diminuirQtd(2, '.$row['id'].')" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
                         </svg>
                         
-                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x btn-danger rounded" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x btn-danger rounded" fill="currentColor" onclick="removerProd(2, '.$row['id'].')" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
                             <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
                         </svg>

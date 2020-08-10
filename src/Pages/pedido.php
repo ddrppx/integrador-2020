@@ -4,13 +4,17 @@ use Models\acompDAO;
 use Models\bebidaDAO;
 use Models\lancheDAO;
 
-session_start();
+    session_start();
 
     require_once "../../vendor/autoload.php";
+
+        //Indica a origem do request(?) para a outra pagina
+    $_SESSION['origem'] = 'pedido.php'; 
 
     if(isset($_GET['pagamento'])){
         $pag = $_GET['pagamento'];
         $_SESSION['pagamento'] = $pag;
+        $produtos = new lancheDAO;
     }
 
     if (isset($_GET['categoria'])) { // check if POST have that index or not
@@ -33,9 +37,9 @@ session_start();
             $_SESSION['acomp'] = [];
         }
 
-        if (!isset($_SESSION['categoria'])){
-            $_SESSION['categoria'] == 1;
-        }
+        // if (!isset($_GET['categoria'])){
+        //     $_SESSION['categoria'] == 1;
+        // }
 
         if(isset($_SESSION['categoria'])) {
             if($_SESSION['categoria'] == 1) {
@@ -246,8 +250,4 @@ session_start();
         </div>
     </div>
 
-    <?php 
-    include "footer.php";
-        //Indica a origem do request(?) para a outra pagina
-    $_SESSION['origem'] = 'pedido.php'; 
-    ?>
+    <?php include "footer.php"; ?>
