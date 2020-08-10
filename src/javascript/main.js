@@ -30,6 +30,10 @@ function diminuirQtd(type, id){
     window.location.assign(`carrinho.php?diminuir=1&type=${type}&id=${id}`);
 }
 
+function confirmar(x){
+    window.location.assign(`checkout.php?finalizar=${x}`);
+}
+
     //Remove o item do carrinho
 function removerProd(type, id) {
     window.location.assign(`carrinho.php?remover=1&type=${type}&id=${id}`);

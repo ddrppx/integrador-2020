@@ -51,21 +51,6 @@ class bebidaDAO {
                 //Retorno da variavel
             return $resultado;
         }
-
-        public function read_show() {
-            $rows = $this -> read();
-
-            foreach ($rows as $row){
-                    echo '
-                    <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')>
-                        <img class="card-img-top mb-0" src="../static/svg/segment/bebidas.svg" height="110px" width="110px" alt="Imagem do produto">
-                        <div class="card-body">
-                            <h6 class="card-text text-left h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'
-                            <p class="card-text justify-content text-right h6"> R$'.$row['valor'].'</p>
-                        </div>
-                     </div>';
-            }
-        }
         
             public function readShowAll() {
                 $rows = $this -> read();
@@ -73,7 +58,7 @@ class bebidaDAO {
                 foreach ($rows as $row){
                     $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                     echo '
-                        <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3" onclick="escolherProduto(\'add\','.$row['id'].')">
+                        <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 itemHover" onclick="escolherProduto(\'add\','.$row['id'].')">
                             <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
                             <div class="card-body">
                             <h6 class="card-text text-justify h6">'.$row['nome']. ' ' . $row['marca'].'</br>'. $row['tamanho'].'

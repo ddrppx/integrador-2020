@@ -103,20 +103,11 @@
             } else {
                 unset($_SESSION['bebidas'][$idProduto]);
             }
-
-                //Checa se o produto existe, e se é maior que 0
-            if(isset($_SESSION['acomp'][$idProduto]) && $_SESSION['bebidas'][$idProduto] > 0){
-                $_SESSION['acomp'][$idProduto] -= 1;
-            } else { //Se nao for maior que 0, o produto é tirado do carrinho apos apertar diminuir
-                 unset($_SESSION['acomp'][$idProduto]);    
-            }
         }
                 
             //Se o tipo passado como parametro for 1 = Acompanhamentos
-        if(isset($_SESSION['type']) && $_GET['type'] == '3'){
-            $_SESSION['acomp'][$idProduto] -= 1;
-
-                //Checa se o produto existe, e se é maior que 0
+        if(isset($_GET['type']) && $_GET['type'] == '3'){
+                 //Checa se o produto existe, e se é maior que 0
             if(isset($_SESSION['acomp'][$idProduto]) && $_SESSION['acomp'][$idProduto] > 0){
                 $_SESSION['acomp'][$idProduto] -= 1;
             } else { //Se nao for maior que 0, o produto é tirado do carrinho apos apertar diminuir
@@ -148,10 +139,6 @@
     }
 
     $_SESSION['preco'] = $valor;
-
-    echo "<pre>";
-    var_dump($_SESSION);
-    echo "</pre>";
 
     echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL='.$origem.'">';
     ?>
