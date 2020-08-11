@@ -96,7 +96,7 @@ class lancheDAO {
                 $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
                     <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 itemHover" onclick="escolherProduto(\'add\','.$row['id'].')">
-                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="150px" width="150px" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-left h6">'.$row['nome'].'</p>
                             <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</p>
@@ -110,7 +110,7 @@ class lancheDAO {
             $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
             echo '
                 <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 cartHover">
-                    <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Card image cap">
+                    <img class="card-img-top mb-2" src="'.$imgPath.'" height="150px" width="150px" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text text-left h6">'.$row['nome'].'</p>
                         <p class="card-text align-text-right h5 bottomCart"> x'.$qtd.'</p>

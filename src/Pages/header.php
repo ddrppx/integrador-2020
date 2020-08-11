@@ -4,7 +4,7 @@
 					<div class="col-md-4" id="geolocation">
 					</div>
 					<div class="col-md-4 text-center" id="div-clock">
-						<span class="clock-container col text-center" id="clock"></span>
+						<span class="h5 clock-container col text-center" id="clock"></span>
 					</div>
 					<div class="col-md-4 text-right">
 						<!-- Ícone Linguagem -->

@@ -23,7 +23,7 @@
     <!-- Relógio topo -->
     <script src="..\javascript\relogio.js"></script>
     <!-- Geolocalização -->
-    <!-- <script src="..\javascript\geolocation.js"></script> -->
+    <script src="..\javascript\geolocation.js"></script>
     <!-- Arquivo javascript -->
 		<script src="..\javascript\main.js"></script>
   </body>

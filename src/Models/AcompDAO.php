@@ -58,7 +58,7 @@ class acompDAO {
                 $imgPath = '..'.DS.'static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
                     <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 itemHover" onclick="escolherProduto(\'add\','.$row['id'].')">
-                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="110px" width="110px" alt="Imagem do produto">
+                        <img class="card-img-top mb-2" src="'.$imgPath.'" height="200px" width="150px" alt="Imagem do produto">
                         <div class="card-body">
                         <h6 class="card-text text-justify h6">'.$row['nome'].'</br>'. $row['tamanho'].'
                         <p class="card-text justify-content text-right h6"> R$'.number_format($row['valor'], 2).'</p>

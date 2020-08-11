@@ -150,7 +150,7 @@ session_start();
                             foreach ($_SESSION['acomp'] as $id => $qtd) {
                                 $res = $acpDAO -> readID($id);
                                 $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$res['imagem'];
-                            }
+
                             ?>
                                     <div class="row card-columns d-flex flex-wrap justify-content-evenly">
                                             <div class="col-4 vertAlign cartHover">
@@ -187,6 +187,7 @@ session_start();
 
                                     </div>
                         <?php
+                            }
                         }
                     }
                     ?>

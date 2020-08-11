@@ -157,3 +157,14 @@ div .card-body {
     background-color: #007bff;
     border-radius: 4px;
 }  
+
+#centralized {
+    position:relative;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+#admin:hover { 
+    color: #000;
+    cursor:pointer;
+}

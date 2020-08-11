@@ -182,7 +182,7 @@ use Models\lancheDAO;
             <div class="col-6 text-right flex-nowrap">
                 <span id="preco" class="h3 btn-primary disable align-middle">R$<?= number_format($_SESSION['preco'], 2) ?></span>
             </div>
-            <div class="col card-columns sliderItens borderGray text-left vertAlign d-flex flex-nowrap justify-content-evenly" id="cartSlider">
+            <div class="col card-columns borderGray text-left vertAlign d-flex flex-nowrap justify-content-evenly" id="cartSlider">
                 <?php
 
                 if (count($_SESSION['lanches']) == 0 && count($_SESSION['bebidas']) == 0 && count($_SESSION['acomp']) == 0) {

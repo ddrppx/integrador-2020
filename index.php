@@ -5,21 +5,23 @@
     	<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>Página principal</title>
-
+		<link rel="shortcut icon" href="src/static/favicon.ico" />
 		<link rel="stylesheet" href="src/bootstrap4.5.0/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="src/css/main.css" />
 		
 	</head>
 
-	<body onclick="iniciarPedido()">
-		<div class="container" >
+	<body >
+		<div class="container">
 			<div class="row flex-nowrap">
 				<div class="col-sm-4" id="geolocation">
 				</div>
 				<div class="col-sm-4 text-center" id="div-clock">
-					<span class="clock-container col text-center" id="clock"></span>
+					<span class="h5 clock-container col text-center" id="clock"></span>
 				</div>
 				<div class="col-sm-4 text-right">
+					<!-- Icone para configurações -->
+					<img type="image/svg+xml" id="admin" onclick="admin()" src="src/Static/svg/gear.svg" height="25px" width="25px"/>
 					<!-- Ícone Linguagem -->
 					<img type="image/svg+xml" src="src/Static/svg/brazil.svg" height="30px" width="30px"/>
 					<!-- Ícone Wi-Fi -->
@@ -27,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-
+	<div onclick="iniciarPedido()">
 		<div class="container pt-5 pb-5">
 			<div class="row pt-5 pb-5">
 				<div class="col-xl text-center pt-4 pb-4">
@@ -67,7 +69,7 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
 	<!-- Main JS -->
 	<script src="/src/javascript/main.js"></script>
 	<!-- CDN Ajax -->

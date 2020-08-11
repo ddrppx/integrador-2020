@@ -59,3 +59,7 @@ function voltarPagamento() {
 function voltarPedido(){
     window.location.assign("pedido.php");
 }
+
+function admin(){
+    window.location.assign('/src/pages/admin.php');
+}
