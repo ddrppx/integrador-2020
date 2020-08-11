@@ -24,6 +24,7 @@ session_start();
 	
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="shortcut icon" href="../static/favicon.ico" />
 
 </head>
 <body>

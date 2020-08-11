@@ -86,17 +86,7 @@ use Models\lancheDAO;
 	
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
-
-    <style>
-        .hide {
-            display: none;
-            }
-                
-            .myDiv:hover .hide {
-            display: block;
-            color: red;
-            }
-    </style>
+    <link rel="shortcut icon" href="../static/favicon.ico" />
 </head>
 <body>
 
