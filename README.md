@@ -1,5 +1,5 @@
-<h2>Projeto Integrador</h2>
-<h3>IFES 2020/2</h3>
+<h1>Projeto Integrador</h1>
+<h2>IFES 2020/2</h2>
 
 <p>Propósito do projeto: Criar a documentação de um sistema.</p>
 <p>Foi proposto criar um sistema de autoatendimento para um serviço de fast food.</p>
