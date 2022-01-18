@@ -5,7 +5,7 @@
     use Models\pedidoDAO;
     use Models\lancheDAO;
     use Models\bebidaDAO;
-    use Models\acompDAO;
+    use Models\AcompDAO;
     
     session_start();
         //Checa variavel de sessao do preparo
@@ -23,31 +23,30 @@
         //Checa variavel de sessao que contem os lanches
     if(isset($_SESSION['lanches'])){
         $lanches = $_SESSION['lanches'];
-        foreach ($lanches as $key => $value) {
-        }
+
     }
         //Checa variavel de sessao que contem as bebidas
     if(isset($_SESSION['bebidas'])){
         $bebidas = $_SESSION['bebidas'];
-        foreach($bebidas as $key => $value) {
-        }
+
     }
         //Checa variavel de sessao que contem os acompanhamentos
     if(isset($_SESSION['acomp'])){
         $acomp = $_SESSION['acomp'];
-        foreach($acomp as $key => $value) {
-        }
+
     }
+
         //Checa se tem o parametro finalizar do metodo POST (para finalizar o pedido)
     if (isset($_POST['finalizar']) && $_POST['finalizar'] == 1){
             //Checa se existem as tais variaveis
         if(isset($prep, $pag, $preco)){
-            $pedido = new pedidoDAO;
+            // $pedido = new pedidoDAO;
             $pedido = new Pedido($prep, $pag, $preco);
                 //Instancia o pedidoDAO
             $DBwrite = new pedidoDAO;
                 //Escreve na tabela pedidos e retorna o id do pedido atual
             $insertedID = $DBwrite -> createSingle($pedido);
+
                 //Checa se existem dados na variavel lanches
             if (count($lanches) > 0){
                     //Percorre todo o array lanches, escrevendo cada um no banco (Tabela pedido_lanche)
@@ -55,6 +54,7 @@
                    $DBwrite -> insertPedidoLanche($insertedID, $id, $qtd);
                 }
             }
+
                 //Checa se existem dados na variavel bebidas
             if (count($bebidas) > 0){
                     //Percorre todo o array bebidas, escrevendo cada um no banco (Tabela pedido_bebida)
@@ -81,7 +81,7 @@
                 
             <link rel="stylesheet" href="../css/main.css" />
             <link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
-            <link rel="shortcut icon" href="../static/favicon.ico" />
+            <link rel="shortcut icon" href="../Static/favicon.ico" />
         </head>
         <body>
             <?php include_once "header.php" ?>

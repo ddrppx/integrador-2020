@@ -35,7 +35,7 @@ namespace Classes;
             //Método GET
         public function getMetodoPagamento() {
             //Traduz o atributo de boolean para String
-            $pag = $this->metodoPagamento;
+            $pag = $this-> metodoPagamento;
             $pag == 0 ? $pag = "Dinheiro" : $pag = "Cartao";
             
             return $pag;
@@ -54,7 +54,7 @@ namespace Classes;
             $this -> valorT = $valor;
             $this -> cupom;
             $this -> produtos = [];
-            $this -> produdoIds = [];
+            $this -> produtoIds = [];
         }
 
             //Método toString

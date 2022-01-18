@@ -88,6 +88,10 @@ class pedidoDAO {
         }
             //Escreve somente na tabela pedido, e retorna o ID recem criado
         public function createSingle(Pedido $pedido) {
+
+
+            try { 
+
                  //Comando SQL
             $sql = 'INSERT INTO pedido (hora, md_preparo, mtd_pagamento, valor) VALUES (?, ?, ?, ?)';
                 //Conexão com banco + prepare
@@ -99,8 +103,13 @@ class pedidoDAO {
             $stmt -> bindValue(4, $pedido -> getValor());
                 //Executa com os valores agregados
             $stmt -> execute();               
+            
                 //ID do Lanche recém  inserido
             return $this -> insertedID();
+            } catch (PDOException $e) {
+
+                echo $e -> getMessage();
+            }
         }
 
             //Retorna o ultimo id cadastrado (Usado logo após escrever no banco)

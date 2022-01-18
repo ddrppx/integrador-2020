@@ -1,7 +1,7 @@
 <?php
 
     require_once dirname(__DIR__, 2)."/vendor/autoload.php";
-    use Models\acompDAO;
+    use Models\AcompDAO;
     use Models\bebidaDAO;
     use Models\lancheDAO;
 

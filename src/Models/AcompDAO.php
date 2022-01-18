@@ -55,7 +55,7 @@ class acompDAO {
             $rows = $this -> read();
 
             foreach ($rows as $row){
-                $imgPath = '..'.DS.'static'.DS.'produtos'.DS.$row['imagem'];
+                $imgPath = '..'.DS.'Static'.DS.'produtos'.DS.$row['imagem'];
                 echo '
                     <div class="card mb-1 mt-1 col-6 col-sm-4 col-md-3 itemHover" onclick="escolherProduto(\'add\','.$row['id'].')">
                         <img class="card-img-top mb-2" src="'.$imgPath.'" height="200px" width="150px" alt="Imagem do produto">

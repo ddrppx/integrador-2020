@@ -1,6 +1,6 @@
 <?php
 
-use Models\acompDAO;
+use Models\AcompDAO;
 use Models\bebidaDAO;
 use Models\lancheDAO;
 
@@ -86,7 +86,7 @@ use Models\lancheDAO;
 	
 	<link rel="stylesheet" href="../bootstrap4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="shortcut icon" href="../static/favicon.ico" />
+    <link rel="shortcut icon" href="../Static/favicon.ico" />
 </head>
 <body>
 
@@ -123,7 +123,7 @@ use Models\lancheDAO;
                         <div class="card-body">
                             <h5 class="card-title">Lanches</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/lanches.svg" height="120px" width="120px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../Static/svg/segment/lanches.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
                 <!-- </div> -->
 
@@ -132,7 +132,7 @@ use Models\lancheDAO;
                         <div class="card-body">
                             <h5 class="card-title">Acompanhamentos</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/acompanhamentos.svg" height="120px" width="120px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../Static/svg/segment/acompanhamentos.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
                 <!-- </div> -->
 
@@ -141,7 +141,7 @@ use Models\lancheDAO;
                         <div class="card-body">
                             <h5 class="card-title">Bebidas</h5>
                         </div>
-                        <img class="card-img-bottom mb-2" src="../static/svg/segment/bebidas.svg" height="120px" width="120px" alt="Card image cap">
+                        <img class="card-img-bottom mb-2" src="../Static/svg/segment/bebidas.svg" height="120px" width="120px" alt="Card image cap">
                     </div>
                 <!-- </div> -->
                     <input type="hidden" id="categoria" name="categoria" value=""/>
@@ -245,4 +245,6 @@ use Models\lancheDAO;
         </div>
     </div>
 
-    <?php include "footer.php"; ?>
+    <?php 
+        require "footer.php";
+    ?>
